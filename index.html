@@ -594,12 +594,20 @@ function askGPS(){
 /* =========================================================
    OPENING HOURS (saved with the app, not live)
    ========================================================= */
-function hours(p){if(p.oh)return p.oh;if(p.k==="sight")return null;if(p.bf.includes("D")&&!p.bf.includes("L"))return [17,22];if(p.bf.includes("B"))return [8,17];if(p.k==="snack")return [10,18];return [12,22];}
-function openAt(p,min,dow){if(p.cl&&p.cl.includes(dow))return false;const h=hours(p);if(!h)return true;const t=min/60;return t>=h[0]&&t<h[1];}
+/* Verified hours for today, written by the Claude refresh into the feed (feed.hours[id]={date,open:"HH:MM",close:"HH:MM",closed,checked}) */
+function liveHours(p){const H=FEED&&FEED.hours&&FEED.hours[p.id];if(!H||H.date!==nowAms().date)return null;return H;}
+const hm2h=t=>{if(!t)return null;const [a,b]=t.split(":").map(Number);return a+b/60;};
+function hours(p){const L=liveHours(p);if(L&&!L.closed&&L.open&&L.close){let o=hm2h(L.open),c=hm2h(L.close);if(c<=o)c+=24;return [o,c];}
+if(p.oh)return p.oh;if(p.k==="sight")return null;if(p.bf.includes("D")&&!p.bf.includes("L"))return [17,22];if(p.bf.includes("B"))return [8,17];if(p.k==="snack")return [10,18];return [12,22];}
+function openAt(p,min,dow){const L=liveHours(p);if(L&&L.closed)return false;if(!L&&p.cl&&p.cl.includes(dow))return false;const h=hours(p);if(!h)return true;const t=min/60;return (t>=h[0]&&t<h[1])||(h[1]>24&&t+24<h[1]);}
 function closesIn(p,min,dow){const h=hours(p);if(!h||!openAt(p,min,dow))return null;return Math.round(h[1]*60-min);}
 function fmtH(x){const h=Math.floor(x)%24,m=Math.round((x%1)*60);return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;}
 /* Hours are saved data, never live: label them honestly */
-function hoursLabel(p,short){const h=hours(p);if(!h)return "";const n=nowAms();const cl=p.cl&&p.cl.length?` · closed ${p.cl.map(x=>["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][x]).join("/")}`:"";
+function hoursLabel(p,short){const n=nowAms();const L=liveHours(p);
+  if(L){const op=openAt(p,n.min,n.dow);const when=fmtClock(Date.parse(L.checked));
+    if(short)return L.closed?"🔴 Closed today ✓":op?"🟢 Open now ✓":"🔴 Closed now ✓";
+    return `${L.closed?"Closed today":op?"Open now":"Closed now"} ${L.closed?"":"· today "+L.open+"–"+L.close+" "}· hours checked ${when}${L.note?" · "+L.note:""}`;}
+  const h=hours(p);if(!h)return "";const cl=p.cl&&p.cl.length?` · closed ${p.cl.map(x=>["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][x]).join("/")}`:"";
   const likely=openAt(p,n.min,n.dow)?"Likely open":"Likely closed";
   return short?`${likely}*`:`${likely} based on saved hours · ${fmtH(h[0])}–${fmtH(h[1])}${cl} · last checked 6 Oct`;}
 /* =========================================================
