@@ -1,0 +1,215 @@
+{
+ "updatedAt": "2026-10-06T17:40:00Z",
+ "weather": {
+  "days": [
+   {
+    "date": "2026-10-07",
+    "hi": 18,
+    "lo": 13,
+    "rain": 80,
+    "desc": "cloudy, storms at night"
+   },
+   {
+    "date": "2026-10-08",
+    "hi": 15,
+    "lo": 11,
+    "rain": 35,
+    "desc": "partly cloudy"
+   },
+   {
+    "date": "2026-10-09",
+    "hi": 16,
+    "lo": 14,
+    "rain": 55,
+    "desc": "cloudy, chance of rain"
+   },
+   {
+    "date": "2026-10-10",
+    "hi": 15,
+    "lo": 11,
+    "rain": 40,
+    "desc": "partly cloudy"
+   }
+  ],
+  "rainNote": ""
+ },
+ "trends": {
+  "checked": "6 Oct 2026",
+  "hot": [
+   {
+    "id": "chun",
+    "worth": "YES"
+   },
+   {
+    "id": "maijard",
+    "worth": "YES"
+   },
+   {
+    "id": "fabel",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "vincenzo",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "vanstapele",
+    "worth": "YES"
+   }
+  ],
+  "worth": [
+   {
+    "id": "chun",
+    "worth": "YES"
+   },
+   {
+    "id": "maijard",
+    "worth": "YES"
+   },
+   {
+    "id": "vanstapele",
+    "worth": "YES"
+   },
+   {
+    "id": "winkel43",
+    "worth": "YES"
+   },
+   {
+    "id": "rudis",
+    "worth": "YES"
+   },
+   {
+    "id": "vleminckx",
+    "worth": "YES"
+   },
+   {
+    "id": "holtkamp",
+    "worth": "YES"
+   },
+   {
+    "id": "stubbes",
+    "worth": "YES"
+   },
+   {
+    "id": "tempodoeloe",
+    "worth": "YES"
+   },
+   {
+    "id": "fabelnw",
+    "worth": "YES"
+   }
+  ],
+  "hype": [
+   {
+    "id": "fabel",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "vanwonderen",
+    "worth": "NO"
+   },
+   {
+    "id": "lourens",
+    "worth": "NO"
+   },
+   {
+    "id": "vijff",
+    "worth": "NO"
+   },
+   {
+    "id": "moon",
+    "worth": "MAYBE"
+   }
+  ],
+  "fresh": [
+   {
+    "id": "neni",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "houseofnoa",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "bougainville",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "chard",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "pizzarebels",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "sushioodo",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "xiang",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "satkara",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "lesmash",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "camino",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "nels",
+    "worth": "MAYBE"
+   },
+   {
+    "id": "madamecroissant",
+    "worth": "MAYBE"
+   }
+  ],
+  "local": [
+   {
+    "id": "holtkamp",
+    "worth": "YES"
+   },
+   {
+    "id": "stubbes",
+    "worth": "YES"
+   },
+   {
+    "id": "hansegstorf",
+    "worth": "YES"
+   },
+   {
+    "id": "lanskroon",
+    "worth": "YES"
+   },
+   {
+    "id": "ree7",
+    "worth": "YES"
+   },
+   {
+    "id": "graanstra",
+    "worth": "YES"
+   },
+   {
+    "id": "vitas",
+    "worth": "YES"
+   },
+   {
+    "id": "vandobben",
+    "worth": "YES"
+   },
+   {
+    "id": "spang",
+    "worth": "YES"
+   }
+  ]
+ },
+ "summit": [],
+ "alerts": []
+}

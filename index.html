@@ -1255,8 +1255,16 @@ window.addEventListener("offline",()=>{renderHeader();toast("Offline · using sa
 /* =========================================================
    CLOCK LOOP — auto day switch at midnight, no reload
    ========================================================= */
+/* Installed app (GitHub Pages): read feed.json from the same site — written by the scheduled Claude refresh */
+async function loadFeedFile(){
+  if(window.claude||!/^https?:$/.test(location.protocol)||!online())return false;
+  try{const r=await fetch("feed.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return false;const j=await r.json();
+    if(j&&j.updatedAt&&(!FEED||!FEED.updatedAt||Date.parse(j.updatedAt)>=Date.parse(FEED.updatedAt))){FEED=j;ls(LSF,FEED);}
+    feedLiveAt=Date.now();return true;}catch(_){return false;}
+}
 async function refreshAll(manual){
-  const ok=await refreshWeather();
+  const okFeed=await loadFeedFile();
+  const ok=await refreshWeather()||okFeed;
   if(manual)toast(ok?"Weather refreshed":(FEED?"Showing last Claude refresh":"Live weather not reachable here"));
   renderAll();
 }
@@ -1274,7 +1282,7 @@ loadLocal();lastToday=todayKey();renderAll();
 setInterval(tickLoop,30000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden){tickLoop();renderAll();}});
 setTimeout(()=>refreshAll(false),400);
-setInterval(()=>{if(online())refreshWeather().then(ok=>{if(ok&&view==="home")renderHome();});},20*60000);
+setInterval(()=>{if(online())Promise.all([refreshWeather(),loadFeedFile()]).then(r=>{if((r[0]||r[1])&&view==="home")renderHome();});},20*60000);
 (async()=>{
   try{
     if(!window.claude||!window.claude.use)return;
