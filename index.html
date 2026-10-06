@@ -603,13 +603,27 @@ function openAt(p,min,dow){const L=liveHours(p);if(L&&L.closed)return false;if(!
 function closesIn(p,min,dow){const h=hours(p);if(!h||!openAt(p,min,dow))return null;return Math.round(h[1]*60-min);}
 function fmtH(x){const h=Math.floor(x)%24,m=Math.round((x%1)*60);return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;}
 /* Hours are saved data, never live: label them honestly */
-function hoursLabel(p,short){const n=nowAms();const L=liveHours(p);
-  if(L){const op=openAt(p,n.min,n.dow);const when=fmtClock(Date.parse(L.checked));
-    if(short)return L.closed?"🔴 Closed today ✓":op?"🟢 Open now ✓":"🔴 Closed now ✓";
-    return `${L.closed?"Closed today":op?"Open now":"Closed now"} ${L.closed?"":"· today "+L.open+"–"+L.close+" "}· hours checked ${when}${L.note?" · "+L.note:""}`;}
-  const h=hours(p);if(!h)return "";const cl=p.cl&&p.cl.length?` · closed ${p.cl.map(x=>["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][x]).join("/")}`:"";
-  const likely=openAt(p,n.min,n.dow)?"Likely open":"Likely closed";
-  return short?`${likely}*`:`${likely} based on saved hours · ${fmtH(h[0])}–${fmtH(h[1])}${cl} · last checked 6 Oct`;}
+/* Google-style status: "Open · Closes 22:00", "Closes soon · 21:30", "Closed · Opens 17:00" / "Opens Thu 12:00" */
+const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function gStatus(p){
+  const n=nowAms();const L=liveHours(p);const h=hours(p);
+  if(!h&&!(L&&L.closed))return null;
+  const open=openAt(p,n.min,n.dow);
+  if(open){const left=h[1]*60-n.min-(h[1]>24&&n.min/60<h[0]?-1440:0);const closeT=fmtH(h[1]);
+    return left<=60?{cls:"soon",txt:`Closes soon · ${closeT}`}:{cls:"open",txt:`Open · Closes ${closeT}`};}
+  // closed: when does it open next?
+  if(h&&!(L&&L.closed)&&n.min/60<h[0]&&!(p.cl&&p.cl.includes(n.dow)))return {cls:"closed",txt:`Closed · Opens ${fmtH(h[0])}`};
+  const base=p.oh||h;if(!base)return {cls:"closed",txt:"Closed today"};
+  for(let d=1;d<=7;d++){const dw=(n.dow+d)%7;if(p.cl&&p.cl.includes(dw))continue;return {cls:"closed",txt:`Closed · Opens ${d===1?"tomorrow":DOW[dw]} ${fmtH(base[0])}`};}
+  return {cls:"closed",txt:"Closed"};
+}
+function hoursLabel(p,short){
+  const st=gStatus(p);if(!st)return "";const L=liveHours(p);
+  if(short)return L?`${st.cls==="open"?"🟢":st.cls==="soon"?"🟠":"🔴"} ${st.txt} ✓`:`${st.cls==="open"?"🟢":st.cls==="soon"?"🟠":"🔴"} ${st.txt}*`;
+  if(L)return `${st.txt}${L.closed?"":` · today ${L.open}–${L.close}`} · hours checked ${fmtClock(Date.parse(L.checked))}${L.note?" · "+L.note:""}`;
+  const h=hours(p);const cl=p.cl&&p.cl.length?` · closed ${p.cl.map(x=>DOW[x]).join("/")}`:"";
+  return `${st.txt} · likely, based on saved hours ${fmtH(h[0])}–${fmtH(h[1])}${cl} · last checked 6 Oct`;
+}
 /* =========================================================
    PLAN HELPERS
    ========================================================= */
