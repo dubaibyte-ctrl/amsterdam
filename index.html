@@ -1,0 +1,1297 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Amsterdam"><title>Amsterdam Food Scout</title>
+<meta name="theme-color" content="#0f4c5c">
+<style>@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/bricolage-grotesque-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format('woff2')}@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/source-sans-3-latin-400-normal.woff2) format('woff2')}@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/source-sans-3-latin-600-normal.woff2) format('woff2')}@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/source-sans-3-latin-700-normal.woff2) format('woff2')}@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
+ .leaflet-pane, .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-tile-container, .leaflet-pane > svg, .leaflet-pane > canvas, .leaflet-zoom-box, .leaflet-image-layer, .leaflet-layer { position: absolute; left: 0; top: 0; } .leaflet-container { overflow: hidden; } .leaflet-tile, .leaflet-marker-icon, .leaflet-marker-shadow { -webkit-user-select: none; -moz-user-select: none; user-select: none; -webkit-user-drag: none; } .leaflet-tile::selection { background: transparent; } .leaflet-safari .leaflet-tile { image-rendering: -webkit-optimize-contrast; } .leaflet-safari .leaflet-tile-container { width: 1600px; height: 1600px; -webkit-transform-origin: 0 0; } .leaflet-marker-icon, .leaflet-marker-shadow { display: block; } .leaflet-container .leaflet-overlay-pane svg { max-width: none !important; max-height: none !important; } .leaflet-container .leaflet-marker-pane img, .leaflet-container .leaflet-shadow-pane img, .leaflet-container .leaflet-tile-pane img, .leaflet-container img.leaflet-image-layer, .leaflet-container .leaflet-tile { max-width: none !important; max-height: none !important; width: auto; padding: 0; } .leaflet-container img.leaflet-tile { mix-blend-mode: plus-lighter; } .leaflet-container.leaflet-touch-zoom { -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; } .leaflet-container.leaflet-touch-drag { -ms-touch-action: pinch-zoom; touch-action: none; touch-action: pinch-zoom; } .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom { -ms-touch-action: none; touch-action: none; } .leaflet-container { -webkit-tap-highlight-color: transparent; } .leaflet-container a { -webkit-tap-highlight-color: rgba(51, 181, 229, 0.4); } .leaflet-tile { filter: inherit; visibility: hidden; } .leaflet-tile-loaded { visibility: inherit; } .leaflet-zoom-box { width: 0; height: 0; -moz-box-sizing: border-box; box-sizing: border-box; z-index: 800; } .leaflet-overlay-pane svg { -moz-user-select: none; } .leaflet-pane { z-index: 400; } .leaflet-tile-pane { z-index: 200; } .leaflet-overlay-pane { z-index: 400; } .leaflet-shadow-pane { z-index: 500; } .leaflet-marker-pane { z-index: 600; } .leaflet-tooltip-pane { z-index: 650; } .leaflet-popup-pane { z-index: 700; } .leaflet-map-pane canvas { z-index: 100; } .leaflet-map-pane svg { z-index: 200; } .leaflet-vml-shape { width: 1px; height: 1px; } .lvml { behavior: url(#default#VML); display: inline-block; position: absolute; } .leaflet-control { position: relative; z-index: 800; pointer-events: visiblePainted; pointer-events: auto; } .leaflet-top, .leaflet-bottom { position: absolute; z-index: 1000; pointer-events: none; } .leaflet-top { top: 0; } .leaflet-right { right: 0; } .leaflet-bottom { bottom: 0; } .leaflet-left { left: 0; } .leaflet-control { float: left; clear: both; } .leaflet-right .leaflet-control { float: right; } .leaflet-top .leaflet-control { margin-top: 10px; } .leaflet-bottom .leaflet-control { margin-bottom: 10px; } .leaflet-left .leaflet-control { margin-left: 10px; } .leaflet-right .leaflet-control { margin-right: 10px; } .leaflet-fade-anim .leaflet-popup { opacity: 0; -webkit-transition: opacity 0.2s linear; -moz-transition: opacity 0.2s linear; transition: opacity 0.2s linear; } .leaflet-fade-anim .leaflet-map-pane .leaflet-popup { opacity: 1; } .leaflet-zoom-animated { -webkit-transform-origin: 0 0; -ms-transform-origin: 0 0; transform-origin: 0 0; } svg.leaflet-zoom-animated { will-change: transform; } .leaflet-zoom-anim .leaflet-zoom-animated { -webkit-transition: -webkit-transform 0.25s cubic-bezier(0,0,0.25,1); -moz-transition: -moz-transform 0.25s cubic-bezier(0,0,0.25,1); transition: transform 0.25s cubic-bezier(0,0,0.25,1); } .leaflet-zoom-anim .leaflet-tile, .leaflet-pan-anim .leaflet-tile { -webkit-transition: none; -moz-transition: none; transition: none; } .leaflet-zoom-anim .leaflet-zoom-hide { visibility: hidden; } .leaflet-interactive { cursor: pointer; } .leaflet-grab { cursor: -webkit-grab; cursor: -moz-grab; cursor: grab; } .leaflet-crosshair, .leaflet-crosshair .leaflet-interactive { cursor: crosshair; } .leaflet-popup-pane, .leaflet-control { cursor: auto; } .leaflet-dragging .leaflet-grab, .leaflet-dragging .leaflet-grab .leaflet-interactive, .leaflet-dragging .leaflet-marker-draggable { cursor: move; cursor: -webkit-grabbing; cursor: -moz-grabbing; cursor: grabbing; } .leaflet-marker-icon, .leaflet-marker-shadow, .leaflet-image-layer, .leaflet-pane > svg path, .leaflet-tile-container { pointer-events: none; } .leaflet-marker-icon.leaflet-interactive, .leaflet-image-layer.leaflet-interactive, .leaflet-pane > svg path.leaflet-interactive, svg.leaflet-image-layer.leaflet-interactive path { pointer-events: visiblePainted; pointer-events: auto; } .leaflet-container { background: #ddd; outline-offset: 1px; } .leaflet-container a { color: #0078A8; } .leaflet-zoom-box { border: 2px dotted #38f; background: rgba(255,255,255,0.5); } .leaflet-container { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-size: 0.75rem; line-height: 1.5; } .leaflet-bar { box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px; } .leaflet-bar a { background-color: #fff; border-bottom: 1px solid #ccc; width: 26px; height: 26px; line-height: 26px; display: block; text-align: center; text-decoration: none; color: black; } .leaflet-bar a, .leaflet-control-layers-toggle { background-position: 50% 50%; background-repeat: no-repeat; display: block; } .leaflet-bar a:hover, .leaflet-bar a:focus { background-color: #f4f4f4; } .leaflet-bar a:first-child { border-top-left-radius: 4px; border-top-right-radius: 4px; } .leaflet-bar a:last-child { border-bottom-left-radius: 4px; border-bottom-right-radius: 4px; border-bottom: none; } .leaflet-bar a.leaflet-disabled { cursor: default; background-color: #f4f4f4; color: #bbb; } .leaflet-touch .leaflet-bar a { width: 30px; height: 30px; line-height: 30px; } .leaflet-touch .leaflet-bar a:first-child { border-top-left-radius: 2px; border-top-right-radius: 2px; } .leaflet-touch .leaflet-bar a:last-child { border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; } .leaflet-control-zoom-in, .leaflet-control-zoom-out { font: bold 18px 'Lucida Console', Monaco, monospace; text-indent: 1px; } .leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out { font-size: 22px; } .leaflet-control-layers { box-shadow: 0 1px 5px rgba(0,0,0,0.4); background: #fff; border-radius: 5px; } .leaflet-control-layers-toggle { background-image: url(images/layers.png); width: 36px; height: 36px; } .leaflet-retina .leaflet-control-layers-toggle { background-image: url(images/layers-2x.png); background-size: 26px 26px; } .leaflet-touch .leaflet-control-layers-toggle { width: 44px; height: 44px; } .leaflet-control-layers .leaflet-control-layers-list, .leaflet-control-layers-expanded .leaflet-control-layers-toggle { display: none; } .leaflet-control-layers-expanded .leaflet-control-layers-list { display: block; position: relative; } .leaflet-control-layers-expanded { padding: 6px 10px 6px 6px; color: #333; background: #fff; } .leaflet-control-layers-scrollbar { overflow-y: scroll; overflow-x: hidden; padding-right: 5px; } .leaflet-control-layers-selector { margin-top: 2px; position: relative; top: 1px; } .leaflet-control-layers label { display: block; font-size: 13px; font-size: 1.08333em; } .leaflet-control-layers-separator { height: 0; border-top: 1px solid #ddd; margin: 5px -10px 5px -6px; } .leaflet-default-icon-path { background-image: url(images/marker-icon.png); } .leaflet-container .leaflet-control-attribution { background: #fff; background: rgba(255, 255, 255, 0.8); margin: 0; } .leaflet-control-attribution, .leaflet-control-scale-line { padding: 0 5px; color: #333; line-height: 1.4; } .leaflet-control-attribution a { text-decoration: none; } .leaflet-control-attribution a:hover, .leaflet-control-attribution a:focus { text-decoration: underline; } .leaflet-attribution-flag { display: inline !important; vertical-align: baseline !important; width: 1em; height: 0.6669em; } .leaflet-left .leaflet-control-scale { margin-left: 5px; } .leaflet-bottom .leaflet-control-scale { margin-bottom: 5px; } .leaflet-control-scale-line { border: 2px solid #777; border-top: none; line-height: 1.1; padding: 2px 5px 1px; white-space: nowrap; -moz-box-sizing: border-box; box-sizing: border-box; background: rgba(255, 255, 255, 0.8); text-shadow: 1px 1px #fff; } .leaflet-control-scale-line:not(:first-child) { border-top: 2px solid #777; border-bottom: none; margin-top: -2px; } .leaflet-control-scale-line:not(:first-child):not(:last-child) { border-bottom: 2px solid #777; } .leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { box-shadow: none; } .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar { border: 2px solid rgba(0,0,0,0.2); background-clip: padding-box; } .leaflet-popup { position: absolute; text-align: center; margin-bottom: 20px; } .leaflet-popup-content-wrapper { padding: 1px; text-align: left; border-radius: 12px; } .leaflet-popup-content { margin: 13px 24px 13px 20px; line-height: 1.3; font-size: 13px; font-size: 1.08333em; min-height: 1px; } .leaflet-popup-content p { margin: 17px 0; margin: 1.3em 0; } .leaflet-popup-tip-container { width: 40px; height: 20px; position: absolute; left: 50%; margin-top: -1px; margin-left: -20px; overflow: hidden; pointer-events: none; } .leaflet-popup-tip { width: 17px; height: 17px; padding: 1px; margin: -10px auto 0; pointer-events: auto; -webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); } .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: white; color: #333; box-shadow: 0 3px 14px rgba(0,0,0,0.4); } .leaflet-container a.leaflet-popup-close-button { position: absolute; top: 0; right: 0; border: none; text-align: center; width: 24px; height: 24px; font: 16px/24px Tahoma, Verdana, sans-serif; color: #757575; text-decoration: none; background: transparent; } .leaflet-container a.leaflet-popup-close-button:hover, .leaflet-container a.leaflet-popup-close-button:focus { color: #585858; } .leaflet-popup-scrolled { overflow: auto; } .leaflet-oldie .leaflet-popup-content-wrapper { -ms-zoom: 1; } .leaflet-oldie .leaflet-popup-tip { width: 24px; margin: 0 auto; -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)"; filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678); } .leaflet-oldie .leaflet-control-zoom, .leaflet-oldie .leaflet-control-layers, .leaflet-oldie .leaflet-popup-content-wrapper, .leaflet-oldie .leaflet-popup-tip { border: 1px solid #999; } .leaflet-div-icon { background: #fff; border: 1px solid #666; } .leaflet-tooltip { position: absolute; padding: 6px; background-color: #fff; border: 1px solid #fff; border-radius: 3px; color: #222; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,0.4); } .leaflet-tooltip.leaflet-interactive { cursor: pointer; pointer-events: auto; } .leaflet-tooltip-top:before, .leaflet-tooltip-bottom:before, .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { position: absolute; pointer-events: none; border: 6px solid transparent; background: transparent; content: ""; } .leaflet-tooltip-bottom { margin-top: 6px; } .leaflet-tooltip-top { margin-top: -6px; } .leaflet-tooltip-bottom:before, .leaflet-tooltip-top:before { left: 50%; margin-left: -6px; } .leaflet-tooltip-top:before { bottom: 0; margin-bottom: -12px; border-top-color: #fff; } .leaflet-tooltip-bottom:before { top: 0; margin-top: -12px; margin-left: -6px; border-bottom-color: #fff; } .leaflet-tooltip-left { margin-left: -6px; } .leaflet-tooltip-right { margin-left: 6px; } .leaflet-tooltip-left:before, .leaflet-tooltip-right:before { top: 50%; margin-top: -6px; } .leaflet-tooltip-left:before { right: 0; margin-right: -12px; border-left-color: #fff; } .leaflet-tooltip-right:before { left: 0; margin-left: -12px; border-right-color: #fff; } @media print { .leaflet-control { -webkit-print-color-adjust: exact; print-color-adjust: exact; } } 
+/* Layout: one-hand phone app — header strip, 5 views behind a fixed bottom bar, bottom sheet for details */
+:root{
+  --bg:#eef2f3; --card:#ffffff; --fg:#13232a; --muted:#5a6b73; --line:#d6dfe2;
+  --accent:#c8102e; --canal:#0f4c5c; --chip:#e3ecee; --water:#cfe1e6;
+  --ok:#1f7a3f; --warn:#a86f00; --bad:#b3261e; --plan:#0f4c5c;
+  --display:"Bricolage Grotesque",system-ui,-apple-system,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1518; --card:#142126; --fg:#e6eef0; --muted:#94a7ae; --line:#24363c;
+  --accent:#ff5a6e; --canal:#6fc3d4; --chip:#1b2c32; --water:#16343d;
+  --ok:#5fd18a; --warn:#f0c05a; --bad:#ff7b72; --plan:#6fc3d4; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1518; --card:#142126; --fg:#e6eef0; --muted:#94a7ae; --line:#24363c;
+  --accent:#ff5a6e; --canal:#6fc3d4; --chip:#1b2c32; --water:#16343d;
+  --ok:#5fd18a; --warn:#f0c05a; --bad:#ff7b72; --plan:#6fc3d4; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15.5px/1.42 var(--body);margin:0}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px calc(88px + env(safe-area-inset-bottom,0px))}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--canal)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--bg);padding-block:10px 8px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line);margin:0 -16px;padding-inline:16px}
+.brand{font:800 18px var(--display);letter-spacing:.02em}
+.brand small{display:block;font:500 11.5px var(--mono);color:var(--muted);letter-spacing:.03em}
+.hr{display:flex;align-items:center;gap:8px}
+.clock{font:800 20px var(--display);font-variant-numeric:tabular-nums}
+.net{font:500 11px var(--mono);border:1px solid var(--line);border-radius:999px;padding:3px 8px;white-space:nowrap;background:var(--card)}
+.gear{border:1px solid var(--line);background:var(--card);border-radius:9px;width:34px;height:34px;padding:0}
+h2{font:800 19px var(--display);margin:20px 0 8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;text-wrap:balance}
+h2 small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em}
+h3{margin:0;font-size:16px}
+.muted{color:var(--muted)} .sm{font-size:13.5px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-width:0}
+.stack{display:grid;gap:8px}
+.daylbl{font:500 12px var(--mono);color:var(--accent);letter-spacing:.06em;margin-top:12px}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 6px;text-align:center;min-width:0}
+.tile span{display:block;font:500 9.5px var(--mono);color:var(--muted);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile b{font:800 18px var(--display);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:3px;background:var(--chip);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--canal);border-radius:3px;transition:width .3s}
+.next{border:2px solid var(--accent);border-radius:14px;padding:12px 14px;background:var(--card);margin-top:10px}
+.next .lbl{font:500 11px var(--mono);color:var(--accent);letter-spacing:.06em;display:flex;justify-content:space-between;gap:8px}
+.next h3{font:800 22px/1.15 var(--display);margin:3px 0 4px;text-wrap:balance}
+.cd{font:800 15px var(--display);color:var(--canal)}
+.alerts{display:grid;gap:6px;margin-top:10px}
+.alert{border-left:4px solid var(--accent);background:var(--card);border-radius:8px;padding:8px 12px;font-size:13.5px}
+.alert.info{border-left-color:var(--canal)}
+.big{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:12px}
+.big button{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 2px;font:700 10.5px var(--body);min-height:56px;line-height:1.1;display:grid;justify-items:center;align-content:center;gap:3px;text-align:center}
+.big button span{font-size:18px}
+.big button.on{border-color:var(--canal);box-shadow:inset 0 0 0 1px var(--canal)}
+.big button.hot{background:var(--accent);border-color:var(--accent);color:var(--card)}
+.chips{display:flex;gap:6px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding-bottom:2px;margin:0 -16px;padding-inline:16px}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-weight:600;font-size:13px;flex:none}
+.chip[aria-pressed="true"]{background:var(--canal);border-color:var(--canal);color:var(--bg)}
+.t{display:inline-block;font-size:11.5px;padding:2px 7px;border-radius:6px;background:var(--chip);white-space:nowrap}
+.meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.pc .main{display:block;width:100%;text-align:left;background:none;border:none;padding:0}
+.pc .hd{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.pc .cu{font:500 11px var(--mono);color:var(--muted);white-space:nowrap}
+.ord{margin-top:3px;font-size:14.5px}
+.ord b{font:500 10.5px var(--mono);color:var(--accent);letter-spacing:.06em;margin-right:4px}
+.sec{font-size:13px;color:var(--muted)}
+.sec b{font:500 10px var(--mono);letter-spacing:.05em;margin-right:4px}
+.note{font-size:12.5px;color:var(--warn);margin-top:3px}
+.qa{display:flex;gap:6px;margin-top:8px}
+.qa button,.qa a{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:6px 0;font:700 12px var(--body);text-align:center;text-decoration:none;color:var(--fg)}
+.qa .on{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.qa .sv{background:var(--card);border-color:var(--plan);color:var(--plan)}
+.pc.done{opacity:.6}.pc.skip{opacity:.45}.pc.skip h3{text-decoration:line-through}
+.lab{font:500 11px var(--mono);color:var(--muted);margin:10px 0 4px;letter-spacing:.05em}
+.dayhd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:12px}
+.dayhd h3{font:800 22px var(--display)}
+.daytag{font:500 11px var(--mono);color:var(--accent);letter-spacing:.06em}
+.items{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.it{display:grid;grid-template-columns:42px 30px 1fr 22px;gap:6px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 8px}
+.it time{font:500 12px var(--mono);color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.ck{width:26px;height:26px;border-radius:7px;border:2px solid var(--line);background:var(--bg);display:grid;place-items:center;font-weight:800;color:var(--card);padding:0}
+.it.done .ck{background:var(--ok);border-color:var(--ok)}
+.it.done .txt{opacity:.6}.it.done .txt b{text-decoration:line-through}
+.it.skip{opacity:.45}.it.skip .txt b{text-decoration:line-through}
+.it.past:not(.done):not(.skip){border-style:dashed}
+.it .slot{font:500 10.5px var(--mono);color:var(--canal);letter-spacing:.05em;display:block}
+.it .txt{min-width:0}.it .txt b{font-weight:700}
+.it .sub{font-size:13px;color:var(--muted)}
+.it .more{border:none;background:none;font-size:18px;color:var(--muted);padding:0}
+.it.nx{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.it .open{border:none;background:none;padding:0;text-align:left;color:inherit;width:100%}
+.ask{grid-column:1/-1;display:flex;gap:6px;align-items:center;flex-wrap:wrap;font:700 12px var(--body);color:var(--warn);padding-top:4px;border-top:1px dashed var(--line);margin-top:2px}
+.ask button{border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:4px 9px;font-weight:700;font-size:12px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+details summary{font-weight:700;cursor:pointer}
+details[open] summary{margin-bottom:6px}
+details ul{margin:4px 0 0;padding-left:18px}details li{margin:3px 0}
+textarea,input[type=search],select{font:inherit;border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:var(--bg);color:var(--fg);width:100%;max-width:100%}
+textarea{min-height:64px;resize:vertical}
+.ms{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.ms .cands{font-size:12.5px;color:var(--muted);margin-top:2px}
+.ms .win{color:var(--accent);font-weight:700}
+.st{border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:12.5px;font-weight:700;background:var(--chip);white-space:nowrap}
+.st.planned{background:var(--card);border-color:var(--plan);color:var(--plan)}
+.st.done{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.st.skip{color:var(--muted);text-decoration:line-through}
+.mapbox{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.mapbox svg{display:block;width:100%;height:auto}
+#lmap{height:62vh;min-height:320px}
+.pin{font-size:20px;line-height:1;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--muted);padding:8px 12px}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:repeat(5,1fr)}
+.nav button{border:none;background:none;padding:6px 0;font:700 11px var(--mono);letter-spacing:.05em;color:var(--muted);display:grid;justify-items:center;gap:2px}
+.nav button span{font-size:18px}
+.nav button[aria-current="page"]{color:var(--accent)}
+.scrim{position:fixed;inset:0;background:rgba(5,15,18,.45);z-index:30}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:31;background:var(--card);border-radius:16px 16px 0 0;max-height:86vh;overflow:auto;padding:8px 16px calc(18px + env(safe-area-inset-bottom,0px));max-width:640px;margin:0 auto;box-shadow:0 -8px 30px rgba(0,0,0,.25)}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:4px auto 10px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:4px 10px;font-size:14px;margin-top:10px}
+.kv span{font:500 11px var(--mono);color:var(--muted);letter-spacing:.04em;padding-top:2px}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--bg);border-radius:9px;padding:8px 12px;font-weight:700;font-size:14px;text-decoration:none;color:var(--fg);display:inline-block}
+.btn.pri{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.btn.warn{color:var(--bad)}
+.hungry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.hungry button{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 4px;font:800 16px var(--display)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:999px;font-weight:700;font-size:13.5px;z-index:40;max-width:90vw;text-align:center}
+.src{font-size:12.5px;color:var(--muted)}
+.ok{color:var(--ok);font-weight:700}
+@media (max-width:360px){.tiles{grid-template-columns:repeat(3,1fr)}.big{grid-template-columns:repeat(4,1fr)}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style></head><body>
+
+<div class="wrap">
+  <header class="hdr">
+    <div class="brand">AMSTERDAM<small id="hDate">—</small></div>
+    <div class="hr"><div class="clock" id="clock">--:--</div><span class="net" id="net">…</span><button class="gear" id="gear" aria-label="Offline data and settings">⚙</button></div>
+  </header>
+  <main id="v-home"></main>
+  <main id="v-days" hidden></main>
+  <main id="v-food" hidden></main>
+  <main id="v-missions" hidden></main>
+  <main id="v-map" hidden></main>
+</div>
+
+<nav class="nav" aria-label="Main">
+  <button id="n-home" data-v="home" aria-current="page"><span>◉</span>TODAY</button>
+  <button id="n-days" data-v="days"><span>▤</span>DAYS</button>
+  <button id="n-food" data-v="food"><span>◆</span>FOOD</button>
+  <button id="n-missions" data-v="missions"><span>✓</span>MISSIONS</button>
+  <button id="n-map" data-v="map"><span>⌖</span>MAP</button>
+</nav>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true"></div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* =========================================================
+   DATA — saved with the page, works offline
+   ========================================================= */
+const DATA_VER="2026-10-06";
+const HOTEL={n:"Krasnapolsky (hotel)",lat:52.37293,lng:4.89386};
+const TAETS={n:"Taets (summit)",lat:52.4170,lng:4.8270};
+const RES={g:"🟢 Walk-in",y:"🟡 Helpful",r:"🔴 Book"};
+const V={must:"🔥 Viral + actually good",gem:"💎 Hidden gem",local:"🏠 Local favourite",food:"👨‍🍳 Food-first",viral:"📱 Viral / hype",photo:"📸 Photo-first",trip:"🚕 Worth travelling for",near:"🚶 Good if nearby"};
+const VS={must:"🔥",gem:"💎",local:"🏠",food:"👨‍🍳",viral:"📱",photo:"📸",trip:"🚕",near:"🚶"};
+const VR={must:5,food:5,trip:4,local:4,gem:4,viral:2,near:2,photo:0};
+const BF={B:"Breakfast",L:"Lunch",D:"Dinner",N:"Late",S:"Snack"};
+const PRN={"€":1,"€€":2,"€€€":3,"€€€€":4};
+/* p: [id, name, cuisine, order, second, why, price, res, queue, best, verdict, note, kind, cats, lat, lng, hours[open,close] or 0, closedDays or 0, trend or 0, area] */
+const RAW=[
+/* ---------- breakfast / brunch / bakeries ---------- */
+["bakkerswinkel","De Bakkerswinkel","Bakery-café","Warm scones with cream and jam","Quiche of the day","All-day bakery 3 min from the hotel.","€","g","Low","BL","local","Quiche fillings can include ham/bacon","meal","brunch bakery lunch",52.3743,4.8971,[8,17],0,0,"Centrum"],
+["niemeijer","Gebroeders Niemeijer","French bakery","Croissant + café crème","Pain au chocolat","French-flour croissants with a long rise, 4 min away.","€","g","Low","BS","local","","meal","brunch bakery",52.3765,4.8955,[8,17],0,0,"Centrum"],
+["bakers","Bakers & Roasters","Brunch","Eggs Benedict with Latin flavours","Huevos rancheros","Amsterdam’s brunch pioneer; great coffee.","€€","g","Medium","B","must","Classic Benedict contains ham","meal","brunch",52.3582,4.8900,[8.5,15],0,"still","De Pijp"],
+["littlecollins","Little Collins","Aussie brunch","Kimchi and gruyère scramble","","Cult De Pijp brunch, walk-in only. Arrive by 09:00.","€€","g","Crazy","B","local","","meal","brunch",52.3555,4.8975,[9,16],0,0,"De Pijp"],
+["florentin","Florentin","Israeli-Colombian","Arepa con carne (slow-cooked short rib)","","Almost everything made from scratch; easy midweek brunch.","€€","g","Medium","BL","gem","","meal","brunch",52.3553,4.8978,[9,16],0,0,"De Pijp"],
+["bellypepper","Belly Pepper","Turkish breakfast","Börek with poached egg, garlic yoghurt, chilli butter","Tahini bun","Turkish breakfast specialists (opened 2024).","€€","g","Medium","BL","gem","","meal","brunch middleeast turkish",52.3705,4.862,[9,16],[1,2],0,"Oud-West"],
+["dignita","Dignita Hoftuin","Brunch","Eggs Benedict or a seasonal bowl","","Brunch in a hidden garden behind the Hermitage.","€€","g","Medium","BL","gem","Benedict contains ham","meal","brunch lunch",52.3665,4.9060,[9,17],0,0,"Plantage"],
+["boxsociaal","Box Sociaal","Aussie brunch","Sweet Hot Chick (pancake, chicken tenders, chilli-maple)","","Loud, fun, walk-in brunch.","€€","g","Medium","B","viral","","meal","brunch",52.3660,4.9120,[9,15.75],0,0,"Plantage"],
+["cottage","The Cottage","British brunch","Full English with homemade scones","","All-day comfort food. Closed Tuesday.","€€","g","Low","BL","local","Full English includes pork sausage and bacon","meal","brunch",52.3600,4.9270,[8.5,23],[2],0,"Oost"],
+["mirimary","Miri Mary","Modern Indian","Goan masala omelette in coconut sauce","Butter chicken benny","Weekend brunch only (Sat–Sun 10:30–15).","€€","y","Medium","BD","gem","","meal","brunch dinner asian",52.3520,4.8955,[10.5,22],0,0,"De Pijp"],
+["upstairs","Pannenkoekenhuis Upstairs","Dutch pancakes","Apple and cinnamon pancake","Cheese pancake","Four tables up a ladder-steep staircase.","€","y","Medium","BL","gem","Spek pancakes contain bacon; shared griddle","meal","brunch dutch lunch",52.3695,4.8950,[10,17],0,0,"Centrum"],
+["pancakebakery","The Pancake Bakery","Dutch pancakes","Apple-cinnamon pancake","Poffertjes","Big canal-house pancake menu by the Anne Frank House.","€€","y","Medium","BL","near","Bacon pancakes on the menu; shared griddle","meal","brunch dutch lunch",52.3765,4.8840,[9,21],0,0,"Prinsengracht"],
+["ree7","Ree7","Bakery","Cardamom bun","","Tiny Nine Streets counter next to Chun.","€","g","Low","BS","gem","","snack","bakery dessert",52.3732,4.8857,[8,17],0,0,"Nine Streets"],
+["madamecroissant","Madame Croissant","Croissant bar","Pistachio croissant","Brie-filled savoury croissant","Creative filled croissants; new flavour monthly.","€","g","Medium","BS","viral","","snack","bakery dessert",52.3725,4.8870,[8,18],0,"new","Nine Streets"],
+["saintjean","Saint-Jean Bakery","Plant-based bakery","Croissant","","Plant-based croissants with serious layers.","€","g","Low","BS","gem","","snack","bakery",52.3800,4.8840,[8,16],0,0,"Jordaan"],
+["vlaamsch","Vlaamsch Broodhuys","Sourdough bakery","Sourdough country loaf + a pastry","","The city’s reference sourdough since 2001.","€","g","Low","BS","local","","snack","bakery",52.3808,4.8895,[8,18],0,0,"Haarlemmerstraat"],
+["petitgateau","Petit Gâteau","Patisserie","Tarte au citron","","French patisserie window. Tue–Sat 10–18.","€","g","Low","S","gem","","snack","bakery dessert",52.3810,4.8890,[10,18],[0,1],0,"Haarlemmerstraat"],
+["bakhuys","Bakhuys","Wood-oven bakery","Stone-oven sourdough; Dutch apple pie","","Family bakery since 1926, closed Monday.","€","g","Low","BS","local","","snack","bakery",52.3620,4.9080,[9,18],[1],0,"Plantage"],
+["kwakman","Bakkerij Kwakman","Dutch bakery","Krentenbol with butter","","Everyday Dutch neighbourhood bakery.","€","g","Low","BS","local","","snack","bakery",52.3565,4.8925,[7.5,18],[0],0,"De Pijp"],
+["salvo","Salvo Bakehouse","Bakery","Double-baked pistachio croissant","","Westerpark bakery known for double-baked croissants.","€","g","Medium","BS","gem","","snack","bakery dessert",52.3830,4.8800,[8,16],0,0,"Westerpark"],
+["lanskroon","Lanskroon","Bakery","Honey Koningsstroopwafel (the big one)","Plain caramel stroopwafel","Classic Singel bakery; real stroopwafel, no queue.","€","g","Low","S","local","","snack","bakery dessert stroopwafel",52.3695,4.8905,[8,17.5],[0],0,"Centrum"],
+["hansegstorf","Hans Egstorf","Stroopwafel bakery","Fresh caramel stroopwafel","Stroopwafel with molten chocolate on the side","Family recipe since 1898; made in front of you on Spuistraat.","€","g","Low","S","gem","","snack","dessert stroopwafel",52.3740,4.8902,[10,18],[0],0,"Spuistraat"],
+["nicolaas","Nicolaas Waffles","Stroopwafel","Plain warm stroopwafel, no toppings","","Traditional stall at the Flower Market.","€","g","Low","S","near","","snack","dessert stroopwafel",52.3667,4.8920,[10,17.5],0,0,"Singel"],
+["vandobben","Eetsalon Van Dobben","Dutch snack bar","Broodje kroket (croquette on a soft bun) with mustard","Broodje halfom","Old-school croquette counter near Rembrandtplein.","€","g","Medium","LSN","local","Croquette is beef/veal; halfom is liver + salted beef","snack","budget cheap late sandwich",52.3662,4.896,[10,21],0,0,"Rembrandtplein"],
+["luxembourg","Café Luxembourg","Grand café","Bitterballen trio (beef, shrimp, Dutch cheese)","","Classic grand café on Spui; bitterballen with mustard.","€€","g","Medium","SDN","local","Bar menu; beef bitterballen are meat ragout","snack","late",52.3688,4.8902,[9,24],0,0,"Spui"],
+["ballenbar","De BallenBar (Foodhallen)","Bitterballen bar","Mixed bitterballen tasting (incl. tom kha and bouillabaisse)","","Seven creative bitterballen inside Foodhallen.","€","g","Medium","SDN","gem","","snack","late",52.3667,4.8680,[12,23],0,0,"Oud-West"],
+["bosschebol","Bossche bol (Noordermarkt stall)","Dutch pastry","Bossche bol: giant chocolate-glazed cream puff","","Saturday farmers’ market treat next to Winkel 43.","€","g","Low","S","gem","","snack","dessert market",52.3791,4.8868,[9,15],[0,1,2,3,4,5],0,"Jordaan"],
+/* ---------- lunch / casual / sandwiches ---------- */
+["chun","Chun Café","Korean toast","Rib Eye Bulgogi toast","Garlic Shrimp Egg toast + matcha","Viral queue that critics say is worth it.","€€","g","Crazy","BL","must","Bulgogi marinade may contain rice wine; Bacon Egg Cheese toast has pork","meal","lunch sandwich asian brunch",52.3720,4.8846,[9,17],0,"hot","Nine Streets"],
+["tokoman","De Tokoman","Surinamese sandwiches","Broodje pom","Broodje kip-kerrie","Cheap, excellent Surinamese sandwiches; several branches.","€","g","Medium","L","gem","","meal","budget cheap lunch sandwich surinamese",52.3745,4.9003,[10,19],0,0,"Zeedijk"],
+["hapjeshoek","De Hapjeshoek","Surinamese","Roti roll","","Diner by Waterlooplein metro: tasty, big, cheap.","€","g","Medium","L","gem","","meal","budget cheap lunch sandwich surinamese",52.3672,4.903,[11,20],0,0,"Waterlooplein"],
+["singel404","Singel 404","Sandwich café","Club sandwich on the canal","","Canal-side sandwich café students have loved for 20+ years.","€","g","Medium","BL","local","","meal","lunch sandwich",52.3700,4.8905,[10,17],0,0,"Centrum"],
+["rodja","Rodja","Middle Eastern deli","Falafel sandwich in Lebanese bread","Hummus trio","Generous, homely De Pijp deli.","€","g","Low","L","gem","","meal","budget cheap lunch middleeast sandwich",52.3555,4.901,[10,19],0,0,"De Pijp"],
+["hummusbistro","Hummus Bistro d&a","Levantine","Hummus with warm pita and toppings","","Often called the best hummus in the city; 3 branches.","€€","g","Medium","LD","local","","meal","lunch middleeast",52.3785,4.8835,[11,22],0,0,"Jordaan"],
+["foodhallen","Foodhallen","Food hall","Graze: bao, tacos, fried chicken, oysters","","~20 stalls in a 1902 tram depot; open late.","€€","g","Medium","LDN","local","Several stalls serve pork","meal","lunch late",52.3667,4.8678,[11,23],0,0,"Oud-West"],
+["seafoodbar","The Seafood Bar (Spui)","Seafood","Fish and chips","Fruits de mer platter","Reliable, central, walk-ins absorbed.","€€€","g","Medium","LD","near","","meal","lunch seafood dinner",52.3684,4.8895,[12,22],0,0,"Spui"],
+["bouillon","Bouillon d’Amsterdam","French bistro","Steak-frites","Oeufs mayo","Parisian bouillon concept, dishes €3–16; 3 min away.","€","y","Medium","LD","gem","Some classics cooked in wine (bourguignon)","meal","budget cheap dinner lunch",52.3737,4.8908,[12,23],0,"new","Centrum"],
+["bazar","Bazar","Middle Eastern","Lamb tagine","Mezze platter","Inside a former church on Albert Cuypstraat.","€€","g","Medium","LD","local","","meal","lunch dinner middleeast",52.3557,4.8948,[11,23],0,0,"De Pijp"],
+["pho91","Pho 91","Vietnamese","Beef pho","","No-frills pho by Albert Cuyp market.","€","g","Low","LD","local","","meal","asian budget cheap lunch",52.357,4.891,[12,22],0,0,"De Pijp"],
+["littlesaigon","Little Saigon","Vietnamese","Banh mi","Fresh spring rolls","Reliable Vietnamese in Chinatown.","€","g","Low","LD","near","Classic banh mi contains pork","meal","lunch sandwich asian",52.3745,4.9008,[12,22],0,0,"Chinatown"],
+["jinweide","Jinweide Lanzhou","Chinese noodles","Hand-pulled beef noodle soup","","Watch the noodles pulled; choose the thickness.","€","g","Medium","LD","food","","meal","asian budget cheap lunch",52.3742,4.9015,[11.5,22],0,0,"Chinatown"],
+["holtkamp","Holtkamp","Croquettes","Garnalenkroket (shrimp croquette) on bread","","Art-deco bakery; croquettes locals swear by.","€","g","Low","LS","gem","Veal croquette is the other classic","snack","sandwich",52.3615,4.8910,[8.5,18],[0],"still","Vijzelgracht"],
+["stubbes","Stubbe’s Haring","Herring stand","Broodje haring with onion and pickles","","Canal-side stand by Centraal; the most Dutch bite.","€","g","Low","LS","must","","snack","budget cheap market sandwich seafood",52.3785,4.8932,[10,18],[0],"still","Centraal"],
+/* ---------- fries ---------- */
+["vleminckx","Vleminckx Sausmeesters","Fries","Medium fries + speciaal (mayo, curry ketchup, onion)","Samurai or piccalilly sauce","The cone-of-fries institution; faster than Fabel.","€","g","Medium","SL","must","Some fry shops use beef fat","snack","fries",52.3676,4.8901,[11,19],0,"still","Spui"],
+["mannekenpis","Manneken Pis","Fries","Fries + oorlog (satay, mayo, onion)","","Belgian-style fries 2 min from the hotel; open late.","€","g","Medium","SN","near","","snack","fries late",52.3754,4.8961,[10,24],0,0,"Damrak"],
+["fabel","Fabel Friet (Runstraat)","Fries","Parmesan + truffle mayo fries","","The TikTok queue. Decent fries; critics say not worth 30 min.","€","g","Crazy","S","viral","","snack","fries",52.3693,4.8850,[12,21],0,"hype","Nine Streets"],
+["fabelnw","Fabel Friet (Nieuwendijk)","Fries","Parmesan + truffle mayo fries","","Same fries, 2 min from the hotel, usually a shorter line. 12–21.","€","g","Medium","SL","must","","snack","fries",52.3772,4.8950,[12,21],0,"still","Nieuwendijk"],
+["fabelohs","Fabel Friet (Oude Hoogstraat)","Fries","Parmesan + truffle mayo fries","","Third branch near Nieuwmarkt; to 22:00 Fri–Sun.","€","g","Medium","SL","near","","snack","fries",52.3713,4.8985,[12,21],0,0,"Nieuwmarkt"],
+["graanstra","Wil Graanstra Frites","Fries","Fries with mayo","","Old fries stand by Westerkerk; quick and local.","€","g","Low","S","local","","snack","fries",52.3745,4.8845,[11,18],[0],0,"Westermarkt"],
+["febo","FEBO","Wall vending","Kaassoufflé (cheese snack)","","Hot snacks from a coin wall. Pure Dutch novelty.","€","g","Low","NS","near","Meat snacks (kroket, frikandel) are mixed meat","snack","fries late",52.3756,4.8955,[10,27],0,0,"Damrak"],
+/* ---------- desserts ---------- */
+["vanstapele","Van Stapele","Cookie","The one chocolate cookie with molten white-chocolate core","","Still the cookie to beat. Confirm current address on Maps.","€","g","Crazy","S","must","","snack","dessert",52.3690,4.8905,[10,18],0,"still","Spui"],
+["winkel43","Winkel 43","Apple pie","Appeltaart met slagroom","","The famous pie; brutal midday queue, easy late evening.","€","g","Crazy","SN","must","","snack","dessert late",52.3792,4.8862,[8,25],0,"still","Jordaan"],
+["papeneiland","Café Papeneiland","Brown café","Apple pie with whipped cream","","Brown café since 1642, corner of Brouwersgracht.","€","g","Medium","S","local","","snack","dessert",52.3800,4.8875,[10,25],0,0,"Jordaan"],
+["rudis","Rudi’s Stroopwafels","Stroopwafel","One fresh warm stroopwafel","","Pressed to order at Albert Cuyp. Mon–Sat 09–17.","€","g","Medium","S","must","","snack","budget cheap dessert market stroopwafel",52.3557,4.8945,[9,17],[0],"still","De Pijp"],
+["vanderlinde","Van der Linde","Ice cream","Vanilla soft roomijs","","Old confectioner on Nieuwendijk; daytime.","€","g","Low","S","local","","snack","dessert",52.3770,4.8952,[10,18],0,0,"Centrum"],
+["massimo","Massimo Gelato","Gelato","Fior di latte","Pistachio","Food writers’ pick for real Italian gelato.","€","g","Medium","S","food","","snack","dessert",52.3545,4.8960,[12,22],0,0,"De Pijp"],
+["kibbeling","Kibbeling stall (Albert Cuyp)","Fried fish","Kibbeling with garlic sauce","","Battered cod chunks, eaten standing.","€","g","Low","SL","local","","snack","budget market seafood",52.3562,4.8955,[9,17],[0],0,"De Pijp"],
+["poffertjes","Poffertjes stall (Albert Cuyp)","Dutch sweet","Poffertjes with butter + powdered sugar","","Mini puffed pancakes, made in front of you.","€","g","Low","S","local","Some stalls offer liqueur toppings","snack","dessert market",52.3556,4.8935,[9,17],[0],0,"De Pijp"],
+["vanwonderen","Van Wonderen","Stroopwafel","Topped stroopwafel","","≈€13 each and long waits. Pretty, not better.","€€","g","Crazy","S","photo","Marshmallow toppings usually contain gelatine","snack","dessert stroopwafel",52.369,4.8915,[10,19],0,"hype","Kalverstraat"],
+["lourens","Lourens","Bakery","Skip the crookie","","Viral croissant-cookie; critics found it dense and over-sweet.","€","g","Crazy","S","viral","","snack","dessert",52.3750,4.8870,[8,18],0,"hype","Jordaan"],
+["reypenaer","Reypenaer Tasting Room","Cheese","Guided aged-Gouda tasting","","Taste 1-, 2- and 3-year cheeses properly.","€€","y","Low","S","gem","Most aged Gouda uses animal rennet","snack","dessert",52.3742,4.8905,[10,18],0,0,"Centrum"],
+/* ---------- dinner: seafood ---------- */
+["lucius","Lucius","Seafood","Whole grilled fish of the day (ask for sole or turbot)","Fruits de mer plateau on ice","Old-school fish restaurant since 1975.","€€€","y","Low","D","local","","meal","dinner seafood",52.3720,4.8890,[17,22.5],0,0,"Spuistraat"],
+["pesca","Pesca","Seafood market","Pick fish by weight, cooked to order","","Fish-market concept; counter takes walk-ins.","€€€","y","Low","D","gem","","meal","dinner seafood",52.3734,4.8818,[17,22.5],0,0,"Jordaan"],
+["barfisk","Bar Fisk","Seafood","Whole charred fish","Crudo","Casual De Pijp fish bar.","€€","g","Medium","D","gem","","meal","dinner seafood",52.3553,4.8972,[17,23],0,0,"De Pijp"],
+["brutdemer","Brut de Mer","Oyster bar","Zeeland oysters","Small cold plates","Walk-up counter seats on Gerard Douplein.","€€","g","Medium","DN","gem","","meal","seafood dinner",52.3550,4.8935,[16,23],0,0,"De Pijp"],
+["johndory","John Dory","Fine seafood","Seasonal fish menu","BBQ octopus","Wed–Sat only; book.","€€€€","r","Low","D","food","Wine pairings standard; sauces may contain wine","meal","dinner fine seafood",52.363,4.896,[18,22],[0,1,2],0,"Canal Belt"],
+["bridges","Bridges","Fine seafood","Menu du Chef (5–7 courses)","","French fish cookery in the Sofitel Legend The Grand.","€€€€","r","Low","D","trip","Sauces may contain wine","meal","dinner fine seafood",52.3712,4.8965,[18,22],0,0,"Centrum"],
+/* ---------- dinner: Dutch ---------- */
+["moeders","Moeders","Dutch","Stamppot plate (mash with greens + stew)","Hachee (beef-and-onion stew)","30+ years of Dutch home cooking.","€€","y","Medium","D","must","Rookworst sausage is pork; stews may use beer or wine","meal","dinner dutch",52.3730,4.8780,[17,22.5],0,0,"Jordaan"],
+["greetje","Greetje","Modern Dutch","Seasonal Dutch tasting of classics","","Dutch cooking taken seriously, near Oosterdok.","€€€","r","Low","D","food","Sauces may contain wine or beer","meal","dinner dutch",52.3720,4.9075,[17.5,22],[1],0,"Oosterdok"],
+["haphmm","Hap Hmm","Dutch canteen","Daily Dutch meat-and-potatoes plate","","Cheap old-school canteen since 1935.","€","g","Low","D","gem","","meal","budget cheap dinner dutch",52.3635,4.877,[16.5,20],[0,6],0,"Oud-West"],
+["haesjeclaes","Haesje Claes","Dutch","Stamppot or hutspot with meatball","","Traditional Dutch rooms on Spuistraat, 6 min away.","€€","y","Medium","D","near","Some stamppot comes with pork sausage","meal","dinner dutch",52.3705,4.8893,[12,22],0,0,"Spuistraat"],
+["loetje","Café Loetje","Dutch steak café","Biefstuk Loetje (tenderloin in butter jus)","","Amsterdam’s everyday steak; dip the bread in the jus.","€€","y","Medium","LD","local","Jus may contain wine","meal","dinner dutch steak",52.3785,4.9010,[11,23],0,0,"Centraal"],
+["pietdeleeuw","Piet de Leeuw","Dutch steak bistro","Biefstuk with jus and fries","","Dark-wood classic bistro, unchanged for decades.","€€","y","Medium","D","local","Menu also lists horse steak; jus may contain wine","meal","dinner dutch steak",52.3612,4.8935,[17,22.5],0,0,"Canal Belt"],
+["desilverenspiegel","De Silveren Spiegel","Dutch fine dining","Seasonal Dutch tasting menu","","Two 1614 canal houses; Michelin-recommended.","€€€€","r","Low","D","trip","Sauces may contain wine","meal","dinner dutch fine modern",52.3787,4.8944,[18,22],[0],0,"Centrum"],
+["vijff","D’Vijff Vlieghen","Dutch heritage","Dutch classic main","","Famous historic rooms, mixed food reviews.","€€€€","r","Low","D","photo","","meal","dutch",52.3708,4.8885,[17.5,22],0,"hype","Spuistraat"],
+/* ---------- dinner: Indonesian ---------- */
+["tempodoeloe","Tempo Doeloe","Indonesian","Rijsttafel (15–25 dishes)","","Consistently rated among the city’s best rijsttafels.","€€€","r","Low","D","must","Rijsttafels often include a pork (babi) dish","meal","dinner indonesian",52.3620,4.9000,[18,23],0,"still","Utrechtsestraat"],
+["tujuhmaret","Tujuh Maret","Indonesian","Minahasa rijsttafel","","Family-run, properly spiced; same street as Tempo Doeloe.","€€","y","Low","LD","gem","Some rijsttafel versions contain pork (babi)","meal","dinner indonesian",52.3622,4.9000,[12,22],0,0,"Utrechtsestraat"],
+["blauw","Blauw","Indonesian","Rijsttafel with beef rendang and satay","","Often voted Amsterdam’s best Indonesian.","€€€","r","Low","D","trip","Some rijsttafel versions contain pork (babi)","meal","dinner indonesian",52.3550,4.8590,[17.5,22],0,0,"Oud-Zuid"],
+["samasebo","Sama Sebo","Indonesian","Rijsttafel (or nasi rames at lunch)","","Oldest Indonesian in town (1969), by the Rijksmuseum.","€€€","y","Low","LD","near","Some rijsttafel versions contain pork (babi)","meal","indonesian lunch",52.3615,4.8810,[12,22],[0],0,"Museum Q"],
+["kantjil","Kantjil & de Tijger","Indonesian","Casual rijsttafel or nasi rames","","Good-value Indonesian 7 min from the hotel.","€€","y","Medium","LD","near","Some rijsttafel versions contain pork (babi)","meal","dinner indonesian lunch",52.3700,4.8893,[12,23],0,0,"Spuistraat"],
+["longpura","Long Pura","Indonesian","Rijsttafel","","Family-run, less touristy, good value.","€€","y","Low","D","gem","Some rijsttafel versions contain pork (babi)","meal","dinner indonesian",52.3740,4.8838,[17,22.5],0,0,"Rozengracht"],
+["sampurna","Sampurna","Indonesian","Rijsttafel","","Central, on Singel by the flower market.","€€","y","Low","LD","near","Some rijsttafel versions contain pork (babi)","meal","dinner indonesian",52.3667,4.8920,[12,22],0,0,"Singel"],
+["indrapura","Indrapura","Indonesian","Rijsttafel","","Long-running institution on Rembrandtplein.","€€€","y","Low","D","near","Some rijsttafel versions contain pork (babi)","meal","indonesian",52.3660,4.8975,[17,22.5],0,0,"Rembrandtplein"],
+["anekarasa","Aneka Rasa","Indonesian","Rijsttafel","","Reliable, central, 3 min from the hotel.","€€","y","Low","D","near","Some rijsttafel versions contain pork (babi)","meal","indonesian dinner",52.3755,4.8985,[17,22.5],0,0,"Warmoesstraat"],
+/* ---------- Surinamese ---------- */
+["spang","Warung Spang Makandra","Surinamese-Javanese","Roti kip (roll it yourself)","Saoto soup","Locals’ favourite; nearly all under €15.","€","g","Medium","LD","must","","meal","budget cheap dinner lunch surinamese",52.3567,4.892,[11,22],0,0,"De Pijp"],
+["tjins","Tjin’s Toko","Surinamese","Surinamese sandwich","","Half supermarket, half takeaway; fair prices.","€","g","Low","L","local","","meal","surinamese sandwich budget",52.3545,4.9000,[10,19],[0],0,"De Pijp"],
+["swieti","Swieti Sranang","Surinamese","Bakabana with peanut sauce","","Tiny Jordaan takeaway with hot dishes.","€","g","Low","LS","gem","","meal","surinamese",52.3770,4.8810,[11,20],0,0,"Jordaan"],
+["waterkant","Waterkant","Surinamese","Moksi meti (mixed meats on rice)","Saoto soup","Canal-side Surinamese with a beer-garden feel.","€€","g","Medium","LDN","local","Moksi meti usually includes pork","meal","surinamese dinner late",52.3680,4.8790,[11,25],0,0,"Singelgracht"],
+["roopram","Roopram Roti","Surinamese-Hindustani","Roti with chicken","","Legendary roti shop in Oost.","€","g","Medium","LD","trip","","meal","surinamese",52.3615,4.9255,[12,21],[1],0,"Oost"],
+/* ---------- steak / grill / burgers ---------- */
+["blackblue","Black and Blue","Steak","Dry-aged ribeye from the charcoal grill","","Serious steak in a Leliegracht canal house.","€€€","r","Low","D","food","","meal","dinner steak",52.3750,4.8859,[17,22.5],0,0,"Canal Belt"],
+["salmuera","Salmuera","Argentinian grill","Bife de chorizo (sirloin cut, not sausage)","Entraña (skirt)","Asado grill; meat seasoned in brine.","€€€","y","Low","D","gem","","meal","dinner steak",52.3736,4.8823,[17,23],0,0,"Rozengracht"],
+["midtown","Midtown Grill","Steakhouse","Dry-aged American steak","","High-end dry-aged beef by the Rijksmuseum.","€€€€","y","Low","D","trip","","meal","dinner fine steak",52.361,4.883,[17.5,22.5],0,0,"Museum Q"],
+["sefa","Sefa BBQ & Grill","Turkish grill","Mixed grill","Lamb chops","Big portions by Westerkerk; 4.5★ from 3,300+ reviews.","€€","g","Medium","DN","local","","meal","dinner late middleeast steak turkish",52.3739,4.8838,[12,24],0,0,"Westermarkt"],
+["cannibale","Cannibale Royale","Burgers & steaks","House burger with cheddar and onions","1 kg steak challenge","No-nonsense meat restaurant.","€€","g","Medium","DN","viral","Bourbon BBQ sauce (alcohol); bacon toppings","meal","burger steak late dinner",52.3672,4.8895,[12,24],0,0,"Spui"],
+["pendergast","Pendergast Smokehouse","BBQ","Black Angus brisket","","Low-and-slow BBQ over Dutch fruit wood.","€€","y","Low","D","gem","Ribs and pulled pork on menu","meal","burger steak",52.3770,4.8730,[17,22],0,0,"Westerpark"],
+["maijard","Maijard Smashburgers","Smashburgers","Double smashburger","","Rozengracht 9 + Berenstraat. Burger Dudes’ “best burger in NL”; a named TikTok queue (Apr 2026).","€€","g","High","LD","must","Some burgers come with bacon","meal","burger lunch",52.3738,4.8838,[12,22],0,"hot","Rozengracht"],
+["lesmash","Le Smash","Smashburgers","Classic double smash","","New 2026 smashburger counter in De Pijp.","€","g","Medium","LD","gem","","meal","budget burger cheap",52.356,4.8905,[12,22],0,"new","De Pijp"],
+["camino","Camino","LA tacos","Birria tacos with consommé","","New 2026 LA-style taqueria on Kinkerstraat.","€","g","Medium","LDN","gem","","meal","budget cheap late lunch",52.3665,4.869,[12,23],0,"new","Oud-West"],
+["chard","char.d","Charcoal grill","600 g signature steak, coal-seared and wood-finished","","New 2026 charcoal steak room on Utrechtsestraat.","€€€€","r","Low","D","food","","meal","steak dinner",52.3625,4.9001,[17.5,22.5],0,"new","Utrechtsestraat"],
+["badcuyp","Badcuyp","Wood-fired grill","Wood-fired rib steak","Kingfish","New 2026 wood-fire kitchen in De Pijp.","€€€","y","Low","D","gem","","meal","steak dinner",52.3557,4.8975,[17,22.5],0,"new","De Pijp"],
+["houseofnoa","House of Noa","Japanese","Hand-rolled temaki set","Wagyu skewers","New 2026 Japanese in the Beurs van Berlage, 3 min from the hotel.","€€€","y","Medium","LD","gem","Sauces may contain mirin/sake","meal","asian dinner",52.3745,4.8960,[12,23],0,"new","Damrak"],
+["sushioodo","Sushi Oodo","Omakase","Omakase counter","","New omakase on Utrechtsestraat (opened Sept 2026).","€€€€","r","Low","D","food","Sake/mirin common in omakase","meal","asian dinner",52.3640,4.8995,[18,22.5],0,"new","Utrechtsestraat"],
+["bougainville","Bo by Bougainville","Fine dining","Chef’s tasting menu","","New 2026 fine-dining room on Dam 27, a 1-minute walk.","€€€€","r","Low","D","trip","Tasting menus often use wine in sauces","meal","dinner fine",52.3728,4.8925,[18,22],[0,1],"new","Dam"],
+["kantinagreca","Kantina Greca","Greek","Moussaka","Spanakopita","New 2026 Greek kitchen on Ceintuurbaan.","€€","g","Medium","LD","gem","","meal","dinner",52.3530,4.8990,[12,22],0,"new","De Pijp"],
+["vitas","Vita’s Friet","Fries","Classic fries with mayo","","Award-winning stand at Dappermarkt; locals’ pick over the queues.","€","g","Low","S","local","","snack","fries",52.3630,4.9290,[10,17],[0],0,"Oost"],
+["burgerbar","Burger Bar","Burgers","Build-your-own beef burger","","Central late-night burgers, to 01:00 Fri–Sat.","€","g","Medium","ND","near","Bacon is an option","meal","burger late",52.3760,4.8940,[11,25],0,0,"Centrum"],
+["butcher","The Butcher","Burgers","The Butcher burger","","Albert Cuyp burger joint with a cult following.","€€","g","Medium","LD","near","Bacon on some burgers","meal","burger",52.3560,4.8930,[12,24],0,0,"De Pijp"],
+/* ---------- pizza / Italian ---------- */
+["vincenzo","Pizzeria Vincenzo Capuano","Neapolitan pizza","Margherita with cloud-like canotto crust","Mortadella and pistachio pizza","Celebrity Naples pizzaiolo’s Herengracht branch; social-media favourite.","€€","y","High","LD","viral","Mortadella is pork","meal","pizza dinner",52.3770,4.8900,[12,23],0,"hot","Canal Belt"],
+["sotto","Sotto Pizza","Neapolitan pizza","Margherita with buffalo mozzarella","","San Marzano and buffalo mozzarella straight from Italy.","€€","g","Medium","D","local","","meal","pizza",52.3700,4.9105,[17,22],0,0,"Plantage"],
+["pizzarebels","Pizza Rebels","Pizza tasting","Tasting menu of 4–6 pizza slices","","New 2026 slice-tasting concept on Marnixstraat.","€€","y","Medium","D","gem","Some slices use cured pork","meal","pizza",52.3745,4.8790,[17,22.5],0,"new","Jordaan"],
+["noemi","Noemi","Pizza & focaccia","Focaccia sandwich at lunch, pizza at night","","New De Pijp pizza and focaccia spot.","€€","g","Medium","LD","gem","","meal","pizza lunch",52.3570,4.9010,[12,22],0,"new","De Pijp"],
+["laperla","La Perla","Pizza","Margherita","Burrata pizza","Thin, wood-fired; locals queue.","€€","g","Crazy","D","local","Salami/prosciutto pizzas are pork","meal","pizza dinner",52.3780,4.8833,[17,22.5],0,0,"Jordaan"],
+["pazzi","Pazzi","Pizza","Margherita + burrata starter","","Fresh daily dough in Oud-West.","€€","g","Crazy","D","local","Cured-meat pizzas are pork","meal","pizza",52.3700,4.8650,[17,22.5],0,0,"Oud-West"],
+["nnea","nNea","Neapolitan pizza","Margherita","Artichoke and mint pizza","One of the most praised Neapolitan pizzerias.","€€","y","Crazy","DN","trip","","meal","pizza late",52.3685,4.8710,[17,22.5],0,0,"Oud-West"],
+["toscanini","Toscanini","Italian","Handmade pasta of the day","","Classic Jordaan Italian; book.","€€€","r","Low","D","local","Some sauces use wine or pancetta","meal","pizza dinner",52.3800,4.8850,[18,22.5],[0],0,"Jordaan"],
+/* ---------- Asian ---------- */
+["birdthai","Bird Thai","Thai","Green curry","Pad kra pao","Long-standing best-Thai pick on Zeedijk.","€€","y","Crazy","D","local","","meal","dinner asian",52.3747,4.9007,[17,23],0,0,"Chinatown"],
+["xiang","Xiang Amsterdam","Hunan Chinese","Spicy Hunan stir-fried beef","","New Hunan kitchen 3 min behind the hotel.","€€","y","Medium","LD","gem","Some Hunan dishes use cured pork","meal","dinner asian",52.3725,4.8955,[12,22.5],0,"new","Centrum"],
+["afusion","A-Fusion","Asian fusion","Truffle-beef sushi","Steamed oysters","Chef’s menu is the move.","€€","y","Medium","D","food","","meal","dinner asian",52.3738,4.9012,[17,23],0,0,"Chinatown"],
+["namkee","Nam Kee","Cantonese","Oysters in black bean sauce","Roast duck with rice","Chinatown cult classic; fast and late.","€€","g","Medium","DN","local","Char siu and some roast meats are pork","meal","dinner asian late",52.3740,4.9010,[12,23.5],0,0,"Chinatown"],
+["fullmoon","Full Moon Garden","Dim sum","Har gow (prawn dumplings)","Sticky rice in lotus leaf","Strong dim sum on Leidsestraat.","€€","y","Medium","LD","near","Siu mai and some buns contain pork","meal","asian",52.3650,4.8840,[12,22.5],0,0,"Leidsestraat"],
+["littlethai","Little Thai Prince","Thai","Pad Thai","Red curry","Basic room, reliable cooking.","€","g","Medium","D","near","","meal","asian budget",52.3755,4.9010,[17,22],0,0,"Chinatown"],
+["takeichi","Tokyo Ramen Takeichi","Ramen","Nouko spicy chicken ramen","","Rich chicken-broth ramen on Vijzelstraat.","€€","g","Medium","LD","food","","meal","asian",52.3640,4.8915,[12,22],0,0,"Vijzelstraat"],
+["foufow","Fou Fow Ramen","Ramen","Tantanmen","","Amsterdam’s original ramen bar.","€€","g","Medium","LD","local","Tonkotsu broth is pork; tantanmen often has pork mince","meal","asian",52.3700,4.8810,[12,22],0,0,"Elandsgracht"],
+["menimpossible","Men Impossible","Vegan ramen","Red Dragon tsukemen","","All-vegan ramen counter in the Jordaan.","€€","y","Medium","D","gem","","meal","asian",52.3705,4.8840,[17,22],[1,2],0,"Jordaan"],
+["sojubar","Sojubar","Korean","Korean fried chicken (pick a flavour)","","Open to midnight daily.","€€","g","Medium","DN","near","","meal","asian late",52.3590,4.8905,[16,24],0,0,"De Pijp"],
+["kimsso","Kim’s So Korean","Korean","Crazy-spicy Korean fried chicken","","Two branches; check Maps for nearest.","€€","g","Medium","D","local","Samgyeopsal is pork belly","meal","asian",null,null,[17,22],0,0,"check Maps"],
+["tsunarie","Tsunarié","Omakase","Kappo-style omakase","","10-seat counter for a special night.","€€€€","r","Low","D","trip","Sake pairing offered; some dishes use mirin","meal","asian dinner fine",52.356,4.895,[18,22],0,0,"De Pijp"],
+["satkara","Satkara","Indian-Nepalese","Momo dumplings","Garlic naan + curry","New on Reguliersdwarsstraat.","€€","g","Medium","D","gem","","meal","asian dinner",52.3655,4.8930,[17,23],0,"new","Rembrandtplein"],
+/* ---------- Middle Eastern / Turkish / Persian ---------- */
+["neni","NENI","Eastern Mediterranean","Sabich (aubergine pita)","Jerusalem plate","Second NENI opened in 2026 at Nieuwezijds Voorburgwal 5, 5 min from the hotel.","€€","y","Medium","LD","viral","","meal","dinner lunch middleeast",52.3772,4.8955,[12,23],0,"new","Nieuwendijk"],
+["esra","esra","Turkish","Mixed grill with beef-fat chips","","Fixed sharing menu; top Turkish grill.","€€€","y","Low","D","food","","meal","dinner middleeast turkish",null,null,[17,22.5],0,0,"check Maps"],
+["barbachrach","Bar Bachrach","Israeli","Chef’s menu","Beef tartare with preserved lemon","Upscale Israeli small plates.","€€€","y","Low","D","food","","meal","middleeast dinner",null,null,[17,23],0,0,"check Maps"],
+["nightkitchen","Night Kitchen","Middle Eastern","Celeriac with feta, za’atar and pistachio","Ricotta dumplings","Cosy, open to 23:00 daily.","€€","y","Medium","DN","local","","meal","middleeast late dinner",52.3640,4.8635,[17,23],0,0,"Oud-West"],
+["aardigepers","De Aardige Pers","Persian","Mixed grill with saffron rice","","Casual Iranian; very fair prices.","€€","g","Low","D","gem","","meal","middleeast",null,null,[16,22],0,0,"check Maps"],
+["orontes","Orontes","Turkish (Antakya)","Charcoal lamb skewers","","Antakya-style grill; De Pijp and West.","€€","y","Medium","D","local","","meal","dinner middleeast turkish",52.355,4.896,[16,23],0,0,"De Pijp"],
+["beyrouth","Beyrouth","Lebanese","Mezze with tabbouleh","","Lebanese since 1990, wide mezze.","€€","y","Low","D","local","","meal","middleeast",null,null,[17,23],0,0,"check Maps"],
+["alioca","Ali Ocakbaşı","Turkish","Çiğ köfte + ocakbaşı grill","","Elegant Turkish charcoal grill.","€€","y","Low","D","local","","meal","middleeast turkish",null,null,[17,23],0,0,"check Maps"],
+/* ---------- modern / special ---------- */
+["dekas","De Kas","Farm-to-table","Daily set menu from their own greenhouse","","Dinner inside a 1926 greenhouse.","€€€€","r","Low","LD","trip","","meal","dinner fine",52.356,4.933,[12,22],[0],0,"Oost"],
+["belhamel","De Belhamel","French-Dutch","Seasonal main (fish or game)","","Art Nouveau room on Brouwersgracht.","€€€","r","Low","D","local","French sauces often contain wine","meal","dinner",52.3801,4.8915,[17.5,22],0,0,"Brouwersgracht"],
+["wolfatelier","Wolf Atelier","Modern European","Chef’s menu","","Glass box on a 1920s railway bridge.","€€€€","r","Low","D","trip","","meal","dinner fine",52.385,4.891,[18,22],0,0,"Westerdok"],
+["nels","Nel’s","Potato kitchen","Loaded baked potato","","New potato-focused spot in the Jordaan.","€","g","Medium","LD","gem","","meal","lunch budget",52.3785,4.8830,[12,21],0,"new","Jordaan"],
+["moon","Moon (A’DAM Tower)","International","Set menu while the room rotates","","19th-floor revolving restaurant.","€€€€","r","Low","D","photo","","meal","dinner",52.3840,4.9020,[18,22],0,0,"Noord"],
+["patanegra","Pata Negra","Spanish tapas","Garlic prawns + patatas bravas","","Busy tapas bar, open late.","€€","g","Medium","DN","local","Jamón and chorizo are pork","meal","late dinner",52.3610,4.9002,[12,24],0,0,"Utrechtsestraat"],
+/* ---------- sights ---------- */
+["dam","Dam Square","Landmark","","","Your doorstep.","","","","","","","sight","",52.3731,4.8930,0,0,0,"Centrum"],
+["palace","Royal Palace (inside)","Museum","","","Marble Citizens’ Hall; ~1 h. Usually 10–17.","","","","","","","sight","indoor",52.3731,4.8913,[10,17],0,0,"Centrum"],
+["begijnhof","Begijnhof","Hidden courtyard","","","Medieval almshouses behind Spui; free, daytime.","","","","","","","sight","",52.3693,4.8899,[9,18],0,0,"Spui"],
+["bloemenmarkt","Bloemenmarkt","Floating flower market","","","Bulb stalls on barges.","","","","","","","sight","",52.3666,4.8915,[9,17.5],0,0,"Singel"],
+["goldenbend","Golden Bend","Canal mansions","","","Grandest merchant houses on Herengracht.","","","","","","","sight","",52.3650,4.8907,0,0,0,"Canal Belt"],
+["ninestreets","Nine Streets","Shopping lanes","","","Boutique lanes across three canals.","","","","","","","sight","",52.3703,4.8861,0,0,0,"Nine Streets"],
+["westerkerk","Westerkerk","Church","","","Tallest tower in the city.","","","","","","","sight","",52.3745,4.8836,0,0,0,"Westermarkt"],
+["annefrank","Anne Frank House","Museum","","","Online timed tickets only.","","","","","","","sight","indoor",52.3752,4.8840,[9,22],0,0,"Prinsengracht"],
+["jordaan","Jordaan canals","Neighbourhood","","","Egelantiersgracht + Bloemgracht.","","","","","","","sight","",52.3757,4.8807,0,0,0,"Jordaan"],
+["noordermarkt","Noordermarkt (Sat)","Market","","","Saturday farmers’ market by Winkel 43.","","","","","","","sight","",52.3790,4.8865,[9,15],[0,1,2,3,4,5],0,"Jordaan"],
+["brouwersgracht","Brouwersgracht","Canal","","","Houseboats and warehouses.","","","","","","","sight","",52.3800,4.8890,0,0,0,"Jordaan"],
+["torensluis","Torensluis bridge","Canal walk","","","Widest bridge in the city; lit Singel views.","","","","","","","sight","",52.3745,4.8905,0,0,0,"Singel"],
+["centraal","Centraal Station","Architecture","","","1889 station; IJ waterfront behind.","","","","","","","sight","",52.3791,4.9003,0,0,0,"Centraal"],
+["waag","Nieuwmarkt & the Waag","Square","","","15th-century gate, lit at night.","","","","","","","sight","",52.3727,4.9003,0,0,0,"Nieuwmarkt"],
+["sevenbridges","Seven Bridges","Viewpoint","","","Reguliersgracht at Herengracht.","","","","","","","sight","",52.3639,4.8975,0,0,0,"Canal Belt"],
+["magere","Magere Brug","Bridge","","","White drawbridge over the Amstel, lit after dark.","","","","","","","sight","",52.3634,4.9023,0,0,0,"Amstel"],
+["rijks","Rijksmuseum","Museum","","","Night Watch + Gallery of Honour. 09–17.","","","","","","","sight","indoor",52.3600,4.8852,[9,17],0,0,"Museum Q"],
+["vangogh","Van Gogh Museum","Museum","","","Timed slots sell out.","","","","","","","sight","indoor",52.3584,4.8811,[9,18],0,0,"Museum Q"],
+["albertcuyp","Albert Cuyp Market","Market","","","Mon–Sat daytime.","","","","","","","sight","",52.3560,4.8940,[9,17],[0],0,"De Pijp"],
+["depijp","De Pijp streets","Neighbourhood","","","Cafés, Sarphatipark, market streets.","","","","","","","sight","",52.3545,4.8950,0,0,0,"De Pijp"],
+["noord","Free ferry + A’DAM Lookout","Viewpoint","","","Free ferry behind Centraal; deck and swing.","","","","","","","sight","indoor",52.3840,4.9020,[10,22],0,0,"Noord"],
+["ndsm","NDSM + STRAAT","Street art","","","Huge street-art museum in a shipyard hall.","","","","","","","sight","indoor",52.4010,4.8920,[10,18],0,0,"Noord"],
+["cruise","Evening canal cruise","Experience","","","Small open boats beat glass-roof barges.","","","","","","","sight","",52.3760,4.8975,[10,23],0,0,"Damrak"],
+["zaanse","Zaanse Schans windmills","Day-trip","","","~10–15 min taxi from the summit venue.","","","","","","","sight","",52.4740,4.8170,0,0,0,"Zaandam"],
+["summit1","World Summit AI · Day 1","Summit","","","Taets Art & Event Park, Zaandam. 08:00–17:00.","","","","","","","sight","indoor",52.4170,4.8270,[8,17],0,0,"Zaandam"],
+["summit2","World Summit AI · Day 2","Summit","","","Taets Art & Event Park, Zaandam. 08:00–17:00.","","","","","","","sight","indoor",52.4170,4.8270,[8,17],0,0,"Zaandam"]
+];
+const P=RAW.map(r=>({id:r[0],n:r[1],cu:r[2],o:r[3],a:r[4],why:r[5],pr:r[6],res:r[7],q:r[8],bf:(r[9]||"").split(""),v:r[10],note:r[11],k:r[12],cat:(r[13]||"").split(" ").filter(Boolean),lat:r[14],lng:r[15],oh:r[16]||null,cl:r[17]||[],tr:r[18]||null,ar:r[19]}));
+const PM=Object.fromEntries(P.map(p=>[p.id,p]));
+const LAT0=52.3729,LNG0=4.8939;
+
+const DAYS=[
+{key:"tue",date:"2026-10-06",title:"TUE 6 OCT",tag:"TONIGHT",wx:"19° / 14° · cloudy · 55% rain",items:[
+ {id:"t1",t:"18:45",s:"PREP",l:"Find the summit coach timetable",d:"Ticket email or event app. Coaches run Taets ↔ central Amsterdam."},
+ {id:"t2",t:"19:00",s:"EVENING",l:"Blue-hour walk to Torensluis bridge",p:"torensluis",d:"Dam → Spuistraat → Singel."},
+ {id:"t3",t:"19:30",s:"DINNER",l:"Lucius",p:"lucius",d:"Call for a same-day table. Walk-in fallback: Kantjil & de Tijger."},
+ {id:"t4",t:"21:15",s:"LATE (OPTIONAL)",l:"Bitterballen at Café Luxembourg",p:"luxembourg",d:"5 min from Lucius on Spui. Skip if full."},
+ {id:"t5",t:"21:45",s:"HOTEL",l:"Back + lay out ticket",d:"Summit tomorrow: leave 07:35."}],
+ planB:"Rain or tired: Bouillon d’Amsterdam (3 min) → hotel."},
+{key:"wed",date:"2026-10-07",title:"WED 7 OCT",tag:"SUMMIT DAY 1",wx:"18° / 13° · cloudy · storms tonight (80%)",summit:true,items:[
+ {id:"w1",t:"06:50",s:"BREAKFAST",l:"Hotel breakfast",d:"Fastest before doors open."},
+ {id:"w2",t:"07:35",s:"LEAVE",l:"Leave hotel → Centraal → summit coach",d:"8 min walk. Fallback: train to Zaandam (~11 min) + bus 63/456, or Uber ~20–25 min.",dest:"summit1"},
+ {id:"w3",t:"08:00",s:"SUMMIT",l:"World Summit AI · Day 1",p:"summit1",d:"Taets Art & Event Park · 08:00–17:00."},
+ {id:"w4",t:"12:30",s:"LUNCH",l:"Lunch at the venue",d:"Check what your pass includes."},
+ {id:"w5",t:"17:00",s:"RETURN",l:"Coach back to Centraal",d:"≈25–30 min.",loc:"centraal"},
+ {id:"w6",t:"18:15",s:"DINNER",l:"Bird Thai",p:"birdthai",d:"Chinatown, 5 min from Centraal. Rain-proof. Alt: Xiang (Hunan) behind the hotel."},
+ {id:"w7",t:"19:45",s:"EVENING",l:"Nieuwmarkt & the Waag (optional)",p:"waag",d:"3 min from Bird. Skip if the storm arrives."},
+ {id:"w8",t:"20:15",s:"HOTEL",l:"Back via Damstraat",d:"8 min."}],
+ planB:"Storm or exhausted: Uber from Taets to the hotel, dinner at Xiang (3 min) or Bouillon (3 min)."},
+{key:"thu",date:"2026-10-08",title:"THU 8 OCT",tag:"SUMMIT DAY 2",wx:"15° / 11° · partly cloudy · 35%",summit:true,items:[
+ {id:"h1",t:"06:50",s:"BREAKFAST",l:"Hotel breakfast"},
+ {id:"h2",t:"07:35",s:"LEAVE",l:"Leave hotel → Centraal → summit coach",dest:"summit2"},
+ {id:"h3",t:"08:00",s:"SUMMIT",l:"World Summit AI · Day 2",p:"summit2",d:"Taets · 08:00–17:00."},
+ {id:"h4",t:"12:30",s:"LUNCH",l:"Lunch at the venue"},
+ {id:"h5",t:"17:00",s:"RETURN",l:"Coach back to Centraal",loc:"centraal"},
+ {id:"h6",t:"17:45",s:"AREA",l:"Jordaan at golden hour",p:"jordaan",d:"Brouwersgracht → Egelantiersgracht, 15 min walk from Centraal."},
+ {id:"h7",t:"18:45",s:"DINNER",l:"Moeders",p:"moeders",d:"Dutch dinner. Book if you can. Alt: Salmuera (Argentinian grill), same street."},
+ {id:"h8",t:"20:30",s:"EVENING",l:"Winkel 43 apple pie (optional)",p:"winkel43",d:"12 min walk; short queue at night."},
+ {id:"h9",t:"21:15",s:"HOTEL",l:"Prinsengracht → Raadhuisstraat",d:"15 min walk."}],
+ planB:"Tired: coach → Café Loetje by Centraal (steak) → hotel."},
+{key:"fri",date:"2026-10-09",title:"FRI 9 OCT",tag:"FULL DAY · MUSEUMS + DE PIJP",wx:"16° / 14° · cloudy · 55% rain",items:[
+ {id:"f1",t:"08:30",s:"BREAKFAST",l:"Bakers & Roasters",p:"bakers",d:"Tram 24 from Dam."},
+ {id:"f2",t:"10:00",s:"MAIN",l:"Rijksmuseum",p:"rijks",d:"Book a 10:00 timed ticket."},
+ {id:"f3",t:"12:45",s:"LUNCH",l:"Warung Spang Makandra",p:"spang",d:"15 min walk into De Pijp."},
+ {id:"f4",t:"14:00",s:"AFTERNOON",l:"Albert Cuyp Market",p:"albertcuyp",d:"Pick one: Rudi’s stroopwafel or kibbeling."},
+ {id:"f5",t:"15:15",s:"WALK",l:"Seven Bridges → canal belt",p:"sevenbridges",d:"Holtkamp shrimp croquette on the way if hungry."},
+ {id:"f6",t:"16:15",s:"REST",l:"Hotel break",d:"Online check-in for EK146 opens 48 h before."},
+ {id:"f7",t:"19:00",s:"DINNER",l:"Tempo Doeloe rijsttafel",p:"tempodoeloe",d:"BOOK. Full? Tujuh Maret (same street)."},
+ {id:"f8",t:"21:00",s:"EVENING",l:"Magere Brug + Amstel lit up",p:"magere",d:"6 min from Tempo Doeloe."},
+ {id:"f9",t:"21:45",s:"HOTEL",l:"Back along the Amstel",d:"20 min walk or tram 14."}],
+ planB:"Heavy rain: longer Rijksmuseum, lunch at Sama Sebo, dinner at Foodhallen (indoor)."},
+{key:"sat",date:"2026-10-10",title:"SAT 10 OCT",tag:"FINAL FULL DAY",wx:"15° / 11° · partly cloudy · 40%",items:[
+ {id:"s1",t:"08:45",s:"BREAKFAST",l:"The Pancake Bakery",p:"pancakebakery",d:"Dutch pancake breakfast in a canal warehouse, 3 min from Anne Frank House."},
+ {id:"s2",t:"10:00",s:"MAIN",l:"Anne Frank House",p:"annefrank",d:"Your strongest remaining experience. Booked slot only."},
+ {id:"s3",t:"11:30",s:"VIRAL / MARKET",l:"Noordermarkt Saturday market",p:"noordermarkt",d:"Optional bite: Bossche bol at the market or a Winkel 43 slice next door. Saturday only."},
+ {id:"s4",t:"12:30",s:"LUNCH",l:"Maijard Smashburgers (Rozengracht 9)",p:"maijard",d:"Best-rated burger in NL, 8 min walk. Or Chun Café toast on Berenstraat if the queue is short."},
+ {id:"s5",t:"13:30",s:"AFTERNOON",l:"Nine Streets + Van Stapele cookie",p:"ninestreets",d:"Wander the lanes; souvenirs only if something catches your eye."},
+ {id:"s6",t:"15:30",s:"PACK",l:"Hotel: rest + pack most of the bag",d:"So tonight stays free."},
+ {id:"s7",t:"17:45",s:"SUNSET",l:"Free ferry → A’DAM Lookout at sunset",p:"noord",d:"Sunset ≈19:00. Deck view over the whole city; swing optional."},
+ {id:"s8",t:"19:30",s:"FINAL DINNER",l:"Black and Blue",p:"blackblue",d:"Dry-aged ribeye in a canal house. Book. Alt: char.d (600 g coal steak) or Lucius (whole fish)."},
+ {id:"s9",t:"21:30",s:"NIGHT",l:"Open-boat canal cruise",p:"cruise",d:"The lit bridges are the goodbye."},
+ {id:"s10",t:"22:45",s:"HOTEL",l:"Back, finish packing",d:"Alarm 06:30 · EK146 at 11:25."}],
+ planB:"Rain: Anne Frank → Chun → STRAAT museum at NDSM (indoor) → Black and Blue. Skip the Lookout deck."},
+{key:"sun",date:"2026-10-11",title:"SUN 11 OCT",tag:"DEPARTURE · EK146 11:25",wx:"Check in the morning",depart:true,items:[
+ {id:"u0",t:"06:30",s:"WAKE",l:"Wake up"},
+ {id:"u1",t:"06:45",s:"BREAKFAST",l:"Hotel breakfast",d:"06:45–07:20."},
+ {id:"u2",t:"07:20",s:"CHECK",l:"Final bag + passport check"},
+ {id:"u3",t:"07:35",s:"CHECK OUT",l:"Check out at reception"},
+ {id:"u4",t:"07:45",s:"LEAVE",l:"Taxi/Uber from Krasnapolsky to Schiphol",d:"≈25–30 min door to door."},
+ {id:"u5",t:"08:15",s:"AIRPORT",l:"Schiphol · Emirates bag drop",d:"Target 08:15–08:30."},
+ {id:"u6",t:"11:25",s:"FLIGHT",l:"EK146 → Dubai",d:"Check gate in the Emirates app."}],
+ planB:"No sightseeing, no errands. If the taxi is slow: train from Centraal (8 min walk) → Schiphol ≈15–20 min."}
+];
+const DM=Object.fromEntries(DAYS.map(d=>[d.key,d]));
+
+const FM=[
+{id:"m-fries",t:"🍟 Dutch fries",c:["vleminckx","mannekenpis","graanstra","fabel"],w:"vleminckx"},
+{id:"m-stroop",t:"🧇 Fresh stroopwafel",c:["rudis","lanskroon","vanwonderen"],w:"rudis"},
+{id:"m-herring",t:"🐟 Herring",c:["stubbes"],w:"stubbes"},
+{id:"m-pie",t:"🥧 Apple pie",c:["winkel43","papeneiland"],w:"winkel43"},
+{id:"m-croq",t:"🥖 Shrimp croquette",c:["holtkamp"],w:"holtkamp"},
+{id:"m-toast",t:"🥪 Chun toast",c:["chun"],w:"chun"},
+{id:"m-cookie",t:"🍪 Van Stapele cookie",c:["vanstapele"],w:"vanstapele"},
+{id:"m-indo",t:"🍚 Indonesian rijsttafel",c:["tempodoeloe","tujuhmaret","blauw","kantjil","longpura"],w:"tempodoeloe"},
+{id:"m-sur",t:"🇸🇷 Surinamese meal",c:["spang","tokoman","roopram","waterkant","hapjeshoek"],w:"spang"},
+{id:"m-steak",t:"🥩 Steak / grill",c:["blackblue","salmuera","loetje","pietdeleeuw","sefa"],w:"blackblue"},
+{id:"m-sea",t:"🦪 Seafood dinner",c:["lucius","pesca","barfisk","brutdemer","johndory"],w:"lucius"},
+{id:"m-dutch",t:"🇳🇱 Dutch dinner",c:["moeders","greetje","haphmm","loetje"],w:"moeders"},
+{id:"m-brunch",t:"🍳 Real brunch",c:["bakers","littlecollins","florentin","dignita","bellypepper"],w:"bakers"},
+{id:"m-asian",t:"🍜 Asian",c:["birdthai","xiang","namkee","takeichi","jinweide"],w:"birdthai"},
+{id:"m-pizza",t:"🍕 Pizza / Italian",c:["laperla","nnea","pazzi","toscanini"],w:"laperla"},
+{id:"m-burger",t:"🍔 Burger",c:["cannibale","maijard","butcher","burgerbar"],w:"cannibale"},
+{id:"m-me",t:"🧆 Middle Eastern",c:["sefa","orontes","neni","hummusbistro","nightkitchen"],w:"orontes"},
+{id:"m-bakery",t:"🥐 Great bakery",c:["niemeijer","ree7","madamecroissant","vlaamsch","petitgateau"],w:"niemeijer"},
+{id:"m-gelato",t:"🍨 Gelato / ice cream",c:["massimo","vanderlinde"],w:"massimo"},
+{id:"m-late",t:"🌙 Late-night bite",c:["sefa","namkee","mannekenpis","waterkant","sojubar"],w:"sefa"},
+{id:"m-kib",t:"🐟 Market snack",c:["kibbeling","poffertjes"],w:"kibbeling",label:"🐟 Market snack: kibbeling or poffertjes"},
+{id:"m-cheese",t:"🧀 Cheese tasting",c:["reypenaer"],w:"reypenaer",skipBusy:true},
+{id:"m-gem",t:"💎 Hidden-gem restaurant",c:["salmuera","pesca","upstairs","tujuhmaret"],w:"salmuera"}
+];
+const XM=["dam","palace","begijnhof","bloemenmarkt","goldenbend","ninestreets","westerkerk","annefrank","jordaan","brouwersgracht","noordermarkt","torensluis","centraal","waag","sevenbridges","magere","rijks","vangogh","albertcuyp","depijp","noord","ndsm","cruise","zaanse","summit1","summit2"];
+const HOODS=["Centrum","Jordaan","Nine Streets","De Pijp","Museum Q","Chinatown","Noord","Canal Belt","Oud-West","Plantage"];
+const MUST=["rijks","m-indo","jordaan","cruise","m-herring","m-fries","m-dutch","albertcuyp"];
+const NICE=["annefrank","m-toast","m-cookie","m-pie","sevenbridges","noord","m-steak","m-sur"];
+const BUSY=["ndsm","vangogh","zaanse","m-cheese","palace","m-pizza","m-gelato"];
+const BOOK=[
+ {p:"tempodoeloe",day:"fri",when:"Fri 9 Oct · 19:00",why:"Books 2–3 weeks out. Try now; ask for the cancellation list. Fallback: Tujuh Maret."},
+ {p:"annefrank",day:"sat",when:"Sat 10 Oct · ~10:00",why:"Online timed tickets only."},
+ {p:"rijks",day:"fri",when:"Fri 9 Oct · 10:00",why:"Timed entry; mornings fill first."},
+ {p:"blackblue",day:"sat",when:"Sat 10 Oct · 19:00",why:"Reservation essential."},
+ {p:"moeders",day:"thu",when:"Thu 8 Oct · 18:45",why:"Recommended; walk-in at opening sometimes works."}
+];
+const RAINPLAN=["rijks","vangogh","annefrank","palace","ndsm","noord","foodhallen","bazar","namkee","xiang"];
+const MON_ROUTE=["dam","begijnhof","bloemenmarkt","goldenbend","ninestreets","westerkerk","jordaan","sefa"];
+/* Trend intelligence, checked 6 Oct 2026. g = groups; worth = YES / MAYBE / NO; src = where the signal comes from */
+const TREND_CHECKED="6 Oct 2026 · 19:40";
+let feedLiveAt=0, wxLiveAt=0; /* set only when fresh data arrived during this visit */
+function trendStamp(){
+  const fresh=FEED&&FEED.trends&&FEED.updatedAt;
+  const when=fresh?fmtClock(Date.parse(FEED.updatedAt)):TREND_CHECKED;
+  if(online()&&feedLiveAt&&Date.now()-feedLiveAt<3*3600e3)return {tag:"LIVE",txt:`LIVE · Trend checked: ${when}`};
+  return {tag:"SAVED",txt:`${online()?"SAVED":"Saved trend data (offline)"} · Trend checked: ${when}`};
+}
+function wxStamp(){const w=feedWeather();if(!w||!w.at)return "SAVED · forecast from 6 Oct, not live";
+  const live=online()&&((wxLiveAt&&Date.now()-wxLiveAt<60*60000&&w.src==="Open-Meteo")||(feedLiveAt&&w.src==="Claude refresh"&&Date.now()-w.at<6*3600e3));
+  return `${live?"LIVE":"SAVED"} · weather updated ${fmtClock(w.at)} (${w.src})`;}
+const TREND={
+ chun:{g:["hot","worth"],worth:"YES",src:"NL Times (Apr 2026) TikTok queue list; Smaak queue test: worth it"},
+ maijard:{g:["hot","worth"],worth:"YES",src:"NL Times (Apr 2026) TikTok queue list; Burger Dudes best burger NL"},
+ fabel:{g:["hot","hype"],worth:"MAYBE",src:"NL Times (Apr 2026); Smaak: not worth the Runstraat queue",alt:["fabelnw","vleminckx"]},
+ vincenzo:{g:["hot"],worth:"MAYBE",src:"I amsterdam best-pizza list; celebrity pizzaiolo on social media"},
+ vanstapele:{g:["hot","worth"],worth:"YES",src:"NL Times queue story; Smaak: still the best cookie, skip a huge line"},
+ winkel43:{g:["worth"],worth:"YES",src:"Smaak: great pie, go late evening for no queue",alt:["papeneiland"]},
+ rudis:{g:["worth"],worth:"YES",src:"Local guides; made to order at Albert Cuyp"},
+ vleminckx:{g:["worth"],worth:"YES",src:"Local guides; 25 sauces"},
+ holtkamp:{g:["worth","local"],worth:"YES",src:"Local favourite for shrimp croquettes"},
+ stubbes:{g:["worth","local"],worth:"YES",src:"Herring stand locals actually use"},
+ tempodoeloe:{g:["worth"],worth:"YES",src:"Rijsttafel guide (Sep 2026): consistently top-rated"},
+ fabelnw:{g:["worth"],worth:"YES",src:"Fabel’s own Nieuwendijk branch: same fries, shorter line"},
+ vanwonderen:{g:["hype"],worth:"NO",src:"DutchReview/Parool: ≈€13 each, up to 90 min wait",alt:["rudis","lanskroon","hansegstorf"]},
+ lourens:{g:["hype"],worth:"NO",src:"Smaak: crookie dense and over-sweet",alt:["madamecroissant","niemeijer"]},
+ vijff:{g:["hype"],worth:"NO",src:"Famous rooms, mixed food reviews",alt:["moeders","greetje"]},
+ moon:{g:["hype"],worth:"MAYBE",src:"Photo-first rotating room",alt:["noord"]},
+ neni:{g:["fresh"],worth:"MAYBE",src:"Your Little Black Book 2026 openings (second Amsterdam NENI)"},
+ houseofnoa:{g:["fresh"],worth:"MAYBE",src:"2026 openings lists (Beurs van Berlage)"},
+ bougainville:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026 openings (Dam 27)"},
+ chard:{g:["fresh"],worth:"MAYBE",src:"2026 openings list: 600 g coal steak"},
+ pizzarebels:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: slice-tasting menu"},
+ sushioodo:{g:["fresh"],worth:"MAYBE",src:"YLBB: opened Sept 2026"},
+ xiang:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: new Hunan kitchen"},
+ satkara:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: momo + naan"},
+ lesmash:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: smashburger"},
+ camino:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: LA tacos"},
+ nels:{g:["fresh"],worth:"MAYBE",src:"YLBB 2026: loaded potatoes"},
+ madamecroissant:{g:["fresh"],worth:"MAYBE",src:"YLBB: filled croissants, new flavour monthly"},
+ hansegstorf:{g:["local"],worth:"YES",src:"Since 1898; locals’ answer to Van Wonderen"},
+ lanskroon:{g:["local"],worth:"YES",src:"Old Singel bakery; honey Koningsstroopwafel"},
+ ree7:{g:["local"],worth:"YES",src:"Locals’ bun counter next to the Chun queue"},
+ graanstra:{g:["local"],worth:"YES",src:"Old Westermarkt fries stand, no TikTok queue"},
+ vitas:{g:["local"],worth:"YES",src:"I amsterdam best fries: AD award-winner at Dappermarkt"},
+ vandobben:{g:["local"],worth:"YES",src:"Devour/Eating Europe: classic broodje kroket"},
+ spang:{g:["local"],worth:"YES",src:"Amsterdam Foodie: locals’ Surinamese, under €15"}
+};
+/* Famous → better/easier alternatives shown automatically on cards */
+const ALT={vanwonderen:["rudis","lanskroon","hansegstorf"],fabel:["fabelnw","vleminckx"],lourens:["madamecroissant","niemeijer"],vijff:["moeders","greetje"],moon:["noord"],littlecollins:["florentin"],mannekenpis:["fabelnw","vleminckx"],winkel43:["papeneiland"],blauw:["tempodoeloe","tujuhmaret"],chun:["ree7"],febo:["vandobben"]};
+const ALTWHY={vanwonderen:"Better for taste",fabel:"Same fries, shorter line",lourens:"Better pastry",vijff:"Better Dutch food",moon:"Same view, cheaper",littlecollins:"No queue, same street",mannekenpis:"Better fries nearby",winkel43:"If the queue is huge",blauw:"Closer rijsttafel",chun:"While you queue",febo:"Real croquette"};
+
+/* =========================================================
+   STATE — progress lives on this device (+ synced in the Claude app)
+   ========================================================= */
+const LS="ams-scout-v2", LSW="ams-wx-v1", LSF="ams-feed-v1", LSG="ams-gps-v1";
+let S={items:{},places:{},missions:{},moved:{},moveT:{},repl:{},rate:{},extra:{},notes:{},when:{}};
+const KEYS=Object.keys(S);
+function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||"null");localStorage.setItem(k,JSON.stringify(v));}catch(_){return null;}}
+function loadLocal(){const j=ls(LS);if(j)KEYS.forEach(k=>S[k]=Object.assign({},j[k]));}
+let db=null,docRef=null,docExists=false,feedRef=null,cloud=false;
+let wq=Promise.resolve();
+function persist(patch){
+  for(const k in patch){S[k]=Object.assign({},S[k]||{},patch[k]);}
+  ls(LS,S); renderAll();
+  if(!docRef)return;
+  wq=wq.then(async()=>{try{if(docExists)await docRef.update(patch);else{await docRef.set(S);docExists=true;}}catch(e){try{await docRef.set(S);docExists=true;}catch(_){}}});
+}
+const val=(o,k)=>o&&o[k]?o[k]:null;
+
+/* =========================================================
+   TIME — phone clock, Amsterdam time zone
+   ========================================================= */
+function nowAms(){
+  const f=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Amsterdam",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",weekday:"short",hour12:false});
+  const o={};f.formatToParts(new Date()).forEach(x=>o[x.type]=x.value);
+  const h=+o.hour%24,m=+o.minute;
+  const dow=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(o.weekday);
+  return {date:`${o.year}-${o.month}-${o.day}`,h,m,min:h*60+m,hm:`${String(h).padStart(2,"0")}:${o.minute}`,dow,wd:o.weekday,day:+o.day,mon:+o.month};
+}
+const MON=["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function tripPhase(){const n=nowAms();if(n.date<DAYS[0].date)return "before";if(n.date>DAYS[DAYS.length-1].date)return "after";return "during";}
+function todayKey(){const n=nowAms();const d=DAYS.find(d=>d.date===n.date);if(d)return d.key;return n.date<DAYS[0].date?DAYS[0].key:DAYS[DAYS.length-1].key;}
+function tmin(t){if(!t||t==="—")return 9999;const [h,m]=t.split(":").map(Number);return h*60+m;}
+function fmtDur(m){m=Math.round(m);if(m<1)return "now";const h=Math.floor(m/60),r=m%60;return h?`${h}h ${r}m`:`${r} min`;}
+function dayIndex(k){return DAYS.findIndex(d=>d.key===k);}
+
+/* =========================================================
+   GEO
+   ========================================================= */
+function km(a,b){const R=6371,r=Math.PI/180;const dl=(b.lat-a.lat)*r,dn=(b.lng-a.lng)*r;const x=Math.sin(dl/2)**2+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(x));}
+function hasLL(p){return p&&typeof p.lat==="number";}
+function travelMin(p,anc){if(!hasLL(p))return 999;const d=km(anc,p);return d<2.2?Math.max(1,Math.round(d*13.5)):Math.round(10+d*3.5);}
+function travel(p,anc){if(!hasLL(p))return "check Maps";const d=km(anc,p);const w=Math.round(d*13.5);if(d<2.2)return `${Math.max(1,w)} min walk`;return `~${Math.round(10+d*3.5)} min tram/Uber`;}
+function maps(p){return hasLL(p)?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.n+" Amsterdam")}`:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.n+" Amsterdam")}`;}
+let anchorMode="auto";
+function whereAmI(){
+  // Order: GPS (if allowed) → manual pick → last completed stop → current plan stop → hotel
+  const g=ls(LSG);if(anchorMode==="auto"&&g&&Date.now()-g.t<30*60000)return {lat:g.lat,lng:g.lng,n:"your GPS position",basis:"GPS location",src:"gps"};
+  if(anchorMode==="hotel")return Object.assign({basis:"you picked: hotel",src:"pick"},HOTEL);
+  if(anchorMode&&ANCH[anchorMode])return Object.assign({basis:"you picked: "+ANCH[anchorMode].n,src:"pick"},ANCH[anchorMode]);
+  const k=todayKey(),n=nowAms();
+  if(tripPhase()==="during"){
+    const L=itemsFor(k);
+    const sm=L.find(i=>(i.p==="summit1"||i.p==="summit2"));
+    if(sm&&n.min>=480&&n.min<1020&&istat(sm)!=="skip"&&!istat(L.find(i=>i.s==="RETURN")||{}))return Object.assign({basis:"current plan — World Summit AI",src:"plan"},TAETS);
+    // last completed stop today: plan ticks (scheduled time) and card ticks (real time), latest wins
+    const today0=Date.parse(n.date+"T00:00:00+02:00");
+    const cands=[];
+    L.filter(i=>istat(i)==="done"&&((i.p&&hasLL(PM[i.p]))||i.loc)).forEach(i=>{const t=tmin(i.t)+(i.s==="RETURN"?35:0);cands.push({t,pl:i.loc?ANCH[i.loc]:PM[i.p]});});
+    Object.entries(S.when||{}).forEach(([id,ms])=>{if(ms>=today0&&PM[id]&&hasLL(PM[id])&&pstat(id)==="done"){const t=Math.round((ms-today0)/60000);cands.push({t,pl:PM[id]});}});
+    cands.sort((a,b)=>b.t-a.t);
+    if(cands.length&&cands[0].t<=n.min+30){const p=cands[0].pl;return {lat:p.lat,lng:p.lng,n:p.n,basis:"last completed stop — "+p.n,src:"checkin"};}
+    const cur=L.filter(i=>i.p&&hasLL(PM[i.p])&&tmin(i.t)<=n.min&&istat(i)!=="skip").sort((a,b)=>tmin(b.t)-tmin(a.t))[0];
+    if(cur&&n.min-tmin(cur.t)<150){const p=PM[cur.p];return {lat:p.lat,lng:p.lng,n:p.n,basis:"current plan stop — "+p.n,src:"plan"};}
+  }
+  return Object.assign({basis:"hotel (default)",src:"default"},HOTEL);
+}
+const ANCH={centraal:{n:"Centraal",lat:52.3791,lng:4.9003},jordaan:{n:"Jordaan",lat:52.3760,lng:4.8820},ninestreets:{n:"Nine Streets",lat:52.3703,lng:4.8861},pijp:{n:"De Pijp",lat:52.3560,lng:4.8930},museum:{n:"Museum Quarter",lat:52.3595,lng:4.8840}};
+function askGPS(){
+  if(!navigator.geolocation){toast("Location not available here");return;}
+  navigator.geolocation.getCurrentPosition(pos=>{ls(LSG,{lat:pos.coords.latitude,lng:pos.coords.longitude,t:Date.now()});anchorMode="auto";toast("Using your location");renderAll();},
+    ()=>{toast("Location not allowed here — using your plan");},{enableHighAccuracy:false,timeout:8000,maximumAge:300000});
+}
+
+/* =========================================================
+   OPENING HOURS (saved with the app, not live)
+   ========================================================= */
+function hours(p){if(p.oh)return p.oh;if(p.k==="sight")return null;if(p.bf.includes("D")&&!p.bf.includes("L"))return [17,22];if(p.bf.includes("B"))return [8,17];if(p.k==="snack")return [10,18];return [12,22];}
+function openAt(p,min,dow){if(p.cl&&p.cl.includes(dow))return false;const h=hours(p);if(!h)return true;const t=min/60;return t>=h[0]&&t<h[1];}
+function closesIn(p,min,dow){const h=hours(p);if(!h||!openAt(p,min,dow))return null;return Math.round(h[1]*60-min);}
+function fmtH(x){const h=Math.floor(x)%24,m=Math.round((x%1)*60);return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;}
+/* Hours are saved data, never live: label them honestly */
+function hoursLabel(p,short){const h=hours(p);if(!h)return "";const n=nowAms();const cl=p.cl&&p.cl.length?` · closed ${p.cl.map(x=>["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][x]).join("/")}`:"";
+  const likely=openAt(p,n.min,n.dow)?"Likely open":"Likely closed";
+  return short?`${likely}*`:`${likely} based on saved hours · ${fmtH(h[0])}–${fmtH(h[1])}${cl} · last checked 6 Oct`;}
+/* =========================================================
+   PLAN HELPERS
+   ========================================================= */
+function pstat(id){return val(S.places,id);}
+function itemsFor(key){
+  const d=DM[key];let list=d.items.filter(it=>!S.moved[it.id]||S.moved[it.id]===key).map(it=>Object.assign({},it));
+  DAYS.forEach(o=>{if(o.key!==key)o.items.forEach(it=>{if(S.moved[it.id]===key)list.push(Object.assign({},it,{from:o.title,t:S.moveT[it.id]||it.t}));});});
+  Object.entries(S.extra||{}).forEach(([pid,k])=>{if(k===key&&PM[pid])list.push({id:"x-"+pid,t:S.moveT["x-"+pid]||"—",s:"ADDED",l:PM[pid].n,p:pid,added:true});});
+  list=list.map(it=>{const r=S.repl[it.id];return r&&PM[r]?Object.assign({},it,{p:r,l:PM[r].n,d:"Your replacement"}):it;});
+  list.sort((a,b)=>tmin(a.t)-tmin(b.t));
+  return list;
+}
+function istat(it){const s=val(S.items,it.id);if(s)return s;if(it.p&&pstat(it.p)==="done"&&it.added)return "done";return null;}
+function dayProg(key){const L=itemsFor(key).filter(i=>istat(i)!=="skip");return {done:L.filter(i=>istat(i)==="done").length,total:L.length};}
+function isPast(key,it){const ph=tripPhase();const ti=dayIndex(todayKey()),di=dayIndex(key);if(ph==="after")return true;if(ph==="before")return false;if(di<ti)return true;if(di>ti)return false;return tmin(it.t)+30<nowAms().min;}
+function mstat(m){const e=val(S.missions,m.id);if(e==="none")return null;if(e)return e;if(m.c.some(c=>pstat(c)==="done"))return "done";
+  const inPlan=m.c.some(c=>pstat(c)==="planned"||S.extra[c]||DAYS.some(d=>itemsFor(d.key).some(i=>i.p===c&&istat(i)!=="skip")));return inPlan?"planned":null;}
+function xstat(id){const s=pstat(id);if(s)return s;return DAYS.some(d=>itemsFor(d.key).some(i=>i.p===id&&istat(i)!=="skip"))?"planned":null;}
+const SL={null:"⬜ Not started",planned:"🟡 Planned",done:"✅ Done",skip:"❌ Skipped"};
+const NEXTS={null:"planned",planned:"done",done:"skip",skip:null};
+function avail(p){return !["done","skip"].includes(pstat(p.id))&&S.rate[p.id]!==-1;}
+function findItem(iid){for(const d of DAYS){const it=d.items.find(i=>i.id===iid);if(it)return {it,d};}
+  if(iid.startsWith("x-")){const pid=iid.slice(2);return {it:{id:iid,l:PM[pid].n,p:pid,s:"ADDED",added:true,t:"—"},d:DM[S.extra[pid]]||DAYS[0]};}return null;}
+function curItem(iid){const f=findItem(iid);if(!f)return null;const k=S.moved[iid]||f.d.key;return {it:itemsFor(k).find(i=>i.id===iid)||f.it,key:k};}
+
+function nextUp(){
+  const ph=tripPhase();const n=nowAms();
+  let start=dayIndex(todayKey());
+  for(let j=start;j<DAYS.length;j++){
+    const key=DAYS[j].key;
+    const L=itemsFor(key).filter(i=>!istat(i));
+    const cand=(j===start&&ph==="during")?L.filter(i=>tmin(i.t)+20>=n.min):L;
+    if(cand.length){const it=cand[0];let mins=null;
+      if(j===start&&ph==="during"&&it.t!=="—")mins=tmin(it.t)-n.min;
+      return {it,key,day:DAYS[j],mins};}
+  }
+  return null;
+}
+function missedToday(){if(tripPhase()!=="during")return [];const k=todayKey();return itemsFor(k).filter(i=>!istat(i)&&isPast(k,i));}
+
+/* =========================================================
+   LIVE DATA — weather (Open-Meteo when reachable) + Claude feed
+   ========================================================= */
+let WX=ls(LSW), FEED=ls(LSF);
+function online(){return navigator.onLine!==false;}
+const WCODE=c=>c===0?"clear":c<=3?"cloudy":c<=48?"fog":c<=57?"drizzle":c<=67?"rain":c<=77?"snow":c<=82?"showers":c<=99?"thunderstorm":"";
+async function refreshWeather(){
+  if(!online())return false;
+  const url="https://api.open-meteo.com/v1/forecast?latitude=52.3729&longitude=4.8939&current=temperature_2m,precipitation,weather_code&minutely_15=precipitation&hourly=precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunset,weather_code&timezone=Europe%2FAmsterdam&forecast_days=7";
+  try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),7000);
+    const r=await fetch(url,{signal:ctl.signal});clearTimeout(to);if(!r.ok)return false;const j=await r.json();
+    WX={at:Date.now(),src:"Open-Meteo",cur:{t:j.current.temperature_2m,p:j.current.precipitation,c:j.current.weather_code},
+      m15:{t:j.minutely_15.time,p:j.minutely_15.precipitation},
+      daily:j.daily.time.map((d,i)=>({date:d,hi:j.daily.temperature_2m_max[i],lo:j.daily.temperature_2m_min[i],rain:j.daily.precipitation_probability_max[i],sunset:(j.daily.sunset[i]||"").slice(11,16),c:j.daily.weather_code[i]}))};
+    ls(LSW,WX);wxLiveAt=Date.now();return true;}catch(_){return false;}
+}
+function feedWeather(){
+  // weather written by the scheduled Claude refresh, if fresher
+  if(FEED&&FEED.weather&&FEED.updatedAt){const t=Date.parse(FEED.updatedAt);if(!WX||t>WX.at)return {at:t,src:"Claude refresh",daily:FEED.weather.days||[],cur:FEED.weather.now||null,rainNote:FEED.weather.rainNote||""};}
+  return WX;
+}
+function dayWx(key){const w=feedWeather();const d=DM[key];
+  if(w&&w.daily){const x=w.daily.find(z=>z.date===d.date);if(x)return {txt:`${Math.round(x.hi)}° / ${Math.round(x.lo)}° · ${x.desc||WCODE(x.c)} · ${x.rain}% rain${x.sunset?" · sunset "+x.sunset:""}`,at:w.at};}
+  return {txt:d.wx,at:null};}
+function rainSoon(){
+  const w=WX;if(!w||!w.m15||Date.now()-w.at>3*3600e3)return null;
+  const n=nowAms();const today=n.date;
+  for(let i=0;i<w.m15.t.length;i++){const ts=w.m15.t[i];if(ts.slice(0,10)!==today)continue;const mm=tmin(ts.slice(11,16));const dt=mm-n.min;
+    if(dt<0||dt>120)continue;if(w.m15.p[i]>=0.2)return dt;}
+  return null;
+}
+function fmtClock(ms){if(!ms)return "—";return new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Amsterdam",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(ms));}
+
+/* =========================================================
+   RECOMMENDER
+   ========================================================= */
+function mealNow(min){const h=(min??nowAms().min)/60;if(h<5)return "N";if(h<10.75)return "B";if(h<15)return "L";if(h<17)return "S";if(h<21.5)return "D";return "N";}
+const MEALNAME={B:"Breakfast / brunch",L:"Lunch",S:"Afternoon bite",D:"Dinner",N:"Late-night"};
+function trendInfo(id){
+  const T=(FEED&&FEED.trends)||null;const map={hot:"hot",still:"worth",worth:"worth",hype:"hype",fresh:"fresh",local:"local"};
+  const out=Object.assign({},TREND[id]||{});
+  if(T){const gs=[];for(const g of Object.keys(map))if((T[g]||[]).some(x=>(x.id||x)===id))gs.push(map[g]);if(gs.length){out.g=gs;out.src=out.src||"Claude refresh";const x=Object.values(T).flat().find(x=>x&&x.id===id);if(x&&x.worth)out.worth=x.worth;}}
+  return out.g?out:null;
+}
+function trendOf(p){const t=trendInfo(p.id);if(t){if(t.g.includes("hype"))return "hype";if(t.g.includes("hot"))return "hot";if(t.g.includes("fresh"))return "fresh";if(t.g.includes("worth"))return "still";if(t.g.includes("local"))return "local";}return p.tr||null;}
+function score(p,anc,ctx){
+  let s=(VR[p.v]||1)*10;
+  const tm=travelMin(p,anc);s-=Math.min(tm,60)*0.6;
+  if(S.rate[p.id]===1)s+=6;
+  // de-prioritise cuisines similar to ones disliked
+  const dis=P.filter(x=>S.rate[x.id]===-1).map(x=>x.cu);if(dis.includes(p.cu))s-=12;
+  const tr=trendOf(p);if(tr==="hot"||tr==="fresh")s+=3;if(tr==="hype")s-=8;
+  if(ctx&&ctx.openOnly&&!openAt(p,ctx.min,ctx.dow))s-=100;
+  if(p.res==="r")s-=6;
+  if(pstat(p.id)==="planned")s+=2;
+  if(ctx&&ctx.planned&&ctx.planned.has(p.id))s+=9;
+  return s;
+}
+/* What counts as food for this moment. Bakeries/desserts never lead at breakfast-lunch-dinner. */
+function isMealFor(p,meal){
+  if(meal==="B")return p.bf.includes("B")&&(p.k==="meal"||p.cat.includes("bakery"));
+  if(meal==="L")return p.k==="meal"&&(p.bf.includes("L")||p.bf.includes("B"));
+  if(meal==="D")return p.k==="meal"&&p.bf.includes("D");
+  if(meal==="N")return p.bf.includes("N")||p.cat.includes("late");
+  return p.bf.includes("S")||p.k==="snack";
+}
+function pool(meal,hunger){
+  let L=P.filter(p=>p.k!=="sight"&&avail(p)&&p.v!=="photo"&&hasLL(p));
+  if(meal==="N"&&!hunger&&!ateDinnerToday()){const m=L.filter(p=>p.k==="meal"&&(p.bf.includes("N")||p.cat.includes("late")||p.bf.includes("D")));if(m.length>=3)return m.concat(L.filter(p=>p.k==="snack"&&(p.bf.includes("N")||p.cat.includes("late"))));}
+  if(hunger==="Light")return L.filter(p=>(p.k==="snack"||p.pr==="€")&&(meal==="D"||meal==="N"?true:p.bf.some(b=>"BLS".includes(b))));
+  if(hunger==="Hungry")return L.filter(p=>p.k==="meal"&&isMealFor(p,meal==="S"?"L":meal==="N"?"N":meal));
+  return L.filter(p=>isMealFor(p,meal));
+}
+function recommend(opts){
+  const n=nowAms(),anc=opts.anc||whereAmI(),meal=opts.meal||mealNow(),at=opts.at??n.min;
+  const planned=new Set(tripPhase()==="during"?itemsFor(todayKey()).filter(i=>i.p&&!istat(i)).map(i=>i.p):[]);
+  const ctx={openOnly:true,min:at,dow:n.dow,planned};
+  let L=pool(meal,opts.hunger);
+  const open=L.filter(p=>openAt(p,at,n.dow)&&(closesIn(p,at,n.dow)??999)>=40);if(open.length>=3)L=open;
+  L.forEach(p=>p._s=score(p,anc,ctx));
+  const sorted=L.slice().sort((a,b)=>b._s-a._s);
+  const used=new Set();const pick=(arr,cond)=>{const x=arr.find(p=>!used.has(p.id)&&(!cond||cond(p)));if(x)used.add(x.id);return x;};
+  const proper=p=>p.k==="meal"&&(meal==="B"?true:PRN[p.pr]>=2||p.cat.includes("indonesian")||p.cat.includes("surinamese"));
+  const hungryLate=meal==="N"&&!ateDinnerToday();
+  const best=pick(sorted,p=>meal==="S"?true:meal==="N"?(hungryLate?p.k==="meal":true):proper(p));
+  const prop=pick(sorted,proper);
+  const viral=pick(sorted,p=>["hot","still","fresh"].includes(trendOf(p))||p.v==="must");
+  const cheap=pick(sorted,p=>p.pr==="€");
+  const tried=new Set(P.filter(p=>pstat(p.id)==="done").map(p=>p.cu));
+  const diff=pick(sorted,p=>!tried.has(p.cu)&&p.cu!==(best&&best.cu));
+  const lateL=P.filter(p=>avail(p)&&hasLL(p)&&p.v!=="photo"&&(p.cat.includes("late")||p.cat.includes("fries")||p.k==="snack")&&openAt(p,at,n.dow)).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc));
+  const late=pick(lateL);
+  const rows=[["BEST OVERALL",best],["PROPER MEAL",prop],["VIRAL NEARBY",viral],["CHEAP",cheap],["SOMETHING DIFFERENT",diff],[meal==="N"?"LATE / QUICK":"QUICK BITE",late]].filter(r=>r[1]);
+  return {rows,anc,meal};
+}
+/* =========================================================
+   UI BITS
+   ========================================================= */
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function toast(t){const el=document.getElementById("toast");el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>el.hidden=true,1800);}
+function altFor(p,anc){
+  const n=nowAms();
+  if(ALT[p.id]){const a=ALT[p.id].map(id=>PM[id]).filter(x=>x&&avail(x)).slice(0,2);if(a.length)return {why:ALTWHY[p.id]||"Better pick",list:a};}
+  // automatic: famous place far away or likely closed → nearest good place of the same kind
+  if(p.k!=="sight"&&hasLL(p)&&(travelMin(p,anc)>25||!openAt(p,n.min,n.dow))&&VR[p.v]>=4){
+    const main=p.cat.find(c=>!["budget","cheap","late","lunch","dinner"].includes(c))||p.cat[0];
+    const c=P.filter(x=>x.id!==p.id&&x.k===p.k&&avail(x)&&hasLL(x)&&x.cat.includes(main)&&VR[x.v]>=3&&openAt(x,n.min,n.dow)).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc))[0];
+    if(c&&travelMin(c,anc)<travelMin(p,anc))return {why:!openAt(p,n.min,n.dow)?"Likely closed now · nearby instead":"Closer alternative",list:[c]};
+  }
+  return null;
+}
+function placeCard(p,anc){
+  const st=pstat(p.id);anc=anc||whereAmI();
+  const tr=trendOf(p);const ti=trendInfo(p.id);const al=altFor(p,anc);
+  return `<div class="pc ${st||""}"><button class="main" data-open="${p.id}">
+  <div class="hd"><h3>${esc(p.n)}${st==="done"?" ✓":""}</h3><span class="cu">${esc(p.cu)}</span></div>
+  ${p.o?`<div class="ord"><b>${p.a?"ORDER FIRST":"ORDER"}</b>${esc(p.o)}</div>`:`<div class="sec">${esc(p.why)}</div>`}
+  ${p.a?`<div class="sec"><b>SECOND PICK</b>${esc(p.a)}</div>`:""}
+  ${p.note?`<div class="note">⚑ ${esc(p.note)}</div>`:""}
+  <div class="meta">${p.pr?`<span class="t">${p.pr}</span>`:""}<span class="t">${esc(travel(p,anc))}</span>${p.q?`<span class="t">Queue ${p.q} (typical)</span>`:""}${p.res?`<span class="t">${RES[p.res]}</span>`:""}${p.v?`<span class="t">${V[p.v]}</span>`:""}${tr==="hot"?`<span class="t">📈 hot · checked ${esc(((FEED&&FEED.updatedAt)?fmtClock(Date.parse(FEED.updatedAt)):TREND_CHECKED).split(" ·")[0])}</span>`:tr==="fresh"?`<span class="t">✨ new</span>`:""}${ti&&ti.worth?`<span class="t">Worth it: ${ti.worth}</span>`:""}${p.k!=="sight"&&hours(p)?`<span class="t">${hoursLabel(p,true)}</span>`:""}</div></button>
+  ${al?`<div class="sec" style="margin-top:6px">↪ <b>${esc(al.why.toUpperCase())}</b>${al.list.map(a=>`<button class="btn" style="padding:2px 8px;font-size:12px;margin-left:4px" data-open="${a.id}">${esc(a.n)}</button>`).join("")}</div>`:""}
+  <div class="qa"><button class="${st==="done"?"on":""}" data-pset="${p.id}:done">✓ ${p.k==="sight"?"Done":"Ate here"}</button><button class="${st==="planned"?"sv":""}" data-pset="${p.id}:planned">☆ Save</button><button data-pset="${p.id}:skip">✕ Skip</button><button data-open="${p.id}">＋ Day</button><a href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div></div>`;
+}
+function itemRow(key,it,nx){
+  const st=istat(it);const p=it.p?PM[it.p]:null;const past=isPast(key,it);
+  return `<li class="it ${st||""} ${past?"past":""} ${nx?"nx":""}"><time>${esc(it.t)}</time>
+  <button class="ck" id="ck-${it.id}" data-tick="${it.id}" aria-label="Mark ${esc(it.l)} done">${st==="done"?"✓":""}</button>
+  <div class="txt"><button class="open" data-item="${it.id}"><span class="slot">${esc(it.s)}${it.from?" · moved":""}${nx?" · NEXT":""}</span><b>${esc(it.l)}</b>
+  ${p&&p.o?`<div class="sub"><span style="color:var(--accent);font:500 10.5px var(--mono)">ORDER </span>${esc(p.o)}</div>`:""}
+  ${p&&p.note?`<div class="note">⚑ ${esc(p.note)}</div>`:""}
+  ${it.d?`<div class="sub">${esc(it.d)}</div>`:""}</button></div>
+  <button class="more" data-item="${it.id}" aria-label="Options">⋯</button>
+  ${past&&!st?`<div class="ask">DID YOU DO THIS? <button data-tick="${it.id}">✓ Done</button><button data-skipitem="${it.id}">Skip</button><button data-item="${it.id}">Move</button></div>`:""}</li>`;
+}
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+let view="home",dayKey=null,dayPinned=false,foodCat="trending",foodSort="best",q="",mapFilter="today",rtMode=null,hunger=null,lastToday=null;
+
+function alerts(){
+  const out=[];const n=nowAms();const k=todayKey();const ph=tripPhase();const d=DM[k];
+  const nu=nextUp();
+  if(ph==="during"&&d.summit){const lv=d.items.find(i=>i.s==="LEAVE");if(lv&&!istat(lv)){const m=tmin(lv.t)-n.min;if(m>=-5&&m<=75)out.push(["🚨",`Leave in ${fmtDur(Math.max(0,m))} for the summit`]);}}
+  if(ph==="during"&&d.depart){const lv=d.items.find(i=>i.s==="LEAVE");if(lv&&!istat(lv)){const m=tmin(lv.t)-n.min;if(m>=-10&&m<=90)out.push(["🚨",`Taxi to Schiphol in ${fmtDur(Math.max(0,m))} · EK146 11:25`]);}}
+  if(FEED&&FEED.alerts&&FEED.updatedAt&&Date.now()-Date.parse(FEED.updatedAt)<18*3600e3)FEED.alerts.slice(0,2).forEach(a=>out.push(["📢",a]));
+  if(FEED&&FEED.weather&&FEED.weather.rainNote&&Date.now()-Date.parse(FEED.updatedAt)<4*3600e3)out.push(["🌧",FEED.weather.rainNote]);
+  const rs=rainSoon();if(rs!==null)out.push(["🌧",`Rain in ~${fmtDur(rs)}. Tap RAIN PLAN for indoor options.`]);
+  else if(ph==="during"&&/storm/i.test(dayWx(k).txt)&&n.min>=15*60)out.push(["🌧","Storms forecast this evening; keep the walk short."]);
+  if(nu&&nu.it.p&&nu.mins!=null){const p=PM[nu.it.p];
+    if(["rijks","annefrank","vangogh"].includes(p.id)&&nu.mins<=90&&nu.mins>=0)out.push(["🎟",`${p.n} slot in ${fmtDur(nu.mins)}`]);
+    const ci=closesIn(p,n.min,n.dow);if(ci!==null&&ci<=60)out.push(["⏳",`${p.n} likely closes in ~${ci} min (saved hours)`]);}
+  const b=BOOK.find(b=>!["done","skip"].includes(pstat(b.p))&&dayIndex(b.day)>=dayIndex(k)&&!val(S.items,"booked-"+b.p));
+  if(b)out.push(["📞",`Book ${PM[b.p].n} for ${b.when}`,b.p]);
+  if(ph==="during"&&k==="sat"&&xstat("albertcuyp")!=="done"&&xstat("albertcuyp")!=="skip")out.push(["🛒","Today is the last chance for Albert Cuyp Market (closed Sunday)."]);
+  return out.slice(0,3);
+}
+
+function renderHome(){
+  const k=todayKey(),d=DM[k],dp=dayProg(k),n=nowAms(),ph=tripPhase();
+  const foodTried=P.filter(p=>p.k!=="sight"&&pstat(p.id)==="done").length;
+  const sights=XM.filter(x=>!x.startsWith("summit")&&xstat(x)==="done").length;
+  const sumDone=["summit1","summit2"].filter(x=>xstat(x)==="done").length;
+  const daysLeft=Math.max(0,DAYS.filter(x=>x.date>=n.date&&!x.depart).length);
+  const nu=nextUp();const anc=whereAmI();
+  const depart=ph==="during"&&d.depart;
+  let nh="";
+  if(nu){const it=nu.it,p=it.p?PM[it.p]:(it.dest?PM[it.dest]:null);
+    nh=`<div class="next"><div class="lbl"><span>NEXT → ${esc(it.s)}${it.t!=="—"?" · "+it.t:""}${nu.key!==k?" · "+esc(nu.day.title):""}</span>${nu.mins!=null?`<span class="cd">${nu.mins<=0?"now":"in "+fmtDur(nu.mins)}</span>`:""}</div>
+    <h3>${esc(it.l)}</h3>
+    ${p&&p.o?`<div class="ord"><b>ORDER</b>${esc(p.o)}</div>`:""}
+    ${p&&p.note?`<div class="note">⚑ ${esc(p.note)}</div>`:""}
+    <div class="meta">${p&&hasLL(p)&&!p.id.startsWith("summit")?`<span class="t">${esc(travel(p,anc))}</span>`:""}${p&&p.pr?`<span class="t">${p.pr}</span>`:""}${p&&p.res?`<span class="t">${RES[p.res]}</span>`:""}${p&&p.k!=="sight"&&hours(p)?`<span class="t">${hoursLabel(p,true)}</span>`:""}</div>
+    ${it.d?`<div class="sm muted" style="margin-top:4px">${esc(it.d)}</div>`:""}
+    <div class="acts">${p?`<a class="btn" href="${maps(p)}" target="_blank" rel="noopener">➜ GO</a>`:""}<button class="btn pri" data-tick="${it.id}">✓ DONE</button>${depart?"":`<button class="btn" data-item="${it.id}">⇄ REPLACE</button>`}</div></div>`;}
+  else nh=`<div class="next"><h3>${ph==="after"?"Trip complete. Safe flight home.":"Everything planned is done."}</h3><div class="sm muted">${ph==="after"?"":"Tap TONIGHT or SURPRISE."}</div></div>`;
+  const al=alerts();const miss=missedToday();
+  const btns=depart?[["foodnow","🍽","BREAKFAST"]]:
+    [["whatnow","🧭","WHAT NOW?"],["foodnow","🍽","FOOD NOW"],["hungry","😋","I’M HUNGRY"],["tonight","🌙","TONIGHT"],["near","📍","NEAR ME"],["dinner","🍷","DINNER"],["trending","🔥","TRENDING"],["rain","☔","RAIN PLAN"],["lastchance","⏳","LAST CHANCE"],["dontmiss","⭐","DON’T MISS"]];
+  document.getElementById("v-home").innerHTML=`
+  <div class="daylbl">${ph==="during"?"TODAY · ":ph==="before"?"TRIP STARTS · ":"TRIP ENDED · "}${esc(d.title)} · ${esc(d.tag)}</div>
+  ${nh}
+  <div class="sm" style="margin-top:10px;display:flex;justify-content:space-between"><b>Today ${dp.done} / ${dp.total}</b><span class="muted">${esc(dayWx(k).txt)}</span></div>
+  <div class="bar"><i style="width:${dp.total?dp.done/dp.total*100:0}%"></i></div>
+  ${depart?`<div class="card sm" style="margin-top:10px"><b>✈ Departure mode.</b> Breakfast → checkout → taxi 07:45 → Schiphol 08:15–08:30 → EK146 11:25. No sightseeing today.</div>`:""}
+  ${miss.length?`<div class="alert info" style="margin-top:8px"><b>${miss.length} earlier item${miss.length>1?"s":""} not ticked.</b> <button class="btn" style="padding:3px 8px;font-size:12px" data-v="days">Review</button></div>`:""}
+  ${al.length?`<div class="alerts">${al.map(a=>`<div class="alert">${a[0]} ${esc(a[1])}${a[2]?` <button class="btn" style="padding:3px 8px;font-size:12px" data-booked="${a[2]}">Booked ✓</button>`:""}</div>`).join("")}</div>`:""}
+  <div class="big">${btns.map(([k2,i,t])=>`<button id="rt-${k2}" data-rt="${k2}" class="${rtMode===k2?"on":""} ${k2==="hungry"?"hot":""}"><span>${i}</span>${t}</button>`).join("")}</div>
+  <div id="rtOut" class="stack" style="margin-top:10px">${rtMode?renderRT(rtMode):""}</div>
+  <div class="tiles">
+    <div class="tile"><span>FOOD TRIED</span><b>${foodTried}</b></div>
+    <div class="tile"><span>SIGHTS</span><b>${sights}</b></div>
+    <div class="tile"><span>SUMMIT</span><b>${sumDone}/2</b></div>
+    <div class="tile"><span>DAYS LEFT</span><b>${daysLeft}</b></div>
+    <div class="tile"><span>MISSIONS</span><b>${FM.filter(m=>mstat(m)==="done").length}/${FM.length}</b></div>
+  </div>
+  <p class="src" style="margin-top:8px">${esc(wxStamp())}<br>${esc(trendStamp().txt)}<br>SAVED · opening hours &amp; queues checked 6 Oct</p>`;
+}
+function basisLine(anc){return `<div class="sm muted">📍 Based on: <b>${esc(anc.basis||anc.n)}</b> · <button class="btn" style="padding:2px 8px;font-size:12px" data-loc="1">change</button>${online()?"":" · ⚪ offline: hours are saved, not live"}</div>`;}
+function renderRT(m){
+  const n=nowAms();const anc=whereAmI();
+  const fromLine=basisLine(anc);
+  const rows=(R)=>R.rows.map(([t,p])=>`<div><div class="lab">${t}</div>${placeCard(p,R.anc)}</div>`).join("")||`<div class="card sm">Nothing likely open nearby in the saved data. Try DINNER or change location.</div>`;
+  if(m==="whatnow"){
+    const nu=nextUp();const R=recommend({});
+    return fromLine+`<div class="card"><div class="lab" style="margin-top:0">BEST MOVE</div><h3>${nu?esc(nu.it.l):"Free time"}</h3><div class="sm">${nu?esc(nu.it.d||""):"Nothing planned. Try TONIGHT or FOOD NOW."}${nu&&nu.mins!=null?` · ${nu.mins<0?"now":"in "+fmtDur(nu.mins)}`:""}</div></div>
+    <div class="lab">OR</div>${R.rows.slice(0,2).map(([t,p])=>placeCard(p,R.anc)).join("")}`;}
+  if((m==="foodnow"||m==="hungry")&&anc.src==="plan"&&/Summit/.test(anc.basis)){const R=recommend({meal:"D",at:18*60,anc:ANCH.centraal});return fromLine+`<div class="card sm"><b>You’re at World Summit AI.</b> Eat at the venue; the city is 25–30 min away. Dinner picks near Centraal for after the coach:</div>`+rows(R);}
+  if(m==="foodnow"){const R=recommend({});return fromLine+`<div class="sm"><b>${MEALNAME[R.meal]} time</b> <span class="muted">(${n.hm}). Done/skipped places hidden.</span></div>`+rows(R);}
+  if(m==="dinner"){const at=Math.max(n.min,17*60);const R=recommend({meal:at>=21.5*60?"N":"D",at});return fromLine+rows(R)+`<div class="lab">DESSERT AFTER (OPTIONAL)</div>`+P.filter(p=>p.cat.includes("dessert")&&avail(p)&&hasLL(p)&&p.v!=="photo"&&openAt(p,Math.min(at+90,23*60),n.dow)).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc)).slice(0,2).map(p=>placeCard(p,anc)).join("");}
+  if(m==="hungry"){
+    if(!hunger)return `<div class="card"><h3>How hungry?</h3><div class="hungry"><button data-hunger="Light">Light</button><button data-hunger="Normal">Normal</button><button data-hunger="Hungry">Hungry</button></div></div>`;
+    const R=recommend({hunger});return fromLine+`<div class="sm muted">${hunger} · ${MEALNAME[R.meal]} · <button class="btn" style="padding:2px 8px;font-size:12px" data-hunger="">change</button></div>`+rows(R);}
+  if(m==="near"){
+    const L=P.filter(p=>avail(p)&&hasLL(p)&&p.v!=="photo"&&!p.id.startsWith("summit")).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc)).slice(0,8);
+    return fromLine+`<div class="acts" style="margin-top:0"><button class="btn" id="gpsBtn" data-gps="1">📍 Use my location</button></div>`+L.map(p=>placeCard(p,anc)).join("");}
+  if(m==="trending")return renderTrends(anc);
+  if(m==="tonight")return fromLine+renderTonight(anc);
+  if(m==="lastchance")return renderLastChance();
+  if(m==="rain"){const L=RAINPLAN.map(id=>PM[id]).filter(p=>p&&avail(p)).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc)).slice(0,6);
+    return fromLine+`<div class="sm muted">Indoor options, nearest first. ${esc(DM[todayKey()].planB||"")}</div>`+L.map(p=>placeCard(p,anc)).join("");}
+  if(m==="dontmiss")return renderDontMiss();
+  if(m==="surprise"){const L=P.filter(p=>avail(p)&&hasLL(p)&&["gem","food","trip"].includes(p.v));const p=L[Math.floor(Math.random()*L.length)];return p?placeCard(p,anc):"Nothing left!";}
+  return "";
+}
+/* TONIGHT: the rest of the evening from now — dinner → short walk → optional late bite → hotel */
+function ateDinnerToday(){
+  const k=todayKey();const n=nowAms();const today0=Date.parse(n.date+"T00:00:00+02:00");
+  if(itemsFor(k).some(i=>/DINNER/.test(i.s)&&istat(i)==="done"))return true;
+  return Object.entries(S.when||{}).some(([id,t])=>PM[id]&&PM[id].k==="meal"&&pstat(id)==="done"&&t>=today0+16*3600e3);
+}
+function renderTonight(anc){
+  const n=nowAms();const k=todayKey();const idx=dayIndex(k);const tomorrow=DAYS[idx+1];
+  const curfew=tomorrow&&(tomorrow.summit||tomorrow.depart)?22.5*60:23.75*60;
+  const start=Math.max(n.min,17*60);
+  if(DM[k].depart&&tripPhase()==="during")return `<div class="card sm">Departure day: no evening plan. Safe flight on EK146.</div>`;
+  const wet=rainSoon()!==null||/storm|rain 8|80%/i.test(dayWx(k).txt);
+  const steps=[];let t=start;let here=anc;
+  const add=(time,label,p,extra)=>steps.push({time,label,p,extra});
+  if(!ateDinnerToday()){
+    let dinner=null;const planned=itemsFor(k).find(i=>/DINNER/.test(i.s)&&!istat(i)&&i.p);
+    if(planned){const p=PM[planned.p];if(openAt(p,t,n.dow)&&(closesIn(p,t,n.dow)??999)>=75)dinner=p;}
+    const meal=t>=21.5*60?"N":"D";
+    if(!dinner){const R=recommend({meal,at:t,anc:here});dinner=(R.rows.find(r=>r[0]==="BEST OVERALL")||R.rows[0]||[])[1];}
+    if(dinner){t+=travelMin(dinner,here);add(t,meal==="N"?"Late food":"Dinner",dinner,planned&&planned.p===dinner.id?"from your plan":"");here=dinner;t+=meal==="N"?35:80;}
+  }
+  const ate=ateDinnerToday()||steps.length>0;
+  const evening=itemsFor(k).filter(i=>/EVENING|NIGHT|SUNSET|WALK/.test(i.s)&&!istat(i)&&i.p&&hasLL(PM[i.p])&&tmin(i.t)+30>=t);
+  if(evening.length&&t<curfew-40){const it=evening[0];const p=PM[it.p];t=Math.max(t+travelMin(p,here),tmin(it.t));add(t,"Evening",p,wet?"from your plan · skip if it’s pouring":"from your plan");here=p;t+=it.s==="NIGHT"?75:30;}
+  else if(!wet&&t<curfew-50){
+    const sights=["torensluis","waag","sevenbridges","magere","brouwersgracht","jordaan","goldenbend","dam"].map(id=>PM[id]).filter(p=>p&&hasLL(p)).sort((a,b)=>(pstat(a.id)==="done")-(pstat(b.id)==="done")||km(here,a)-km(here,b));
+    const w=sights[0];if(w&&travelMin(w,here)<=15){t+=travelMin(w,here);add(t,"Short canal walk",w,"20 min");here=w;t+=20;}
+  }
+  if(t<curfew-35){
+    const late=P.filter(p=>avail(p)&&hasLL(p)&&p.v!=="photo"&&(ate?p.k==="snack":true)&&(p.cat.includes("dessert")||p.cat.includes("late")||p.cat.includes("fries"))&&openAt(p,t+10,n.dow)&&(closesIn(p,t+10,n.dow)??999)>=20).sort((a,b)=>km(here,a)-km(here,b))[0];
+    if(late&&travelMin(late,here)<=12){t+=travelMin(late,here);add(t,"Optional late bite",late,"");here=late;t+=20;}
+  }
+  const back=travelMin(HOTEL,here);t+=back;
+  const hhmm=m=>`${String(Math.floor(m/60)%24).padStart(2,"0")}:${String(Math.round(m%60)).padStart(2,"0")}`;
+  return `<div class="card"><div class="lab" style="margin-top:0">TONIGHT ${start>n.min?"(FROM 17:00)":"FROM NOW"}${wet?" · RAIN-AWARE":""}</div>
+  ${ateDinnerToday()?`<div class="sm muted">You’ve had dinner, so this skips straight to the evening.</div>`:""}
+  <ol class="sm" style="margin:6px 0 0;padding-left:18px">${steps.map(s=>`<li style="margin:6px 0"><b>${hhmm(s.time)} · ${esc(s.label)}:</b> <button class="btn" style="padding:2px 8px;font-size:13px" data-open="${s.p.id}">${esc(s.p.n)}</button>${s.p.o&&s.p.k!=="sight"?`<div class="muted">Order: ${esc(s.p.o)}</div>`:""}${s.extra?` <span class="muted">${esc(s.extra)}</span>`:""}</li>`).join("")}
+  <li style="margin:6px 0"><b>${hhmm(t)} · Hotel</b> <span class="muted">(${back} min)</span>${tomorrow&&tomorrow.summit?` · summit tomorrow, leave 07:35`:tomorrow&&tomorrow.depart?" · taxi 07:45 tomorrow":""}</li></ol>
+  <div class="src">Hours are saved data (checked 6 Oct).</div></div>`;
+}
+/* LAST CHANCE: things that become impossible or impractical before Sunday’s flight */
+function renderLastChance(){
+  const n=nowAms();const k=todayKey();const di=dayIndex(k);const satI=dayIndex("sat");
+  if(di>satI)return `<div class="card sm">Departure day. Nothing left to chase — enjoy breakfast.</div>`;
+  const out=[];
+  const need=(id)=>!["done","skip"].includes(xstat(id)||pstat(id));
+  if(need("noordermarkt"))out.push({p:"noordermarkt",why:"Saturday-only market",by:"Sat 10 Oct, before 15:00"});
+  if(PM.bosschebol&&need("bosschebol"))out.push({p:"bosschebol",why:"Only at the Saturday market",by:"Sat 10 Oct morning"});
+  if(need("albertcuyp"))out.push({p:"albertcuyp",why:"Closed Sunday",by:"Sat 10 Oct, 17:00"});
+  ["rudis","holtkamp","stubbes","lanskroon","hansegstorf"].forEach(id=>{const p=PM[id];if(p&&need(id)&&FM.some(m=>m.c.includes(id)&&mstat(m)!=="done"))out.push({p:id,why:"Closed Sunday · "+(p.o||""),by:"Sat 10 Oct"});});
+  BOOK.forEach(b=>{if(need(b.p)&&!val(S.items,"booked-"+b.p)&&dayIndex(b.day)>=di)out.push({p:b.p,why:"Needs a booking",by:"book now for "+b.when});});
+  if(k==="sat"){["rijks","annefrank","m-indo","m-dutch","m-herring","m-fries"].forEach(id=>{if(id.startsWith("m-")){const m=FM.find(x=>x.id===id);if(m&&!["done","skip"].includes(mstat(m)))out.push({p:m.w,why:"Last full day for "+m.t,by:"tonight"});}else if(need(id))out.push({p:id,why:"Sunday is travel only",by:"today"});});}
+  const gone=(x)=>{const p=PM[x.p];if(!p)return true;if(x.why.startsWith("Needs")){const b=BOOK.find(b=>b.p===x.p);return b&&b.day===k&&n.min>tmin((b.when.match(/\d\d:\d\d/)||["23:59"])[0]);}const h=hours(p);
+    // on Saturday (last open day) a place that has closed for the day is no longer possible
+    if(k==="sat"&&h&&n.min>=h[1]*60)return true;
+    if(k==="sat"&&p.cl&&p.cl.includes(6))return true;return false;};
+  const seen=new Set();const L=out.filter(x=>!gone(x)&&!seen.has(x.p)&&seen.add(x.p)).slice(0,8);
+  return `<div class="card"><div class="lab" style="margin-top:0">⏳ LAST CHANCE · flight Sun 11:25</div>${L.length?`<ul style="margin:0;padding-left:18px">${L.map(x=>`<li style="margin:6px 0"><button class="btn" style="padding:2px 8px;font-size:13px" data-open="${x.p}">${esc(PM[x.p].n)}</button> <span class="sm">${esc(x.why)}</span> <span class="sm muted">· by ${esc(x.by)}</span></li>`).join("")}</ul>`:`<div class="sm">Nothing time-critical left.</div>`}</div>`;
+}
+function renderTrends(anc){
+  const checked=(FEED&&FEED.updatedAt)?fmtClock(Date.parse(FEED.updatedAt)):TREND_CHECKED;
+  const extra=(g)=>{const T=FEED&&FEED.trends;const src=T&&(T[g]||(g==="worth"&&T.still));return (src||[]).filter(x=>x&&!x.id&&x.n);};
+  const card=(p)=>{const ti=trendInfo(p.id)||{};return `<div>${placeCard(p,anc)}<div class="src" style="margin:3px 4px 0">Source: ${esc(ti.src||"")} · ${esc(p.ar||"")} · checked ${esc(checked)}</div></div>`;};
+  const grp=(g,title)=>{const ids=Object.keys(TREND).filter(id=>(trendInfo(id)||{g:[]}).g.includes(g)&&PM[id]);
+    const L=ids.map(id=>PM[id]).sort((a,b)=>(pstat(a.id)==="done")-(pstat(b.id)==="done")||travelMin(a,anc)-travelMin(b,anc));
+    const ex=extra(g).map(x=>`<div class="pc"><div class="hd"><h3>${esc(x.n)}</h3><span class="cu">${esc(x.area||"")}</span></div>${x.item?`<div class="ord"><b>ORDER</b>${esc(x.item)}</div>`:""}<div class="sec">${esc(x.why||"")}${x.worth?" · Worth it: "+esc(x.worth):""}</div><div class="src">Claude refresh · checked ${esc(checked)}</div></div>`).join("");
+    return `<div class="lab">${title}</div>`+ex+L.map(card).join("");};
+  return `<div class="card sm"><b>${esc(trendStamp().txt)}</b><br><span class="muted">What Amsterdam was talking about at that check. Nearest first.</span></div>
+  ${grp("hot","📈 HOT RIGHT NOW")}${grp("worth","🔥 VIRAL + WORTH IT")}${grp("hype","📱 HYPE / LONG QUEUE / SKIP")}${grp("fresh","✨ NEW IN AMSTERDAM")}${grp("local","🏠 LOCAL COUNTERPOINT")}`;
+}
+function renderDontMiss(){
+  const k=todayKey();const left=DAYS.filter(d=>dayIndex(d.key)>=dayIndex(k)&&!d.depart).length;
+  const res=(ids,max)=>ids.map(id=>{if(id.startsWith("m-")){const m=FM.find(x=>x.id===id);const s=mstat(m);return ["done","skip"].includes(s)?null:{t:m.t,w:PM[m.w]};}
+    const s=xstat(id);if(["done","skip"].includes(s))return null;if(id==="albertcuyp"&&k==="sun")return null;return {t:PM[id].n,w:PM[id]};}).filter(Boolean).slice(0,max);
+  const must=res(MUST,5),nice=res(NICE,5),busy=res(BUSY,6);
+  const li=(x)=>`<li><button class="btn" style="padding:3px 8px;font-size:13px;margin:2px 0" data-open="${x.w.id}">${esc(x.t)}</button>${x.w.o&&!x.t.includes(x.w.n)?` <span class="sm muted">→ ${esc(x.w.n)}</span>`:""}</li>`;
+  return `<div class="card"><div class="sm muted">${left} exploring day${left===1?"":"s"} left (Sunday is travel only). Not everything deserves completion.</div>
+  <div class="lab" style="color:var(--accent)">🚨 MUST DO BEFORE LEAVING</div><ul style="margin:0;padding-left:18px;list-style:none">${must.map(li).join("")||"<li>All done ✓</li>"}</ul>
+  <div class="lab">WOULD BE NICE</div><ul style="margin:0;padding-left:18px;list-style:none">${nice.map(li).join("")||"<li>✓</li>"}</ul>
+  <div class="lab">SKIP IF BUSY</div><div class="sm muted">${esc(busy.map(x=>x.t).join(" · ")||"—")}</div></div>`;
+}
+
+function renderDays(){
+  const tk=todayKey();if(!dayKey||!dayPinned)dayKey=tk;
+  const d=DM[dayKey],L=itemsFor(dayKey),dp=dayProg(dayKey);const nu=nextUp();
+  document.getElementById("v-days").innerHTML=`
+  <h2>My Amsterdam days</h2>
+  <div class="chips">${DAYS.map(x=>{const p=dayProg(x.key);return `<button class="chip" id="day-${x.key}" data-day="${x.key}" aria-pressed="${x.key===dayKey}">${x.key===tk&&tripPhase()==="during"?"● ":""}${x.title.slice(0,3)} ${x.title.slice(4,6).trim()} · ${p.done}/${p.total}</button>`}).join("")}</div>
+  <div class="dayhd"><div><div class="daytag">${esc(d.tag)}${d.key===tk&&tripPhase()==="during"?" · TODAY":""}</div><h3>${esc(d.title)}</h3></div><div class="sm muted" style="text-align:right;max-width:55%">${esc(dayWx(dayKey).txt)}<br><span style="font-size:11px">${esc(wxStamp().split(" ·")[0])}</span></div></div>
+  <div class="sm"><b>Day progress: ${dp.done} / ${dp.total}</b></div><div class="bar"><i style="width:${dp.total?dp.done/dp.total*100:0}%"></i></div>
+  <ul class="items">${L.map(it=>itemRow(dayKey,it,nu&&nu.it.id===it.id)).join("")}</ul>
+  <details style="margin-top:10px"><summary>Plan B · rain / tired</summary><div class="sm">${esc(d.planB)}</div></details>
+  ${d.summit?summitCard():""}
+  ${d.depart?`<div class="card sm" style="margin-top:10px"><b>Sunday objective:</b> breakfast → checkout → airport → relaxed flight. No sightseeing, no missions, no errands.</div>`:""}
+  <details style="margin-top:10px"><summary>Notes for ${esc(d.title)}</summary><label class="sm muted" for="note-${d.key}">Saved on this phone</label><textarea id="note-${d.key}" data-note="${d.key}">${esc(S.notes[d.key]||"")}</textarea></details>
+  ${dayKey==="tue"?`<details style="margin-top:10px"><summary>Did Monday’s walk (5 Oct)?</summary><div class="sm">Dam, Begijnhof, Flower Market, Golden Bend, Nine Streets, Westerkerk, Jordaan, Sefa.</div><div class="acts"><button class="btn pri" id="monDone">Mark all done</button></div></details>`:""}`;
+}
+function summitCard(){
+  return `<details style="margin-top:10px"><summary>🎤 World Summit AI · essentials</summary>
+  <ul class="sm">
+   <li class="muted">SAVED · summit details checked 6 Oct 2026.</li>
+   <li><b>10th edition</b> · “Guardians of tomorrow: Shaping the new AI paradigm”.</li>
+   <li><b>Venue:</b> Taets Art & Event Park, Middenweg 62 (Hembrugterrein), Zaandam.</li>
+   <li><b>Hours:</b> 08:00–17:00 both days. Registration time not published.</li>
+   <li><b>Transport:</b> organiser coaches Taets ↔ central Amsterdam (timetable from organiser). Train Centraal → Zaandam + bus 63/456. Uber ~20–25 min.</li>
+   <li><b>Speakers:</b> Daphne Koller, Zico Kolter, Gary Marcus, Harrison Chase, Audrey Tang, Mark Papermaster. Times in the event app.</li>
+   <li><b>Also:</b> 10 tracks, Pathfounders startup stage, investor matchmaking; World AI Week side events 5–9 Oct.</li>
+  </ul>${FEED&&FEED.summit&&FEED.summit.length?`<div class="lab">LATEST (${esc(fmtClock(Date.parse(FEED.updatedAt)))})</div><ul class="sm">${FEED.summit.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`:""}</details>`;
+}
+
+const CATS=[["trending","🔥 Trending"],["dinner","Dinner"],["brunch","Breakfast"],["lunch","Lunch"],["dutch","Dutch"],["indonesian","Indonesian"],["surinamese","Surinamese"],["seafood","Seafood"],["steak","Steak/grill"],["burger","Burgers"],["pizza","Pizza/Italian"],["asian","Asian"],["middleeast","Middle Eastern"],["turkish","Turkish"],["sandwich","Sandwich/toast"],["fries","Fries"],["stroopwafel","Stroopwafels"],["bakery","Bakeries"],["dessert","Desserts"],["market","Markets"],["late","Late-night"],["cheap","Cheap eats"],["fine","Fine dining"],["all","All"]];
+const SORTS=[["best","Best"],["nearest","Nearest"],["trend","Trending"],["cheap","Cheapest"],["open","Likely open*"],["walkin","No reservation"],["proper","Proper meal"]];
+const SYN={"near hotel":"__nearhotel","late night":"late","tiktok":"__viral","viral":"__viral","indo":"indonesian","rijsttafel":"indonesian","roti":"surinamese","ramen":"ramen","sushi":"omakase","coffee":"bakery","breakfast":"brunch","cheap":"cheap","stroopwafel":"stroopwafel","market":"market","fine dining":"fine","turkish":"middleeast","lebanese":"middleeast","persian":"middleeast","korean":"korean","thai":"thai","fish":"seafood","pancake":"pancake","cake":"dessert","ice cream":"dessert","gelato":"dessert"};
+function searchList(){
+  const anc=whereAmI();const n=nowAms();let L=P.filter(p=>p.k!=="sight");
+  const qq=q.trim().toLowerCase();
+  if(qq){const syn=SYN[qq];
+    if(syn==="__nearhotel"){L=L.filter(p=>hasLL(p)&&km(HOTEL,p)<0.9);}
+    else if(syn==="__viral"){L=L.filter(p=>["hot","hype","fresh","still"].includes(trendOf(p))||["must","viral"].includes(p.v));}
+    else{const terms=[qq,syn].filter(Boolean);L=L.filter(p=>terms.some(t=>[p.n,p.cu,p.o,p.a,p.ar,p.cat.join(" "),p.why].join(" ").toLowerCase().includes(t)));}
+  } else if(foodCat!=="all"&&foodCat!=="trending")L=L.filter(p=>p.cat.includes(foodCat));
+  const done=p=>["done","skip"].includes(pstat(p.id))?1:0;
+  const sorters={best:(a,b)=>score(b,anc)-score(a,anc),nearest:(a,b)=>travelMin(a,anc)-travelMin(b,anc),trend:(a,b)=>(["hot","fresh"].includes(trendOf(b))?2:trendOf(b)==="still"?1:0)-(["hot","fresh"].includes(trendOf(a))?2:trendOf(a)==="still"?1:0),cheap:(a,b)=>(PRN[a.pr]||1)-(PRN[b.pr]||1)||travelMin(a,anc)-travelMin(b,anc)};
+  if(foodSort==="open")L=L.filter(p=>openAt(p,n.min,n.dow));
+  if(foodSort==="walkin")L=L.filter(p=>p.res==="g");
+  if(foodSort==="proper")L=L.filter(p=>p.k==="meal");
+  L.sort((a,b)=>done(a)-done(b)||(sorters[foodSort]||sorters.best)(a,b));
+  return {L,anc};
+}
+function renderFood(){
+  const el=document.getElementById("v-food");
+  const showTrends=foodCat==="trending"&&!q.trim();
+  let body;
+  if(showTrends)body=renderTrends(whereAmI());
+  else{const {L,anc}=searchList();body=`<div class="sm muted">${L.length} places · from ${esc(anc.n)} · *hours saved, not live</div>`+L.slice(0,60).map(p=>placeCard(p,anc)).join("");}
+  const kept=document.activeElement&&document.activeElement.id==="q";
+  el.innerHTML=`<h2>Food <small>${P.filter(p=>p.k==="meal").length} RESTAURANTS · ${P.filter(p=>p.k==="snack").length} SNACKS</small></h2>
+  <label class="sm muted" for="q">Search: steak, Chun, Indonesian, near hotel, late night, TikTok…</label>
+  <input type="search" id="q" value="${esc(q)}" placeholder="Search food" autocomplete="off">
+  <div class="chips" style="margin-top:8px">${CATS.map(([k,t])=>`<button class="chip" id="cat-${k}" data-cat="${k}" aria-pressed="${k===foodCat&&!q}">${t}</button>`).join("")}</div>
+  ${showTrends?"":`<div class="chips" style="margin-top:6px">${SORTS.map(([k,t])=>`<button class="chip" id="sort-${k}" data-sort="${k}" aria-pressed="${k===foodSort}">${t}</button>`).join("")}</div>`}
+  <div class="stack" style="margin-top:10px" id="foodList">${body}</div>
+  <p class="src" style="margin-top:12px">⚑ flags obvious pork/alcohol only. Tap a card for details and “Add to day”.</p>`;
+  if(kept){const i=document.getElementById("q");i.focus();i.setSelectionRange(i.value.length,i.value.length);}
+}
+
+function stBtn(kind,id,st){return `<button class="st ${st||""}" data-cycle="${kind}:${id}">${SL[st]}</button>`;}
+function renderMissions(){
+  const memo=(f)=>P.filter(f);
+  const eaten=memo(p=>p.k!=="sight"&&pstat(p.id)==="done"),sights=memo(p=>p.k==="sight"&&pstat(p.id)==="done");
+  const hoods=HOODS.filter(h=>P.some(p=>p.ar===h&&pstat(p.id)==="done"));
+  const liked=memo(p=>S.rate[p.id]===1),dis=memo(p=>S.rate[p.id]===-1),skipped=memo(p=>pstat(p.id)==="skip"),saved=memo(p=>pstat(p.id)==="planned");
+  const fmDone=FM.filter(m=>mstat(m)==="done").length;
+  document.getElementById("v-missions").innerHTML=`
+  <h2>Don’t miss</h2>${renderDontMiss()}
+  <h2>Food missions <small>${fmDone}/${FM.length} · TAP STATUS</small></h2>
+  <div class="stack">${FM.map(m=>{const st=mstat(m);return `<div class="ms"><div><b>${m.label||m.t}</b><div class="cands">Winner: <span class="win">${esc(PM[m.w].n)}</span>${PM[m.w].o?` — ${esc(PM[m.w].o)}`:""}${m.c.length>1?`<br>Also: ${m.c.filter(c=>c!==m.w).map(c=>esc(PM[c].n)).join(", ")}`:""}</div></div>${stBtn("m",m.id,st)}</div>`}).join("")}</div>
+  <h2>Experience missions</h2>
+  <div class="stack">${XM.map(id=>{const p=PM[id],st=xstat(id);return `<div class="ms"><div><b>${esc(p.n)}</b><div class="cands">${esc(p.why)}</div></div>${stBtn("x",id,st)}</div>`}).join("")}</div>
+  <h2>🚨 Bookings</h2>
+  <div class="stack">${BOOK.map(b=>{const p=PM[b.p];const bk=val(S.items,"booked-"+b.p);return `<div class="card"><div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(p.n)}</b><span class="t">${bk?"✅ Booked":RES[p.res]||"🔴 Book"}</span></div><div class="sm"><b>${esc(b.when)}</b> · ${esc(b.why)}</div><div class="acts"><a class="btn" href="${maps(p)}" target="_blank" rel="noopener">Find & book</a><button class="btn" data-booked="${b.p}">${bk?"Undo booked":"Mark booked"}</button></div></div>`}).join("")}</div>
+  <h2>Trip memory</h2>
+  <div class="stack">
+  ${[["Food eaten",eaten],["Attractions completed",sights],["Saved for later",saved],["Places skipped",skipped],["Liked 👍",liked],["Disliked 👎",dis]].map(([t,L])=>`<details><summary>${t} (${L.length})</summary><div class="sm">${esc(L.map(p=>p.n).join(", ")||"—")}</div></details>`).join("")}
+  <details><summary>Neighbourhoods visited (${hoods.length})</summary><div class="sm">${esc(hoods.join(", ")||"—")}</div></details>
+  <details><summary>Summit days (${["summit1","summit2"].filter(x=>xstat(x)==="done").length}/2)</summary><div class="sm">Tick them on the Days tab.</div></details>
+  </div>
+  <h2>Sources</h2><p class="src">
+  <a href="https://smaak.substack.com/p/but-is-it-worth-the-queue" target="_blank" rel="noopener">Smaak queue test</a> · <a href="https://nltimes.nl/2026/04/07/rise-tiktok-driven-tourism-strains-locals-amsterdams-negen-straatjes" target="_blank" rel="noopener">NL Times (Apr 2026)</a> · <a href="https://www.amsterdamtourism.org/amsterdam-rijsttafel-indonesian/" target="_blank" rel="noopener">Rijsttafel guide</a> · <a href="https://amsterdamexperiences.nl/blog/the-20-best-restaurants-in-amsterdam/" target="_blank" rel="noopener">20 local restaurants</a> · <a href="https://www.timeout.com/amsterdam/restaurants/best-brunch-in-amsterdam" target="_blank" rel="noopener">Time Out brunch</a> · <a href="https://www.amsterdamfoodie.nl/amsterdam-food-guide/best-asian-restaurants-amsterdam/" target="_blank" rel="noopener">Amsterdam Foodie Asian</a> · <a href="https://www.amsterdamfoodie.nl/amsterdam-food-guide/10-best-middle-eastern-restaurants-in-amsterdam/" target="_blank" rel="noopener">Middle Eastern</a> · <a href="https://www.amsterdamfoodie.nl/amsterdam-food-guide/ramen-amsterdam/" target="_blank" rel="noopener">Ramen</a> · <a href="https://www.yourlittleblackbook.me/pt/nieuwe-restaurants-in-amsterdam/" target="_blank" rel="noopener">New in 2026</a> · <a href="https://www.iamsterdam.com/en/see-and-do/shopping-and-markets/best-croissants-in-amsterdam" target="_blank" rel="noopener">Croissants</a> · <a href="https://iamsterdam.com/en/see-and-do/restaurant-and-bars/best-late-night-dining-in-amsterdam" target="_blank" rel="noopener">Late-night</a></p>`;
+}
+
+/* ---------- MAP: interactive (Leaflet) when online & allowed, saved pins otherwise ---------- */
+const B={w:4.852,e:4.915,s:52.352,n:52.388},K=26000,COS=Math.cos(52.37*Math.PI/180);
+const px=l=>(l-B.w)*COS*K, py=l=>(B.n-l)*K, W=Math.round((B.e-B.w)*COS*K), H=Math.round((B.n-B.s)*K);
+let LMAP=null,LLAYER=null,leafletState="idle";
+function mapList(){
+  const tk=todayKey(),todayIds=new Set(itemsFor(tk).map(i=>i.p).filter(Boolean));
+  let L=P.filter(hasLL);
+  if(mapFilter==="today")L=L.filter(p=>todayIds.has(p.id));
+  if(mapFilter==="food")L=L.filter(p=>p.k!=="sight"&&avail(p)&&p.v!=="photo");
+  if(mapFilter==="sights")L=L.filter(p=>p.k==="sight");
+  if(mapFilter==="open")L=L.filter(p=>avail(p)&&p.v!=="photo");
+  if(mapFilter==="near"){const a=whereAmI();L=L.filter(p=>avail(p)&&p.v!=="photo").sort((x,y)=>km(a,x)-km(a,y)).slice(0,15);}
+  return {L,todayIds};
+}
+function emoji(p,todayIds){const st=pstat(p.id);if(st==="done")return "✅";if(p.id.startsWith("summit"))return "🎤";if(todayIds.has(p.id)||st==="planned")return "⭐";if(p.k==="sight")return "🏛";if(p.cat.includes("bakery")&&p.k==="snack")return "☕";if(p.k==="snack")return "🍟";return "🍽";}
+function tryLeaflet(){
+  if(leafletState!=="idle")return;
+  // inside the Claude app, map tiles are blocked; use the saved pin map there
+  if(window.claude||!online()){leafletState="off";return;}
+  leafletState="loading";
+  const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+  s.onload=()=>{leafletState="ready";if(view==="map")renderMap();};s.onerror=()=>{leafletState="off";if(view==="map")renderMap();};
+  document.head.appendChild(s);
+}
+function renderMap(){
+  const {L,todayIds}=mapList();
+  const el=document.getElementById("v-map");
+  const chips=`<div class="chips">${[["today","Today"],["food","Food"],["sights","Attractions"],["open","Unfinished"],["near","Near me"],["all","All"]].map(([k,t])=>`<button class="chip" id="mf-${k}" data-mf="${k}" aria-pressed="${k===mapFilter}">${t}</button>`).join("")}</div>`;
+  const legend=`<div class="legend"><span>🏨 Hotel</span><span>🎤 Summit</span><span>🍽 Food</span><span>🍟 Snack</span><span>☕ Bakery</span><span>🏛 Sight</span><span>⭐ Planned</span><span>✅ Done</span></div>`;
+  tryLeaflet();
+  if(leafletState==="ready"&&window.L&&online()){
+    el.innerHTML=`<h2>Map <small>LIVE</small></h2>${chips}<div class="mapbox" style="margin-top:8px"><div id="lmap"></div>${legend}</div><p class="src">Tiles © OpenStreetMap contributors.</p>`;
+    if(LMAP){LMAP.remove();LMAP=null;}
+    LMAP=window.L.map("lmap",{zoomControl:true}).setView([LAT0,LNG0],14);
+    let errs=0;const tl=window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"});
+    tl.on("tileerror",()=>{errs++;if(errs===4){leafletState="off";renderMap();}});tl.addTo(LMAP);
+    const mk=(lat,lng,e,id,t)=>{const m=window.L.marker([lat,lng],{icon:window.L.divIcon({className:"",html:`<div class="pin">${e}</div>`,iconSize:[22,22],iconAnchor:[11,11]}),title:t}).addTo(LMAP);if(id)m.on("click",()=>placeSheet(id));};
+    mk(HOTEL.lat,HOTEL.lng,"🏨",null,"Hotel");
+    L.forEach(p=>mk(p.lat,p.lng,emoji(p,todayIds),p.id,p.n));
+    const g=ls(LSG);if(g&&Date.now()-g.t<30*60000)mk(g.lat,g.lng,"🔵",null,"You");
+    return;
+  }
+  const inBox=L.filter(p=>p.lng>=B.w&&p.lng<=B.e&&p.lat>=B.s&&p.lat<=B.n);const out=L.filter(p=>!inBox.includes(p));
+  const dots=inBox.map(p=>{const x=px(p.lng),y=py(p.lat);return `<g data-open="${p.id}" style="cursor:pointer"><text x="${x}" y="${y+9}" text-anchor="middle" font-size="26">${emoji(p,todayIds)}</text>${inBox.length<=22?`<text x="${x+18}" y="${y+5}" font-size="19" fill="var(--fg)" stroke="var(--card)" stroke-width="5" paint-order="stroke" font-family="Source Sans 3, system-ui, sans-serif" font-weight="600">${esc(p.n.length>22?p.n.slice(0,21)+"…":p.n)}</text>`:""}</g>`;}).join("");
+  const hx=px(HOTEL.lng),hy=py(HOTEL.lat);
+  const ij=`M${px(4.880)},0 L${W},0 L${W},${py(52.3785)} L${px(4.905)},${py(52.3800)} L${px(4.895)},${py(52.3815)} L${px(4.885)},${py(52.3830)} L${px(4.880)},${py(52.3850)} Z`;
+  const amstel=`M${px(4.8985)},${py(52.3690)} L${px(4.9030)},${py(52.3640)} L${px(4.9055)},${py(52.3580)} L${px(4.9070)},${py(52.3520)}`;
+  const lab=(t,lat,lng)=>`<text x="${px(lng)}" y="${py(lat)}" font-size="22" fill="var(--muted)" font-family="IBM Plex Mono, monospace" letter-spacing="2" opacity=".7">${t}</text>`;
+  el.innerHTML=`<h2>Map <small>${online()?"SAVED PINS":"OFFLINE MAP: SAVED PINS ONLY"}</small></h2>${online()?"":`<div class="card sm" style="margin-bottom:8px"><b>Offline map: saved pins only.</b> Street tiles need internet. All restaurant and attraction coordinates are saved; tap a pin for details.</div>`}${chips}
+  <div class="mapbox" style="margin-top:8px"><svg viewBox="-10 -10 ${W+20} ${H+20}" role="img" aria-label="Schematic map of central Amsterdam with saved pins">
+    <rect x="-10" y="-10" width="${W+20}" height="${H+20}" fill="var(--card)"/>
+    <path d="${ij}" fill="var(--water)"/><text x="${px(4.900)}" y="${py(52.3850)}" font-size="22" fill="var(--canal)" font-family="IBM Plex Mono, monospace">IJ</text>
+    <path d="${amstel}" fill="none" stroke="var(--water)" stroke-width="16" stroke-linecap="round"/>
+    ${lab("JORDAAN",52.3770,4.8770)}${lab("CENTRUM",52.3700,4.8960)}${lab("DE PIJP",52.3540,4.8960)}${lab("MUSEUM Q",52.3570,4.8740)}${lab("OUD-WEST",52.3660,4.8600)}
+    <text x="${hx}" y="${hy+10}" text-anchor="middle" font-size="30">🏨</text>
+    ${dots}
+  </svg>${legend}</div>
+  ${out.length?`<div class="card sm" style="margin-top:8px"><b>Outside this view:</b> ${out.map(p=>`<button class="btn" style="padding:2px 8px;font-size:12px;margin:2px" data-open="${p.id}">${emoji(p,todayIds)} ${esc(p.n)}</button>`).join("")}</div>`:""}
+  <p class="src">Schematic. Tap a pin for details and Google Maps directions. ${window.claude?"Interactive street map works in the downloaded offline copy when online.":""}</p>`;
+}
+
+function renderHeader(){
+  const n=nowAms();const k=todayKey();
+  document.getElementById("clock").textContent=n.hm;
+  document.getElementById("hDate").textContent=`${n.wd} ${n.day} ${MON[n.mon]} · ${tripPhase()==="during"?DM[k].tag:"Amsterdam time"}`;
+  const net=document.getElementById("net");
+  net.textContent=online()?"🟢 LIVE":"⚪ OFFLINE";net.title=online()?"Online":"Using saved Amsterdam data";
+}
+function renderAll(){
+  renderHeader();
+  if(view==="home")renderHome();if(view==="days")renderDays();if(view==="food")renderFood();if(view==="missions")renderMissions();if(view==="map")renderMap();
+}
+
+/* =========================================================
+   SHEETS
+   ========================================================= */
+function openSheet(html){const s=document.getElementById("sheet");s.innerHTML=`<div class="grab"></div>`+html;s.hidden=false;document.getElementById("scrim").hidden=false;s.scrollTop=0;}
+function closeSheet(){document.getElementById("sheet").hidden=true;document.getElementById("scrim").hidden=true;}
+function placeSheet(id){
+  const p=PM[id];if(!p)return;const st=pstat(id);const anc=whereAmI();const n=nowAms();
+  const h=hours(p);const tr=trendOf(p);
+  openSheet(`<div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><h3 style="font:800 22px var(--display)">${esc(p.n)}</h3><span class="t">${esc(p.cu)}</span></div>
+  <div class="kv">
+   ${p.o?`<span>${p.a?"ORDER FIRST":"ORDER"}</span><div><b>${esc(p.o)}</b></div>`:""}
+   ${p.a?`<span>SECOND PICK</span><div>${esc(p.a)}</div>`:""}
+   ${p.note?`<span>NOTE</span><div style="color:var(--warn)">⚑ ${esc(p.note)}</div>`:""}
+   <span>WHY</span><div>${esc(p.why)}</div>
+   ${p.pr?`<span>PRICE</span><div>${p.pr}</div>`:""}
+   <span>FROM YOU</span><div>${esc(travel(p,anc))} <span class="muted">(${esc(anc.n)})</span></div>
+   ${p.q?`<span>QUEUE</span><div>${p.q}</div>`:""}
+   ${p.res?`<span>RESERVATION</span><div>${RES[p.res]}</div>`:""}
+   ${p.v?`<span>VERDICT</span><div>${V[p.v]}${(()=>{const ti=trendInfo(p.id);return ti?` · Worth it: <b>${ti.worth}</b><br><span class="muted">${esc(ti.src)} · ${esc(trendStamp().txt)}</span>`:"";})()}</div>`:""}
+   ${(()=>{const al=altFor(p,anc);return al?`<span>INSTEAD</span><div>${esc(al.why)}: ${al.list.map(a=>`<button class="btn" style="padding:2px 8px;font-size:12px" data-open="${a.id}">${esc(a.n)}</button>`).join(" ")}</div>`:"";})()}
+   ${p.bf.length&&p.bf[0]?`<span>BEST FOR</span><div>${p.bf.filter(b=>BF[b]).map(b=>BF[b]).join(" · ")}</div>`:""}
+   ${h?`<span>HOURS</span><div>${hoursLabel(p)}</div>`:""}
+   ${p.ar?`<span>AREA</span><div>${esc(p.ar)}</div>`:""}
+   <span>STATUS</span><div>${SL[st]}${S.rate[id]===1?" · 👍":S.rate[id]===-1?" · 👎":""}</div>
+  </div>
+  <div class="acts"><button class="btn pri" data-pset="${id}:done">✓ ${p.k==="sight"?"Done":"Ate here"}</button><button class="btn" data-pset="${id}:planned">☆ Save</button><button class="btn warn" data-pset="${id}:skip">✕ Skip</button>${st?`<button class="btn" data-pset="${id}:">Reset</button>`:""}</div>
+  <div class="acts">${p.k!=="sight"?`<button class="btn" data-rate="${id}:1">👍 Liked</button><button class="btn" data-rate="${id}:-1">👎 Disliked</button>`:""}<a class="btn" href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div>
+  <div class="acts"><label class="sm" for="addDay">Add to day</label><select id="addDay" style="width:auto"><option value="">—</option>${DAYS.filter(d=>!d.depart).map(d=>`<option value="${d.key}" ${S.extra[id]===d.key?"selected":""}>${d.title}</option>`).join("")}</select></div>
+  <p class="src">Hours are saved data from ${DATA_VER}, not live. Check Maps before a long walk.</p>`);
+  document.getElementById("addDay").addEventListener("change",e=>{const k=e.target.value;const t=k?bestSlot(k,p):null;persist({extra:{[id]:k||null},moveT:{["x-"+id]:t},places:{[id]:k?"planned":pstat(id)}});toast(k?`Added to ${DM[k].title}${t?" at "+t:""}`:"Removed");});
+}
+/* Smart insert: put it next to the nearest planned stop that day, without backtracking */
+function bestSlot(key,p){
+  const L=itemsFor(key).filter(i=>i.p&&hasLL(PM[i.p])&&i.t!=="—");if(!L.length||!hasLL(p))return "—";
+  let best=L[0],bd=1e9;L.forEach(i=>{const d=km(PM[i.p],p);if(d<bd){bd=d;best=i;}});
+  const m=tmin(best.t)+(PM[best.p].k==="meal"?75:45);const h=Math.min(23,Math.floor(m/60)),mm=m%60<30?"00":"30";return `${String(h).padStart(2,"0")}:${mm}`;
+}
+function itemSheet(iid){
+  const c=curItem(iid);if(!c)return;const cur=c.it;const p=cur.p?PM[cur.p]:null;const f=findItem(iid);
+  const isMeal=/BREAKFAST|LUNCH|DINNER|SNACK|DESSERT|LATE/.test(cur.s);
+  let alts=[];
+  if(p&&isMeal)alts=P.filter(x=>x.k===p.k&&x.id!==p.id&&avail(x)&&hasLL(x)&&x.v!=="photo"&&x.bf.some(b=>p.bf.includes(b))).sort((a,b)=>km(a,p)-km(b,p)).slice(0,4);
+  else if(p&&p.k==="sight"&&!p.id.startsWith("summit"))alts=P.filter(x=>x.k==="sight"&&hasLL(x)&&x.id!==p.id&&avail(x)&&!x.id.startsWith("summit")).sort((a,b)=>km(a,p)-km(b,p)).slice(0,3);
+  const canMove=!DM[c.key].depart;
+  openSheet(`<div class="daytag">${esc(DM[c.key].title)} · ${esc(cur.s)} · ${esc(cur.t||"")}</div><h3 style="font:800 22px var(--display)">${esc(cur.l)}</h3>
+  ${cur.d?`<div class="sm muted">${esc(cur.d)}</div>`:""}
+  ${p&&p.o?`<div class="ord"><b>ORDER</b>${esc(p.o)}</div>`:""}
+  <div class="acts"><button class="btn pri" data-tick="${iid}">✓ Done</button><button class="btn warn" data-skipitem="${iid}">Skip</button>${istat(cur)?`<button class="btn" data-clear="${iid}">Reset</button>`:""}${p?`<button class="btn" data-open="${p.id}">Details</button>`:""}</div>
+  ${canMove&&!cur.added?`<div class="acts"><button class="btn" data-moveto="${iid}:fri">→ Move to Friday</button><button class="btn" data-moveto="${iid}:sat">→ Move to Saturday</button><button class="btn warn" data-skipitem="${iid}">Remove</button></div>
+   <div class="acts"><label class="sm" for="moveDay">Other day</label><select id="moveDay" style="width:auto">${DAYS.filter(d=>!d.depart).map(d=>`<option value="${d.key}" ${c.key===d.key?"selected":""}>${d.title}</option>`).join("")}</select>${S.moved[iid]?`<button class="btn" data-moveto="${iid}:">Undo move</button>`:""}</div>`:""}
+  ${alts.length?`<div class="lab">REPLACE WITH (NEAREST)</div><div class="stack">${alts.map(a=>`<button class="pc" style="text-align:left" data-repl="${iid}:${a.id}"><div class="hd"><h3>${esc(a.n)}</h3><span class="cu">${esc(a.cu)}</span></div>${a.o?`<div class="ord"><b>ORDER</b>${esc(a.o)}</div>`:""}<div class="meta"><span class="t">${a.pr||""}</span><span class="t">${esc(travel(a,p))} from original</span>${a.res?`<span class="t">${RES[a.res]}</span>`:""}</div></button>`).join("")}</div>${S.repl[iid]?`<div class="acts"><button class="btn" data-repl="${iid}:">Undo replace</button></div>`:""}`:""}`);
+  const mv=document.getElementById("moveDay");if(mv)mv.addEventListener("change",e=>moveItem(iid,e.target.value));
+}
+function moveItem(iid,key){
+  const f=findItem(iid);if(!f)return;
+  if(!key||key===f.d.key){persist({moved:{[iid]:null},moveT:{[iid]:null}});toast("Back on "+f.d.title);closeSheet();return;}
+  const c=curItem(iid);const p=c&&c.it.p?PM[c.it.p]:null;const t=p?bestSlot(key,p):f.it.t;
+  persist({moved:{[iid]:key},moveT:{[iid]:t},items:{[iid]:null}});toast(`Moved to ${DM[key].title}${t&&t!=="—"?" at "+t:""}`);closeSheet();
+}
+function settingsSheet(){
+  const w=feedWeather();const fd=FEED&&FEED.updatedAt?fmtClock(Date.parse(FEED.updatedAt)):null;
+  const doneN=Object.values(S.places).filter(v=>v==="done").length+Object.values(S.items).filter(v=>v==="done").length;
+  openSheet(`<h3 style="font:800 22px var(--display)">Offline data</h3>
+  <div class="kv">
+   <span>RESTAURANTS</span><div>${P.filter(p=>p.k!=="sight").length} places saved ✓</div>
+   <span>DAY PLANS</span><div>6 days saved ✓</div>
+   <span>MAP PINS</span><div>${P.filter(hasLL).length} pins saved ✓</div>
+   <span>PROGRESS</span><div>${doneN} ticks · stored on this phone ✓${cloud?" · synced to your Claude account ✓":""}</div>
+   <span>TRENDS</span><div>${esc(trendStamp().txt)}</div>
+   <span>WEATHER</span><div>${esc(wxStamp())}</div>
+   <span>HOURS/QUEUES</span><div>SAVED · checked 6 Oct (not live)</div>
+   <span>OFFLINE APP</span><div>${("serviceWorker" in navigator)&&navigator.serviceWorker.controller?"Installed for offline use ✓":(location.protocol==="file:"?"Opened as a saved file ✓":"Opens online; install the app package for airplane mode")}</div>
+   <span>HOTEL</span><div>Anantara Grand Hotel Krasnapolsky, Dam 9</div>
+   <span>SUMMIT</span><div>World Summit AI · 7–8 Oct · Taets, Zaandam</div>
+   <span>DEPARTURE</span><div>EK146 · Sun 11 Oct · 11:25 · taxi 07:45</div>
+  </div>
+  <div class="acts"><button class="btn" data-refresh="1">↻ Refresh now</button></div>
+  <div class="lab">MOVE PROGRESS BETWEEN COPIES</div>
+  <div class="sm muted">The Claude-app version and a downloaded copy keep separate progress. Copy here, paste there.</div>
+  <div class="acts"><button class="btn" data-export="1">Copy progress</button></div>
+  <label class="sm" for="imp">Paste progress code</label><textarea id="imp" placeholder="Paste here"></textarea>
+  <div class="acts"><button class="btn pri" data-import="1">Import (merges, keeps existing ticks)</button></div>`);
+}
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+function tick(iid){
+  const c=curItem(iid);if(!c)return;const cur=c.it;const was=istat(cur)==="done";
+  const patch={items:{[iid]:was?null:"done"}};if(cur.p){patch.places={[cur.p]:was?null:"done"};patch.when={[cur.p]:was?null:Date.now()};}
+  persist(patch);
+  if(!was){const nu=nextUp();toast(nu?"Done ✓ Next: "+nu.it.l:"Done ✓");}
+}
+function setView(v){view=v;document.querySelectorAll("main").forEach(m=>m.hidden=m.id!=="v-"+view);
+  document.querySelectorAll(".nav button").forEach(b=>{if(b.dataset.v===view)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current");});
+  if(v==="days")dayPinned=false;renderAll();window.scrollTo(0,0);}
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-v],[data-open],[data-tick],[data-item],[data-skipitem],[data-clear],[data-pset],[data-rate],[data-repl],[data-day],[data-cat],[data-sort],[data-mf],[data-rt],[data-cycle],[data-hunger],[data-loc],[data-gps],[data-booked],[data-moveto],[data-refresh],[data-export],[data-import],#monDone,#scrim,#gear");
+  if(!t)return;
+  if(t.id==="scrim"){closeSheet();return;}
+  if(t.id==="gear"){settingsSheet();return;}
+  if(t.id==="monDone"){const pl={};MON_ROUTE.forEach(id=>pl[id]="done");persist({places:pl});toast("Monday marked done");return;}
+  const d=t.dataset;
+  if(d.v){setView(d.v);closeSheet();return;}
+  if(d.tick!==undefined){tick(d.tick);if(!document.getElementById("sheet").hidden)closeSheet();return;}
+  if(d.skipitem){persist({items:{[d.skipitem]:"skip"}});toast("Skipped — move it from ⋯ if you want it later");closeSheet();return;}
+  if(d.clear){persist({items:{[d.clear]:null}});closeSheet();return;}
+  if(d.moveto!==undefined){const [iid,k]=d.moveto.split(":");moveItem(iid,k);return;}
+  if(d.item){itemSheet(d.item);return;}
+  if(d.open){placeSheet(d.open);return;}
+  if(d.pset){const [id,v]=d.pset.split(":");const cur=pstat(id);const nv=(v&&cur===v)?null:(v||null);persist({places:{[id]:nv},when:{[id]:nv==="done"?Date.now():null}});toast(nv?SL[nv]:"Cleared");if(!document.getElementById("sheet").hidden)placeSheet(id);return;}
+  if(d.rate){const [id,v]=d.rate.split(":");persist({rate:{[id]:+v}});toast(+v>0?"Liked":"Disliked — fewer like this");placeSheet(id);return;}
+  if(d.repl){const [iid,pid]=d.repl.split(":");persist({repl:{[iid]:pid||null}});toast(pid?"Replaced":"Restored");closeSheet();return;}
+  if(d.day){dayKey=d.day;dayPinned=true;renderDays();return;}
+  if(d.cat){foodCat=d.cat;q="";renderFood();return;}
+  if(d.sort){foodSort=d.sort;renderFood();return;}
+  if(d.mf){mapFilter=d.mf;renderMap();return;}
+  if(d.rt){rtMode=rtMode===d.rt?null:d.rt;if(d.rt==="hungry")hunger=null;renderHome();if(rtMode){const o=document.getElementById("rtOut");o&&o.scrollIntoView&&o.scrollIntoView({behavior:"smooth",block:"start"});}return;}
+  if(d.hunger!==undefined){hunger=d.hunger||null;renderHome();return;}
+  if(d.loc){openSheet(`<h3 style="font:800 20px var(--display)">Where are you?</h3><div class="stack" style="margin-top:10px">
+    <button class="btn" data-gps="1">📍 Use my location (asks permission)</button>
+    <button class="btn" id="am-auto">Auto (last completed stop / plan)</button><button class="btn" id="am-hotel">Hotel / Dam</button>${Object.entries(ANCH).map(([k,a])=>`<button class="btn" data-am="${k}">${esc(a.n)}</button>`).join("")}</div>`);
+    document.querySelectorAll("[data-am]").forEach(b=>b.onclick=()=>{anchorMode=b.dataset.am;closeSheet();renderAll();});
+    document.getElementById("am-auto").onclick=()=>{anchorMode="auto";closeSheet();renderAll();};
+    document.getElementById("am-hotel").onclick=()=>{anchorMode="hotel";closeSheet();renderAll();};return;}
+  if(d.gps){closeSheet();askGPS();return;}
+  if(d.booked){const k="booked-"+d.booked;persist({items:{[k]:val(S.items,k)?null:"done"}});toast("Booking noted");return;}
+  if(d.refresh){refreshAll(true);return;}
+  if(d.export){const txt=btoa(unescape(encodeURIComponent(JSON.stringify(S))));
+    const ok=()=>toast("Progress copied");try{navigator.clipboard.writeText(txt).then(ok).catch(()=>{document.getElementById("imp").value=txt;toast("Select the text and copy");});}catch(_){document.getElementById("imp").value=txt;toast("Select the text and copy");}return;}
+  if(d.import){try{const j=JSON.parse(decodeURIComponent(escape(atob(document.getElementById("imp").value.trim()))));const patch={};KEYS.forEach(k=>{if(j[k]){patch[k]={};Object.entries(j[k]).forEach(([a,b])=>{if(b&&!val(S[k],a))patch[k][a]=b;});}});persist(patch);toast("Progress merged");closeSheet();}catch(_){toast("That code didn’t work");}return;}
+  if(d.cycle){const [k,id]=d.cycle.split(":");
+    if(k==="m"){const m=FM.find(x=>x.id===id);const nx=NEXTS[mstat(m)];persist({missions:{[id]:nx||"none"}});}
+    else{const nx=NEXTS[xstat(id)];persist({places:{[id]:nx}});}return;}
+});
+document.addEventListener("input",e=>{if(e.target.id==="q"){q=e.target.value;clearTimeout(document._qt);document._qt=setTimeout(renderFood,150);}});
+document.addEventListener("change",e=>{if(e.target.dataset&&e.target.dataset.note){persist({notes:{[e.target.dataset.note]:e.target.value}});toast("Note saved");}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
+window.addEventListener("online",()=>{renderHeader();refreshAll(false);});
+window.addEventListener("offline",()=>{renderHeader();toast("Offline · using saved Amsterdam data");});
+
+/* =========================================================
+   CLOCK LOOP — auto day switch at midnight, no reload
+   ========================================================= */
+async function refreshAll(manual){
+  const ok=await refreshWeather();
+  if(manual)toast(ok?"Weather refreshed":(FEED?"Showing last Claude refresh":"Live weather not reachable here"));
+  renderAll();
+}
+function tickLoop(){
+  const k=todayKey();
+  if(lastToday&&k!==lastToday){dayPinned=false;rtMode=null;toast("Good morning — it’s "+DM[k].title);renderAll();}
+  else{renderHeader();if(view==="home"&&document.getElementById("sheet").hidden&&!rtMode)renderHome();}
+  lastToday=k;
+}
+
+/* =========================================================
+   BOOT
+   ========================================================= */
+loadLocal();lastToday=todayKey();renderAll();
+setInterval(tickLoop,30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){tickLoop();renderAll();}});
+setTimeout(()=>refreshAll(false),400);
+setInterval(()=>{if(online())refreshWeather().then(ok=>{if(ok&&view==="home")renderHome();});},20*60000);
+(async()=>{
+  try{
+    if(!window.claude||!window.claude.use)return;
+    db=await window.claude.use("db");if(!db)return;cloud=true;
+    docRef=db.doc("trip/state");feedRef=db.doc("live/feed");
+    let first=true;
+    docRef.onSnapshot(snap=>{
+      if(snap.exists){docExists=true;const data=snap.data()||{};
+        if(first){ // merge: keep any ticks made offline on this phone
+          const merged={};KEYS.forEach(k=>{merged[k]=Object.assign({},data[k]||{},S[k]||{});});
+          const missing={};KEYS.forEach(k=>{Object.entries(S[k]||{}).forEach(([a,b])=>{if(b&&!(data[k]||{})[a]){(missing[k]=missing[k]||{})[a]=b;}});});
+          S=merged;ls(LS,S);if(Object.keys(missing).length)docRef.update(missing).catch(()=>{});first=false;}
+        else{KEYS.forEach(k=>S[k]=Object.assign({},data[k]||{}));ls(LS,S);}
+        renderAll();}
+    },()=>{});
+    feedRef.onSnapshot(snap=>{if(snap.exists){FEED=snap.data();if(!snap.metadata||!snap.metadata.fromCache)feedLiveAt=Date.now();ls(LSF,FEED);renderAll();}},()=>{});
+  }catch(_){}
+})();
+</script>
+<script>if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}</script></body></html>
