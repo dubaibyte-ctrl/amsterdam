@@ -330,6 +330,18 @@ const RAW=[
 ["nels","Nel’s","Potato kitchen","Loaded baked potato","","New potato-focused spot in the Jordaan.","€","g","Medium","LD","gem","","meal","lunch budget",52.3785,4.8830,[12,21],0,"new","Jordaan"],
 ["moon","Moon (A’DAM Tower)","International","Set menu while the room rotates","","19th-floor revolving restaurant.","€€€€","r","Low","D","photo","","meal","dinner",52.3840,4.9020,[18,22],0,0,"Noord"],
 ["patanegra","Pata Negra","Spanish tapas","Garlic prawns + patatas bravas","","Busy tapas bar, open late.","€€","g","Medium","DN","local","Jamón and chorizo are pork","meal","late dinner",52.3610,4.9002,[12,24],0,0,"Utrechtsestraat"],
+/* ---------- gifts & souvenirs (kind "shop") ---------- */
+["miffyshop","De Winkel van Nijntje (Miffy shop)","Miffy / Nijntje","Miffy plush or board book","Miffy backpack, cup or bib","The dedicated Miffy shop, Scheldestraat 61. Miffy is Dick Bruna’s Dutch bunny; huge with tourists and kids.","€€","g","Low","","must","","shop","gifts kids",52.3462,4.8953,[10,18],[0],"hot","Rivierenbuurt"],
+["bijenkorf","De Bijenkorf (Dam)","Department store","Miffy items, Dutch design gifts, Susan Bijl bags","Rituals and beauty counters","Amsterdam’s big department store, 1 min from the hotel. Easiest one-stop gift run.","€€€","g","Low","","near","","shop","gifts kids wife",52.3735,4.8945,[10,20],0,0,"Dam"],
+["tonys","Tony’s Chocolonely Super Store","Chocolate","Make-your-own custom bar","Rainbow tasting pack","Dutch chocolate brand with a cult following; custom bars and a giant vending machine for photos. Oude Spiegelstraat (check Maps).","€€","g","Medium","","must","","shop","gifts kids family",52.3712,4.8876,[10,18],0,"hot","Nine Streets"],
+["hema","HEMA (Kalverstraat)","Dutch everyday store","Kids’ stationery, Dutch-design homeware, stroopwafel packs","Pink tompouce pastry to eat there","The Dutch chain everyone loves for cheap, cute design. Good for small gifts for all five kids.","€","g","Low","","local","Smoked sausage (rookworst) is pork","shop","gifts kids",52.3690,4.8912,[9,20],0,0,"Kalverstraat"],
+["rituals","House of Rituals (Kalverstraat)","Dutch beauty","Gift set (The Ritual of Sakura or Ayurveda)","Home fragrance sticks","Dutch beauty brand; flagship-style store near Dam.","€€","g","Low","","near","","shop","gifts wife",52.3712,4.8919,[10,19],0,0,"Kalverstraat"],
+["heinen","Heinen Delfts Blauw","Delft Blue","Hand-painted Delft Blue tile or small vase","","Real hand-painted Delftware. Avoid printed copies on Damrak.","€€€","g","Low","","gem","","shop","gifts wife",52.3655,4.8838,[9.5,18],0,0,"Prinsengracht"],
+["vgshop","Van Gogh Museum shop","Museum shop","Almond Blossom scarf or tote","Sunflowers notebook for the kids","Most-bought Amsterdam museum gifts; online shop exists if you skip the museum.","€€","g","Medium","","local","","shop","gifts wife kids",52.3584,4.8811,[9,18],0,0,"Museum Q"],
+["rijksshop","Rijksmuseum shop","Museum shop","Night Watch or Delft-blue design gifts","Kids’ art books","You’re there Friday morning; buy on the way out.","€€","g","Low","","near","","shop","gifts kids wife",52.3600,4.8852,[9,17],0,0,"Museum Q"],
+["sportsshirt","Football shirts (Kalverstraat sports shops)","Football","Orange Netherlands shirt or Ajax kit","","Big hit for Obaid and Humaid. Check stock and sizes; the official Ajax store is at the Johan Cruyff Arena.","€€€","g","Low","","near","","shop","gifts kids",52.3700,4.8915,[10,19],0,0,"Kalverstraat"],
+["clogs","Souvenir shops (Damrak)","Souvenirs","Mini wooden clogs with your child’s name painted","Canal-house magnets","Classic, cheap, kids love them. Compare prices between shops.","€","g","Low","","near","","shop","gifts kids",52.3755,4.8965,[9,22],0,0,"Damrak"],
+["ah","Albert Heijn (near Dam)","Supermarket","Stroopwafel tins + Tony’s bars for family back home","Hagelslag (chocolate sprinkles) for the kids’ breakfast","Supermarket prices; packs travel best in luggage.","€","g","Low","","local","","shop","gifts family",52.3738,4.8908,[8,22],0,0,"Centrum"],
 /* ---------- sights ---------- */
 ["dam","Dam Square","Landmark","","","Your doorstep.","","","","","","","sight","",52.3731,4.8930,0,0,0,"Centrum"],
 ["palace","Royal Palace (inside)","Museum","","","Marble Citizens’ Hall; ~1 h. Usually 10–17.","","","","","","","sight","indoor",52.3731,4.8913,[10,17],0,0,"Centrum"],
@@ -360,6 +372,7 @@ const RAW=[
 ];
 const P=RAW.map(r=>({id:r[0],n:r[1],cu:r[2],o:r[3],a:r[4],why:r[5],pr:r[6],res:r[7],q:r[8],bf:(r[9]||"").split(""),v:r[10],note:r[11],k:r[12],cat:(r[13]||"").split(" ").filter(Boolean),lat:r[14],lng:r[15],oh:r[16]||null,cl:r[17]||[],tr:r[18]||null,ar:r[19]}));
 const PM=Object.fromEntries(P.map(p=>[p.id,p]));
+const isFood=p=>p.k==="meal"||p.k==="snack";
 const LAT0=52.3729,LNG0=4.8939;
 
 const DAYS=[
@@ -396,8 +409,9 @@ const DAYS=[
  {id:"f2",t:"10:00",s:"MAIN",l:"Rijksmuseum",p:"rijks",d:"Book a 10:00 timed ticket."},
  {id:"f3",t:"12:45",s:"LUNCH",l:"Warung Spang Makandra",p:"spang",d:"15 min walk into De Pijp."},
  {id:"f4",t:"14:00",s:"AFTERNOON",l:"Albert Cuyp Market",p:"albertcuyp",d:"Pick one: Rudi’s stroopwafel or kibbeling. Last chance: you fly Saturday."},
- {id:"f5",t:"15:15",s:"WALK",l:"Seven Bridges → canal belt",p:"sevenbridges",d:"Holtkamp shrimp croquette on the way if hungry."},
- {id:"f6",t:"16:15",s:"REST",l:"Hotel: rest + pack most of the bag",d:"Online check-in for EK148 is open. Keeps tonight free."},
+ {id:"fg",t:"15:00",s:"GIFTS",l:"Miffy shop for Juma & Shamsa",p:"miffyshop",d:"15 min walk south of Albert Cuyp. Open to 18:00."},
+ {id:"f5",t:"15:45",s:"WALK",l:"Seven Bridges → canal belt",p:"sevenbridges",d:"Tram 4 back north. Holtkamp shrimp croquette on the way if hungry."},
+ {id:"f6",t:"16:30",s:"REST",l:"Hotel: rest + pack most of the bag",d:"Online check-in for EK148 is open. Keeps tonight free."},
  {id:"f7",t:"19:00",s:"FINAL DINNER",l:"Tempo Doeloe rijsttafel",p:"tempodoeloe",d:"BOOK. Full? Tujuh Maret (same street)."},
  {id:"f8",t:"20:45",s:"EVENING",l:"Magere Brug + Amstel lit up",p:"magere",d:"6 min from Tempo Doeloe."},
  {id:"f9",t:"21:30",s:"NIGHT",l:"Open-boat canal cruise",p:"cruise",d:"The lit bridges are the goodbye. Tram 14 to Dam, then 3 min to Damrak."},
@@ -405,7 +419,7 @@ const DAYS=[
  planB:"Heavy rain: longer Rijksmuseum, lunch at Sama Sebo, skip the cruise, dinner as planned."},
 {key:"sat",date:"2026-10-10",title:"SAT 10 OCT",tag:"DEPARTURE · EK148 15:25",wx:"15° / 11° · partly cloudy · 40%",depart:true,items:[
  {id:"d1",t:"07:45",s:"BREAKFAST",l:"Breakfast (hotel or De Bakkerswinkel)",p:"bakkerswinkel",d:"De Bakkerswinkel is 3 min away, opens 08:00."},
- {id:"d2",t:"09:00",s:"OPTIONAL",l:"Anne Frank House (only if you have a 09:00 slot)",p:"annefrank",d:"12 min walk. Be back at the hotel by 10:30. No slot: short last walk to Begijnhof instead."},
+ {id:"d2",t:"09:00",s:"OPTIONAL",l:"Anne Frank House (only if you have a 09:00 slot)",p:"annefrank",d:"12 min walk. Back at the hotel by 10:30. No slot? Do the gift run instead: Bijenkorf (opens 10:00), HEMA, Rituals and football shirts on Kalverstraat, all within 5 min."},
  {id:"d3",t:"10:30",s:"CHECK",l:"Back at hotel · final bag + passport check"},
  {id:"d4",t:"11:00",s:"CHECK OUT",l:"Check out at reception"},
  {id:"d5",t:"11:25",s:"LEAVE",l:"Driver pickup at Krasnapolsky",d:"≈25–30 min to Schiphol."},
@@ -438,6 +452,13 @@ const FM=[
 {id:"m-late",t:"🌙 Late-night bite",c:["sefa","namkee","mannekenpis","waterkant","sojubar"],w:"sefa"},
 {id:"m-kib",t:"🐟 Market snack",c:["kibbeling","poffertjes"],w:"kibbeling",label:"🐟 Market snack: kibbeling or poffertjes"},
 {id:"m-cheese",t:"🧀 Cheese tasting",c:["reypenaer"],w:"reypenaer",skipBusy:true},
+{id:"g-juma",t:"🎁 Juma (2)",c:["miffyshop","bijenkorf"],w:"miffyshop"},
+{id:"g-shamsa",t:"🎁 Shamsa (5)",c:["miffyshop","clogs","hema"],w:"miffyshop"},
+{id:"g-obaid",t:"🎁 Obaid (8)",c:["sportsshirt","clogs","tonys"],w:"sportsshirt"},
+{id:"g-amna",t:"🎁 Amna (11)",c:["bijenkorf","vgshop","tonys"],w:"bijenkorf"},
+{id:"g-humaid",t:"🎁 Humaid (13)",c:["sportsshirt","tonys"],w:"sportsshirt"},
+{id:"g-wife",t:"🎁 Your wife",c:["heinen","rituals","vgshop"],w:"heinen"},
+{id:"g-family",t:"🎁 Family back home",c:["ah","lanskroon","tonys","reypenaer"],w:"ah"},
 {id:"m-gem",t:"💎 Hidden-gem restaurant",c:["salmuera","pesca","upstairs","tujuhmaret"],w:"salmuera"}
 ];
 const XM=["dam","palace","begijnhof","bloemenmarkt","goldenbend","ninestreets","westerkerk","annefrank","jordaan","brouwersgracht","noordermarkt","torensluis","centraal","waag","sevenbridges","magere","rijks","vangogh","albertcuyp","depijp","noord","ndsm","cruise","zaanse","summit1","summit2"];
@@ -500,7 +521,9 @@ const TREND={
  graanstra:{g:["local"],worth:"YES",src:"Old Westermarkt fries stand, no TikTok queue"},
  vitas:{g:["local"],worth:"YES",src:"I amsterdam best fries: AD award-winner at Dappermarkt"},
  vandobben:{g:["local"],worth:"YES",src:"Devour/Eating Europe: classic broodje kroket"},
- spang:{g:["local"],worth:"YES",src:"Amsterdam Foodie: locals’ Surinamese, under €15"}
+ spang:{g:["local"],worth:"YES",src:"Amsterdam Foodie: locals’ Surinamese, under €15"},
+ miffyshop:{g:["worth"],worth:"YES",src:"Travel guides & social posts: the Miffy shop is a top Amsterdam souvenir stop"},
+ tonys:{g:["hot","worth"],worth:"YES",src:"I amsterdam: Super Store with custom bars; popular on social media"}
 };
 /* Famous → better/easier alternatives shown automatically on cards */
 const ALT={vanwonderen:["rudis","lanskroon","hansegstorf"],fabel:["fabelnw","vleminckx"],lourens:["madamecroissant","niemeijer"],vijff:["moeders","greetje"],moon:["noord"],littlecollins:["florentin"],mannekenpis:["fabelnw","vleminckx"],winkel43:["papeneiland"],blauw:["tempodoeloe","tujuhmaret"],chun:["ree7"],febo:["vandobben"]};
@@ -586,7 +609,7 @@ function askGPS(){
 function liveHours(p){const H=FEED&&FEED.hours&&FEED.hours[p.id];if(!H||H.date!==nowAms().date)return null;return H;}
 const hm2h=t=>{if(!t)return null;const [a,b]=t.split(":").map(Number);return a+b/60;};
 function hours(p){const L=liveHours(p);if(L&&!L.closed&&L.open&&L.close){let o=hm2h(L.open),c=hm2h(L.close);if(c<=o)c+=24;return [o,c];}
-if(p.oh)return p.oh;if(p.k==="sight")return null;if(p.bf.includes("D")&&!p.bf.includes("L"))return [17,22];if(p.bf.includes("B"))return [8,17];if(p.k==="snack")return [10,18];return [12,22];}
+if(p.oh)return p.oh;if(p.k==="sight"||p.k==="shop")return null;if(p.bf.includes("D")&&!p.bf.includes("L"))return [17,22];if(p.bf.includes("B"))return [8,17];if(p.k==="snack")return [10,18];return [12,22];}
 function openAt(p,min,dow){const L=liveHours(p);if(L&&L.closed)return false;if(!L&&p.cl&&p.cl.includes(dow))return false;const h=hours(p);if(!h)return true;const t=min/60;return (t>=h[0]&&t<h[1])||(h[1]>24&&t+24<h[1]);}
 function closesIn(p,min,dow){const h=hours(p);if(!h||!openAt(p,min,dow))return null;return Math.round(h[1]*60-min);}
 function fmtH(x){const h=Math.floor(x)%24,m=Math.round((x%1)*60);return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`;}
@@ -719,7 +742,7 @@ function isMealFor(p,meal){
   return p.bf.includes("S")||p.k==="snack";
 }
 function pool(meal,hunger){
-  let L=P.filter(p=>p.k!=="sight"&&avail(p)&&p.v!=="photo"&&hasLL(p));
+  let L=P.filter(p=>isFood(p)&&avail(p)&&p.v!=="photo"&&hasLL(p));
   if(meal==="N"&&!hunger&&!ateDinnerToday()){const m=L.filter(p=>p.k==="meal"&&(p.bf.includes("N")||p.cat.includes("late")||p.bf.includes("D")));if(m.length>=3)return m.concat(L.filter(p=>p.k==="snack"&&(p.bf.includes("N")||p.cat.includes("late"))));}
   if(hunger==="Light")return L.filter(p=>(p.k==="snack"||p.pr==="€")&&(meal==="D"||meal==="N"?true:p.bf.some(b=>"BLS".includes(b))));
   if(hunger==="Hungry")return L.filter(p=>p.k==="meal"&&isMealFor(p,meal==="S"?"L":meal==="N"?"N":meal));
@@ -756,7 +779,7 @@ function altFor(p,anc){
   const n=nowAms();
   if(ALT[p.id]){const a=ALT[p.id].map(id=>PM[id]).filter(x=>x&&avail(x)).slice(0,2);if(a.length)return {why:ALTWHY[p.id]||"Better pick",list:a};}
   // automatic: famous place far away or likely closed → nearest good place of the same kind
-  if(p.k!=="sight"&&hasLL(p)&&(travelMin(p,anc)>25||!openAt(p,n.min,n.dow))&&VR[p.v]>=4){
+  if(isFood(p)&&hasLL(p)&&(travelMin(p,anc)>25||!openAt(p,n.min,n.dow))&&VR[p.v]>=4){
     const main=p.cat.find(c=>!["budget","cheap","late","lunch","dinner"].includes(c))||p.cat[0];
     const c=P.filter(x=>x.id!==p.id&&x.k===p.k&&avail(x)&&hasLL(x)&&x.cat.includes(main)&&VR[x.v]>=3&&openAt(x,n.min,n.dow)).sort((a,b)=>travelMin(a,anc)-travelMin(b,anc))[0];
     if(c&&travelMin(c,anc)<travelMin(p,anc))return {why:!openAt(p,n.min,n.dow)?"Likely closed now · nearby instead":"Closer alternative",list:[c]};
@@ -768,12 +791,12 @@ function placeCard(p,anc){
   const tr=trendOf(p);const ti=trendInfo(p.id);const al=altFor(p,anc);
   return `<div class="pc ${st||""}"><button class="main" data-open="${p.id}">
   <div class="hd"><h3>${esc(p.n)}${st==="done"?" ✓":""}</h3><span class="cu">${esc(p.cu)}</span></div>
-  ${p.o?`<div class="ord"><b>${p.a?"ORDER FIRST":"ORDER"}</b>${esc(p.o)}</div>`:`<div class="sec">${esc(p.why)}</div>`}
+  ${p.o?`<div class="ord"><b>${p.k==="shop"?"BUY":p.a?"ORDER FIRST":"ORDER"}</b>${esc(p.o)}</div>`:`<div class="sec">${esc(p.why)}</div>`}
   ${p.a?`<div class="sec"><b>SECOND PICK</b>${esc(p.a)}</div>`:""}
   ${p.note?`<div class="note">⚑ ${esc(p.note)}</div>`:""}
   <div class="meta">${p.pr?`<span class="t">${p.pr}</span>`:""}<span class="t">${esc(travel(p,anc))}</span>${p.q?`<span class="t">Queue ${p.q} (typical)</span>`:""}${p.res?`<span class="t">${RES[p.res]}</span>`:""}${p.v?`<span class="t">${V[p.v]}</span>`:""}${tr==="hot"?`<span class="t">📈 hot · checked ${esc(((FEED&&FEED.updatedAt)?fmtClock(Date.parse(FEED.updatedAt)):TREND_CHECKED).split(" ·")[0])}</span>`:tr==="fresh"?`<span class="t">✨ new</span>`:""}${ti&&ti.worth?`<span class="t">Worth it: ${ti.worth}</span>`:""}${p.k!=="sight"&&hours(p)?`<span class="t">${hoursLabel(p,true)}</span>`:""}</div></button>
   ${al?`<div class="sec" style="margin-top:6px">↪ <b>${esc(al.why.toUpperCase())}</b>${al.list.map(a=>`<button class="btn" style="padding:2px 8px;font-size:12px;margin-left:4px" data-open="${a.id}">${esc(a.n)}</button>`).join("")}</div>`:""}
-  <div class="qa"><button class="${st==="done"?"on":""}" data-pset="${p.id}:done">✓ ${p.k==="sight"?"Done":"Ate here"}</button><button class="${st==="planned"?"sv":""}" data-pset="${p.id}:planned">☆ Save</button><button data-pset="${p.id}:skip">✕ Skip</button><button data-open="${p.id}">＋ Day</button><a href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div></div>`;
+  <div class="qa"><button class="${st==="done"?"on":""}" data-pset="${p.id}:done">✓ ${p.k==="sight"?"Done":p.k==="shop"?"Bought":"Ate here"}</button><button class="${st==="planned"?"sv":""}" data-pset="${p.id}:planned">☆ Save</button><button data-pset="${p.id}:skip">✕ Skip</button><button data-open="${p.id}">＋ Day</button><a href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div></div>`;
 }
 function itemRow(key,it,nx){
   const st=istat(it);const p=it.p?PM[it.p]:null;const past=isPast(key,it);
@@ -812,7 +835,7 @@ function alerts(){
 
 function renderHome(){
   const k=todayKey(),d=DM[k],dp=dayProg(k),n=nowAms(),ph=tripPhase();
-  const foodTried=P.filter(p=>p.k!=="sight"&&pstat(p.id)==="done").length;
+  const foodTried=P.filter(p=>isFood(p)&&pstat(p.id)==="done").length;
   const sights=XM.filter(x=>!x.startsWith("summit")&&xstat(x)==="done").length;
   const sumDone=["summit1","summit2"].filter(x=>xstat(x)==="done").length;
   const daysLeft=Math.max(0,DAYS.filter(x=>x.date>=n.date&&!x.depart).length);
@@ -822,7 +845,7 @@ function renderHome(){
   if(nu){const it=nu.it,p=it.p?PM[it.p]:(it.dest?PM[it.dest]:null);
     nh=`<div class="next"><div class="lbl"><span>NEXT → ${esc(it.s)}${it.t!=="—"?" · "+it.t:""}${nu.key!==k?" · "+esc(nu.day.title):""}</span>${nu.mins!=null?`<span class="cd">${nu.mins<=0?"now":"in "+fmtDur(nu.mins)}</span>`:""}</div>
     <h3>${esc(it.l)}</h3>
-    ${p&&p.o?`<div class="ord"><b>ORDER</b>${esc(p.o)}</div>`:""}
+    ${p&&p.o?`<div class="ord"><b>${p.k==="shop"?"BUY":"ORDER"}</b>${esc(p.o)}</div>`:""}
     ${p&&p.note?`<div class="note">⚑ ${esc(p.note)}</div>`:""}
     <div class="meta">${p&&hasLL(p)&&!p.id.startsWith("summit")?`<span class="t">${esc(travel(p,anc))}</span>`:""}${p&&p.pr?`<span class="t">${p.pr}</span>`:""}${p&&p.res?`<span class="t">${RES[p.res]}</span>`:""}${p&&p.k!=="sight"&&hours(p)?`<span class="t">${hoursLabel(p,true)}</span>`:""}</div>
     ${it.d?`<div class="sm muted" style="margin-top:4px">${esc(it.d)}</div>`:""}
@@ -926,12 +949,12 @@ function renderLastChance(){
   if(need("albertcuyp"))out.push({p:"albertcuyp",why:"You fly Saturday",by:"Fri 9 Oct, 17:00"});
   ["rudis","holtkamp","stubbes","lanskroon","hansegstorf"].forEach(id=>{const p=PM[id];if(p&&need(id)&&FM.some(m=>m.c.includes(id)&&mstat(m)!=="done"))out.push({p:id,why:"Last full day · "+(p.o||""),by:"Fri 9 Oct"});});
   BOOK.forEach(b=>{if(need(b.p)&&!val(S.items,"booked-"+b.p)&&dayIndex(b.day)>=di)out.push({p:b.p,why:"Needs a booking",by:"book now for "+b.when});});
-  if(k==="fri"){["rijks","m-indo","m-dutch","m-herring","m-fries"].forEach(id=>{if(id.startsWith("m-")){const m=FM.find(x=>x.id===id);if(m&&!["done","skip"].includes(mstat(m)))out.push({p:m.w,why:"Last full day for "+m.t,by:"tonight"});}else if(need(id))out.push({p:id,why:"Saturday is travel day",by:"today"});});}
+  if(k==="fri"){["g-juma","g-shamsa","g-obaid","g-amna","g-humaid","g-wife","rijks","m-indo","m-dutch","m-herring","m-fries"].forEach(id=>{if(id.startsWith("m-")||id.startsWith("g-")){const m=FM.find(x=>x.id===id);if(m&&!["done","skip"].includes(mstat(m)))out.push({p:m.w,why:(m.id.startsWith("g-")?"Gift for ":"Last full day for ")+m.t.replace("🎁 ",""),by:m.id.startsWith("g-")?"Fri 18:00 or Sat 10:00–11:00":"tonight"});}else if(need(id))out.push({p:id,why:"Saturday is travel day",by:"today"});});}
   const gone=(x)=>{const p=PM[x.p];if(!p)return true;if(x.why.startsWith("Needs")){const b=BOOK.find(b=>b.p===x.p);return b&&b.day===k&&n.min>tmin((b.when.match(/\d\d:\d\d/)||["23:59"])[0]);}const h=hours(p);
     // on Friday (last full day) a place that has closed for the day is no longer possible
     if(k==="fri"&&h&&n.min>=h[1]*60)return true;
     if(k==="fri"&&p.cl&&p.cl.includes(5))return true;return false;};
-  const seen=new Set();const L=out.filter(x=>!gone(x)&&!seen.has(x.p)&&seen.add(x.p)).slice(0,8);
+  const seen=new Set();const L=out.sort((a,b)=>(b.why.startsWith("Gift")-a.why.startsWith("Gift"))).filter(x=>!gone(x)&&!seen.has(x.p)&&seen.add(x.p)).slice(0,10);
   return `<div class="card"><div class="lab" style="margin-top:0">⏳ LAST CHANCE · flight Sat 15:25</div>${L.length?`<ul style="margin:0;padding-left:18px">${L.map(x=>`<li style="margin:6px 0"><button class="btn" style="padding:2px 8px;font-size:13px" data-open="${x.p}">${esc(PM[x.p].n)}</button> <span class="sm">${esc(x.why)}</span> <span class="sm muted">· by ${esc(x.by)}</span></li>`).join("")}</ul>`:`<div class="sm">Nothing time-critical left.</div>`}</div>`;
 }
 function renderTrends(anc){
@@ -985,9 +1008,9 @@ function summitCard(){
   </ul>${FEED&&FEED.summit&&FEED.summit.length?`<div class="lab">LATEST (${esc(fmtClock(Date.parse(FEED.updatedAt)))})</div><ul class="sm">${FEED.summit.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`:""}</details>`;
 }
 
-const CATS=[["trending","🔥 Trending"],["dinner","Dinner"],["brunch","Breakfast"],["lunch","Lunch"],["dutch","Dutch"],["indonesian","Indonesian"],["surinamese","Surinamese"],["seafood","Seafood"],["steak","Steak/grill"],["burger","Burgers"],["pizza","Pizza/Italian"],["asian","Asian"],["middleeast","Middle Eastern"],["turkish","Turkish"],["sandwich","Sandwich/toast"],["fries","Fries"],["stroopwafel","Stroopwafels"],["bakery","Bakeries"],["dessert","Desserts"],["market","Markets"],["late","Late-night"],["cheap","Cheap eats"],["fine","Fine dining"],["all","All"]];
+const CATS=[["trending","🔥 Trending"],["dinner","Dinner"],["brunch","Breakfast"],["lunch","Lunch"],["dutch","Dutch"],["indonesian","Indonesian"],["surinamese","Surinamese"],["seafood","Seafood"],["steak","Steak/grill"],["burger","Burgers"],["pizza","Pizza/Italian"],["asian","Asian"],["middleeast","Middle Eastern"],["turkish","Turkish"],["sandwich","Sandwich/toast"],["fries","Fries"],["stroopwafel","Stroopwafels"],["bakery","Bakeries"],["dessert","Desserts"],["market","Markets"],["gifts","🎁 Gifts"],["late","Late-night"],["cheap","Cheap eats"],["fine","Fine dining"],["all","All"]];
 const SORTS=[["best","Best"],["nearest","Nearest"],["trend","Trending"],["cheap","Cheapest"],["open","Likely open*"],["walkin","No reservation"],["proper","Proper meal"]];
-const SYN={"near hotel":"__nearhotel","late night":"late","tiktok":"__viral","viral":"__viral","indo":"indonesian","rijsttafel":"indonesian","roti":"surinamese","ramen":"ramen","sushi":"omakase","coffee":"bakery","breakfast":"brunch","cheap":"cheap","stroopwafel":"stroopwafel","market":"market","fine dining":"fine","turkish":"middleeast","lebanese":"middleeast","persian":"middleeast","korean":"korean","thai":"thai","fish":"seafood","pancake":"pancake","cake":"dessert","ice cream":"dessert","gelato":"dessert"};
+const SYN={"near hotel":"__nearhotel","late night":"late","tiktok":"__viral","viral":"__viral","indo":"indonesian","rijsttafel":"indonesian","roti":"surinamese","ramen":"ramen","sushi":"omakase","coffee":"bakery","breakfast":"brunch","cheap":"cheap","stroopwafel":"stroopwafel","market":"market","fine dining":"fine","gift":"gifts","gifts":"gifts","souvenir":"gifts","souvenirs":"gifts","miffy":"miffy","turkish":"middleeast","lebanese":"middleeast","persian":"middleeast","korean":"korean","thai":"thai","fish":"seafood","pancake":"pancake","cake":"dessert","ice cream":"dessert","gelato":"dessert"};
 function searchList(){
   const anc=whereAmI();const n=nowAms();let L=P.filter(p=>p.k!=="sight");
   const qq=q.trim().toLowerCase();
@@ -1024,7 +1047,7 @@ function renderFood(){
 function stBtn(kind,id,st){return `<button class="st ${st||""}" data-cycle="${kind}:${id}">${SL[st]}</button>`;}
 function renderMissions(){
   const memo=(f)=>P.filter(f);
-  const eaten=memo(p=>p.k!=="sight"&&pstat(p.id)==="done"),sights=memo(p=>p.k==="sight"&&pstat(p.id)==="done");
+  const eaten=memo(p=>isFood(p)&&pstat(p.id)==="done"),sights=memo(p=>p.k==="sight"&&pstat(p.id)==="done");
   const hoods=HOODS.filter(h=>P.some(p=>p.ar===h&&pstat(p.id)==="done"));
   const liked=memo(p=>S.rate[p.id]===1),dis=memo(p=>S.rate[p.id]===-1),skipped=memo(p=>pstat(p.id)==="skip"),saved=memo(p=>pstat(p.id)==="planned");
   const fmDone=FM.filter(m=>mstat(m)==="done").length;
@@ -1054,13 +1077,13 @@ function mapList(){
   const tk=todayKey(),todayIds=new Set(itemsFor(tk).map(i=>i.p).filter(Boolean));
   let L=P.filter(hasLL);
   if(mapFilter==="today")L=L.filter(p=>todayIds.has(p.id));
-  if(mapFilter==="food")L=L.filter(p=>p.k!=="sight"&&avail(p)&&p.v!=="photo");
+  if(mapFilter==="food")L=L.filter(p=>isFood(p)&&avail(p)&&p.v!=="photo");
   if(mapFilter==="sights")L=L.filter(p=>p.k==="sight");
   if(mapFilter==="open")L=L.filter(p=>avail(p)&&p.v!=="photo");
   if(mapFilter==="near"){const a=whereAmI();L=L.filter(p=>avail(p)&&p.v!=="photo").sort((x,y)=>km(a,x)-km(a,y)).slice(0,15);}
   return {L,todayIds};
 }
-function emoji(p,todayIds){const st=pstat(p.id);if(st==="done")return "✅";if(p.id.startsWith("summit"))return "🎤";if(todayIds.has(p.id)||st==="planned")return "⭐";if(p.k==="sight")return "🏛";if(p.cat.includes("bakery")&&p.k==="snack")return "☕";if(p.k==="snack")return "🍟";return "🍽";}
+function emoji(p,todayIds){const st=pstat(p.id);if(st==="done")return "✅";if(p.id.startsWith("summit"))return "🎤";if(todayIds.has(p.id)||st==="planned")return "⭐";if(p.k==="sight")return "🏛";if(p.cat.includes("bakery")&&p.k==="snack")return "☕";if(p.k==="shop")return "🎁";if(p.k==="snack")return "🍟";return "🍽";}
 function tryLeaflet(){
   if(leafletState!=="idle")return;
   // inside the Claude app, map tiles are blocked; use the saved pin map there
@@ -1129,7 +1152,7 @@ function placeSheet(id){
   const h=hours(p);const tr=trendOf(p);
   openSheet(`<div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline"><h3 style="font:800 22px var(--display)">${esc(p.n)}</h3><span class="t">${esc(p.cu)}</span></div>
   <div class="kv">
-   ${p.o?`<span>${p.a?"ORDER FIRST":"ORDER"}</span><div><b>${esc(p.o)}</b></div>`:""}
+   ${p.o?`<span>${p.k==="shop"?"BUY":p.a?"ORDER FIRST":"ORDER"}</span><div><b>${esc(p.o)}</b></div>`:""}
    ${p.a?`<span>SECOND PICK</span><div>${esc(p.a)}</div>`:""}
    ${p.note?`<span>NOTE</span><div style="color:var(--warn)">⚑ ${esc(p.note)}</div>`:""}
    <span>WHY</span><div>${esc(p.why)}</div>
@@ -1144,8 +1167,8 @@ function placeSheet(id){
    ${p.ar?`<span>AREA</span><div>${esc(p.ar)}</div>`:""}
    <span>STATUS</span><div>${SL[st]}${S.rate[id]===1?" · 👍":S.rate[id]===-1?" · 👎":""}</div>
   </div>
-  <div class="acts"><button class="btn pri" data-pset="${id}:done">✓ ${p.k==="sight"?"Done":"Ate here"}</button><button class="btn" data-pset="${id}:planned">☆ Save</button><button class="btn warn" data-pset="${id}:skip">✕ Skip</button>${st?`<button class="btn" data-pset="${id}:">Reset</button>`:""}</div>
-  <div class="acts">${p.k!=="sight"?`<button class="btn" data-rate="${id}:1">👍 Liked</button><button class="btn" data-rate="${id}:-1">👎 Disliked</button>`:""}<a class="btn" href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div>
+  <div class="acts"><button class="btn pri" data-pset="${id}:done">✓ ${p.k==="sight"?"Done":p.k==="shop"?"Bought":"Ate here"}</button><button class="btn" data-pset="${id}:planned">☆ Save</button><button class="btn warn" data-pset="${id}:skip">✕ Skip</button>${st?`<button class="btn" data-pset="${id}:">Reset</button>`:""}</div>
+  <div class="acts">${isFood(p)?`<button class="btn" data-rate="${id}:1">👍 Liked</button><button class="btn" data-rate="${id}:-1">👎 Disliked</button>`:""}<a class="btn" href="${maps(p)}" target="_blank" rel="noopener">⌖ Map</a></div>
   <div class="acts"><label class="sm" for="addDay">Add to day</label><select id="addDay" style="width:auto"><option value="">—</option>${DAYS.filter(d=>!d.depart).map(d=>`<option value="${d.key}" ${S.extra[id]===d.key?"selected":""}>${d.title}</option>`).join("")}</select></div>
   <p class="src">Hours are saved data from ${DATA_VER}, not live. Check Maps before a long walk.</p>`);
   document.getElementById("addDay").addEventListener("change",e=>{const k=e.target.value;const t=k?bestSlot(k,p):null;persist({extra:{[id]:k||null},moveT:{["x-"+id]:t},places:{[id]:k?"planned":pstat(id)}});toast(k?`Added to ${DM[k].title}${t?" at "+t:""}`:"Removed");});
@@ -1165,7 +1188,7 @@ function itemSheet(iid){
   const canMove=!DM[c.key].depart;
   openSheet(`<div class="daytag">${esc(DM[c.key].title)} · ${esc(cur.s)} · ${esc(cur.t||"")}</div><h3 style="font:800 22px var(--display)">${esc(cur.l)}</h3>
   ${cur.d?`<div class="sm muted">${esc(cur.d)}</div>`:""}
-  ${p&&p.o?`<div class="ord"><b>ORDER</b>${esc(p.o)}</div>`:""}
+  ${p&&p.o?`<div class="ord"><b>${p.k==="shop"?"BUY":"ORDER"}</b>${esc(p.o)}</div>`:""}
   <div class="acts"><button class="btn pri" data-tick="${iid}">✓ Done</button><button class="btn warn" data-skipitem="${iid}">Skip</button>${istat(cur)?`<button class="btn" data-clear="${iid}">Reset</button>`:""}${p?`<button class="btn" data-open="${p.id}">Details</button>`:""}</div>
   ${canMove&&!cur.added?`<div class="acts"><button class="btn" data-moveto="${iid}:fri">→ Move to Friday</button><button class="btn warn" data-skipitem="${iid}">Remove</button></div>
    <div class="acts"><label class="sm" for="moveDay">Other day</label><select id="moveDay" style="width:auto">${DAYS.filter(d=>!d.depart).map(d=>`<option value="${d.key}" ${c.key===d.key?"selected":""}>${d.title}</option>`).join("")}</select>${S.moved[iid]?`<button class="btn" data-moveto="${iid}:">Undo move</button>`:""}</div>`:""}
@@ -1183,7 +1206,7 @@ function settingsSheet(){
   const doneN=Object.values(S.places).filter(v=>v==="done").length+Object.values(S.items).filter(v=>v==="done").length;
   openSheet(`<h3 style="font:800 22px var(--display)">Offline data</h3>
   <div class="kv">
-   <span>RESTAURANTS</span><div>${P.filter(p=>p.k!=="sight").length} places saved ✓</div>
+   <span>RESTAURANTS</span><div>${P.filter(isFood).length} food places + ${P.filter(p=>p.k==="shop").length} gift shops saved ✓</div>
    <span>DAY PLANS</span><div>6 days saved ✓</div>
    <span>MAP PINS</span><div>${P.filter(hasLL).length} pins saved ✓</div>
    <span>PROGRESS</span><div>${doneN} ticks · stored on this phone ✓${cloud?" · synced to your Claude account ✓":""}</div>
